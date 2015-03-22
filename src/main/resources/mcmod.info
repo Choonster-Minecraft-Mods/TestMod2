@@ -1,0 +1,17 @@
+[
+{
+  "modid": "testmod2",
+  "name": "Test Mod 2",
+  "description": "Does a bunch of stuff!",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authors": ["Choonster"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "requiredMods": [],
+  "dependencies": []
+}
+]

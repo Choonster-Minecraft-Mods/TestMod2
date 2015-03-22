@@ -1,0 +1,13 @@
+item.firewand.name=Fire Wand
+item.candyButton.name=Candy Button
+item.foodsubtractor.name=Food Subtractor
+item.foodadder.name=Food Adder
+
+tile.candyButton.red.name=Red Candy Button
+tile.candyButton.orange.name=Orange Candy Button
+tile.candyButton.yellow.name=Yellow Candy Button
+tile.candyButton.green.name=Green Candy Button
+tile.candyButton.lblue.name=Light Blue Candy Button
+tile.candyButton.dblue.name=Dark Blue Candy Button
+tile.candyButton.purple.name=Purple Candy Button
+tile.candyButton.pink.name=Pink Candy Button
