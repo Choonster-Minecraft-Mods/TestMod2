@@ -5,14 +5,15 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.item.Item;
 
 public class ItemRegistry {
-	public static Item coloredBed;
-	public static Item collisionTest;
-	public static Item fireWand;
-	public static Item snowballNoGrav;
-	public static Item candyButton;
-	public static Item foodAdder;
-	public static Item foodSubtractor;
-	public static Item foodExhaustionResetter;
+	public static ItemColoredBed coloredBed;
+	public static ItemCollisionTest collisionTest;
+	public static ItemFireWand fireWand;
+	public static ItemSnowballNoGrav snowballNoGrav;
+	//public static Item candyButton;
+	public static ItemFoodAdder foodAdder;
+	public static ItemFoodSubtractor foodSubtractor;
+	public static ItemExhaustionReset foodExhaustionResetter;
+	public static ItemStaff staff;
 
 	public static void registerItems() {
 		coloredBed = registerItem(new ItemColoredBed());
@@ -22,9 +23,10 @@ public class ItemRegistry {
 		foodAdder = registerItem(new ItemFoodAdder());
 		foodSubtractor = registerItem(new ItemFoodSubtractor());
 		foodExhaustionResetter = registerItem(new ItemExhaustionReset());
+		staff = registerItem(new ItemStaff());
 	}
 
-	private static Item registerItem(Item item){
+	private static <T extends Item> T registerItem(T item){
 		GameRegistry.registerItem(item, item.getUnlocalizedName().substring(5));
 		return item;
 	}

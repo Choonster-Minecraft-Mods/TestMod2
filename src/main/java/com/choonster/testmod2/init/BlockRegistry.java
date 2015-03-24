@@ -9,13 +9,13 @@ import net.minecraft.entity.passive.EntitySheep;
 import net.minecraft.init.Blocks;
 
 public class BlockRegistry {
-	public static Block[] coloredBeds;
-	public static Block collisionTest;
-	public static Block exampleBlock;
-	public static Block superTNT;
-	public static Block[] candyButtons;
-	public static Block fakeBedrock;
-	public static Block blockCombustible;
+	public static BlockColoredBed[] coloredBeds;
+	public static BlockCollisionTest collisionTest;
+	public static BlockExample exampleBlock;
+	public static BlockSuperTNT superTNT;
+	public static BlockCandyButton[] candyButtons;
+	public static BlockFakeBedrock fakeBedrock;
+	public static BlockCombustible blockCombustible;
 
 	public static void registerBlocks() {
 		/*
@@ -37,7 +37,7 @@ public class BlockRegistry {
 		*/
 
 		String[] colours = BlockCandyButton.COLOURS;
-		candyButtons = new Block[colours.length];
+		candyButtons = new BlockCandyButton[colours.length];
 		for (int i = 0; i < candyButtons.length; i++) {
 			candyButtons[i] = new BlockCandyButton(i);
 

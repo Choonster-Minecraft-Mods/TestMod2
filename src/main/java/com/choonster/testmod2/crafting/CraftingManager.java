@@ -1,6 +1,7 @@
 package com.choonster.testmod2.crafting;
 
 import com.choonster.testmod2.Logger;
+import com.choonster.testmod2.init.ItemRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -29,6 +30,12 @@ public class CraftingManager {
 
 		//Shapeless Recipe
 		//GameRegistry.addShapelessRecipe(new ItemStack(Items.diamond,3), new Object[]{"G","O","X",'G', Items.glowstone_dust, 'O', CustomBlocks.MysteryBlock, 'X', Items.gold_ingot});
+
+
+		ItemStack staffLevel1 = new ItemStack(ItemRegistry.staff, 1, 0); // Metadata 0 = level 1
+		ItemStack staffLevel2 = new ItemStack(ItemRegistry.staff, 1, 1); // Metadata 1 = level 2
+
+		GameRegistry.addRecipe(staffLevel2, "GGG", "GSG", "GGG", 'G', Items.gold_nugget, 'S', staffLevel1); // Level 1 + Gold Nuggets = Level 2
 
 	}
 
