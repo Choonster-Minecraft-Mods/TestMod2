@@ -17,6 +17,9 @@ buildscript {
 
 apply plugin: 'forge'
 
+srcCompat = JavaVersion.VERSION_1_8
+targetCompat = JavaVersion.VERSION_1_8
+
 version = "1.0"
 group= "com.choonster.testmod2" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "TestMod2"
@@ -44,4 +47,10 @@ processResources
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'
     }
+}
+
+// Fix resources not being loaded in IDEA
+// http://stackoverflow.com/a/27624502
+sourceSets {
+    main { output.resourcesDir = output.classesDir }
 }

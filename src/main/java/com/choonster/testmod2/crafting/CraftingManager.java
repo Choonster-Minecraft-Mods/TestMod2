@@ -37,6 +37,9 @@ public class CraftingManager {
 
 		GameRegistry.addRecipe(staffLevel2, "GGG", "GSG", "GGG", 'G', Items.gold_nugget, 'S', staffLevel1); // Level 1 + Gold Nuggets = Level 2
 
+
+		GameRegistry.addShapedRecipe(new ItemStack(Blocks.stone_button), "G S", 'G', Items.gold_nugget, 'S', Blocks.stone);
+
 	}
 
 	public static void addSmeltingRecipe() {

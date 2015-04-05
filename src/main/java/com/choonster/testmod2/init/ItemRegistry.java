@@ -9,7 +9,7 @@ public class ItemRegistry {
 	public static ItemCollisionTest collisionTest;
 	public static ItemFireWand fireWand;
 	public static ItemSnowballNoGrav snowballNoGrav;
-	//public static Item candyButton;
+	public static Item candyButton;
 	public static ItemFoodAdder foodAdder;
 	public static ItemFoodSubtractor foodSubtractor;
 	public static ItemExhaustionReset foodExhaustionResetter;
