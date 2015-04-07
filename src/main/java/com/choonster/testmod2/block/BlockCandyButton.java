@@ -1,6 +1,5 @@
 package com.choonster.testmod2.block;
 
-import com.choonster.testmod2.References;
 import com.choonster.testmod2.TestMod2;
 import com.choonster.testmod2.init.ItemRegistry;
 import net.minecraft.block.BlockButton;

@@ -5,8 +5,6 @@ import com.choonster.testmod2.util.FoodUtils;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ChatComponentText;
-import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 
 public class ItemFoodSubtractor extends Item {
@@ -20,7 +18,7 @@ public class ItemFoodSubtractor extends Item {
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
 		player.addExhaustion(16.0f);
-		if (!world.isRemote){
+		if (!world.isRemote) {
 			FoodUtils.sendHungerMessage(player);
 		}
 		return stack;

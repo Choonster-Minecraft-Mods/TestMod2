@@ -2,11 +2,7 @@ package com.choonster.testmod2.compat;
 
 //import codechicken.nei.guihook.IContainerObjectHandler;
 //import codechicken.nei.guihook.IContainerTooltipHandler;
-import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraft.item.ItemStack;
 
-import java.util.Collections;
-import java.util.List;
 /*
 
 public class NEICompat implements IContainerTooltipHandler, IContainerObjectHandler {

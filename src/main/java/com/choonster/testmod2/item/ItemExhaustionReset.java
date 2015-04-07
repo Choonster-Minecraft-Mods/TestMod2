@@ -2,7 +2,6 @@ package com.choonster.testmod2.item;
 
 import com.choonster.testmod2.TestMod2;
 import com.choonster.testmod2.util.FoodUtils;
-import cpw.mods.fml.common.ObfuscationReflectionHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -18,7 +17,7 @@ public class ItemExhaustionReset extends Item {
 
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
-		if (!world.isRemote){
+		if (!world.isRemote) {
 			FoodStats stats = player.getFoodStats();
 			FoodUtils.setExhaustion(stats, 0);
 			FoodUtils.sendHungerMessage(player);

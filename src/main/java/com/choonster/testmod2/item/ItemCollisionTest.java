@@ -1,10 +1,8 @@
 package com.choonster.testmod2.item;
 
-import com.choonster.testmod2.Logger;
 import com.choonster.testmod2.TestMod2;
 import com.choonster.testmod2.entity.EntityItemCollisionTest;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;

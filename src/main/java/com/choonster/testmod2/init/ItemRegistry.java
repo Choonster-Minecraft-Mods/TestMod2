@@ -28,7 +28,7 @@ public class ItemRegistry {
 		chiselAndHammer = registerItem(new ItemChiselAndHammer());
 	}
 
-	private static <T extends Item> T registerItem(T item){
+	private static <T extends Item> T registerItem(T item) {
 		GameRegistry.registerItem(item, item.getUnlocalizedName().substring(5));
 		return item;
 	}

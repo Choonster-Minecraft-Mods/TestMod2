@@ -16,7 +16,7 @@ public class BlockFakeBedrock extends Block {
 
 	@Override
 	public IIcon getIcon(int p_149691_1_, int p_149691_2_) {
-		IIcon temp= super.getIcon(p_149691_1_, p_149691_2_);
+		IIcon temp = super.getIcon(p_149691_1_, p_149691_2_);
 		return temp;
 	}
 }

@@ -1,11 +1,8 @@
 package com.choonster.testmod2.init;
 
-import com.choonster.testmod2.References;
 import com.choonster.testmod2.block.*;
 import com.choonster.testmod2.item.ItemCandyButton;
 import cpw.mods.fml.common.registry.GameRegistry;
-import net.minecraft.block.Block;
-import net.minecraft.entity.passive.EntitySheep;
 import net.minecraft.init.Blocks;
 
 public class BlockRegistry {

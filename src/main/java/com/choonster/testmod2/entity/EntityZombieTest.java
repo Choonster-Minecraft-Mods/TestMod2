@@ -10,7 +10,7 @@ public class EntityZombieTest extends EntityZombie {
 	public EntityZombieTest(World p_i1745_1_) {
 		super(p_i1745_1_);
 
-		if (!worldObj.isRemote){
+		if (!worldObj.isRemote) {
 			MinecraftServer.getServer().getConfigurationManager().sendChatMsg(new ChatComponentText("Herobrine joined the game."));
 		}
 	}
@@ -19,7 +19,7 @@ public class EntityZombieTest extends EntityZombie {
 	public void onDeath(DamageSource p_70645_1_) {
 		super.onDeath(p_70645_1_);
 
-		if (!worldObj.isRemote){
+		if (!worldObj.isRemote) {
 			MinecraftServer.getServer().getConfigurationManager().sendChatMsg(new ChatComponentText("Herobrine left the game."));
 		}
 	}

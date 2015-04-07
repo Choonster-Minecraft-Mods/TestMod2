@@ -1,6 +1,5 @@
 package com.choonster.testmod2.event;
 
-import com.choonster.testmod2.Logger;
 import cpw.mods.fml.common.eventhandler.Event;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.block.Block;
@@ -12,8 +11,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EntityDamageSource;
-import net.minecraft.util.EntityDamageSourceIndirect;
-import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
@@ -44,15 +41,15 @@ public class BlockEventHandler {
 	}
 
 	@SubscribeEvent
-	public void onEntityDrop(LivingDropsEvent event){
-		if (event.entityLiving instanceof EntityPig && event.source instanceof EntityDamageSource){
+	public void onEntityDrop(LivingDropsEvent event) {
+		if (event.entityLiving instanceof EntityPig && event.source instanceof EntityDamageSource) {
 			// getEntity will return the Entity that caused the damage,even for indirect damage sources like arrows/fireballs
 			// (where it will return the Entity that shot the projectile rather than the projectile itself)
 			Entity sourceEntity = event.source.getEntity();
 			ItemStack heldItem = sourceEntity instanceof EntityLiving ? ((EntityLiving) sourceEntity).getHeldItem() :
 					sourceEntity instanceof EntityPlayer ? ((EntityPlayer) sourceEntity).getHeldItem() : null;
 
-			if(heldItem != null && heldItem.getItem() == Items.iron_pickaxe){
+			if (heldItem != null && heldItem.getItem() == Items.iron_pickaxe) {
 				System.out.println("EntityPig drops event");
 				event.drops.clear();
 				event.entityLiving.dropItem(Items.diamond, 64);
@@ -61,10 +58,8 @@ public class BlockEventHandler {
 	}
 
 	@SubscribeEvent
-	public void onBlockBreak(BlockEvent.BreakEvent event)
-	{
-		if(event.block == Blocks.stone)
-		{
+	public void onBlockBreak(BlockEvent.BreakEvent event) {
+		if (event.block == Blocks.stone) {
 			event.setCanceled(true);
 			event.world.setBlock(event.x, event.y, event.z, Blocks.flowing_lava);
 		}

@@ -1,15 +1,10 @@
 package com.choonster.testmod2.crafting;
 
-import com.choonster.testmod2.Logger;
 import com.choonster.testmod2.init.ItemRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-
-import java.util.HashMap;
-import java.util.Map;
 
 
 public class CraftingManager {
@@ -47,7 +42,7 @@ public class CraftingManager {
 		GameRegistry.addSmelting(Blocks.coal_block, new ItemStack(Blocks.obsidian, 1), 20.0f);
 	}
 
-	public static void removeRecipes(){
+	public static void removeRecipes() {
 		//RecipeRemover.removeAnyRecipe(Item.getItemFromBlock(Blocks.torch));
 		//RecipeRemover.removeFurnaceRecipe(new ItemStack(Blocks.stone));
 	}

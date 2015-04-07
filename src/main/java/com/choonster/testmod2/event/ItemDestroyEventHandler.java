@@ -6,7 +6,7 @@ import net.minecraftforge.event.entity.player.PlayerDestroyItemEvent;
 public class ItemDestroyEventHandler {
 
 	@SubscribeEvent
-	public void onItemDestroyed(PlayerDestroyItemEvent event){
+	public void onItemDestroyed(PlayerDestroyItemEvent event) {
 		new Exception().printStackTrace();
 	}
 }

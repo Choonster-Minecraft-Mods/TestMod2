@@ -16,7 +16,7 @@ public class ItemFoodAdder extends Item {
 
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
-		if (!world.isRemote){
+		if (!world.isRemote) {
 			player.getFoodStats().addStats(2, 0.0f);
 			FoodUtils.sendHungerMessage(player);
 		}

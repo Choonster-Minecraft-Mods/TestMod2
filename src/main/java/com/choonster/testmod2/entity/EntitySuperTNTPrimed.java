@@ -2,8 +2,6 @@ package com.choonster.testmod2.entity;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityTNTPrimed;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.util.ChatComponentText;
 import net.minecraft.world.World;
 
 public class EntitySuperTNTPrimed extends EntityTNTPrimed {
