@@ -2,6 +2,7 @@ item.firewand.name=Fire Wand
 item.candyButton.name=Candy Button
 item.foodsubtractor.name=Food Subtractor
 item.foodadder.name=Food Adder
+item.chiselAndHammer.name=Chisel and Hammer
 
 tile.candyButton.red.name=Red Candy Button
 tile.candyButton.orange.name=Orange Candy Button

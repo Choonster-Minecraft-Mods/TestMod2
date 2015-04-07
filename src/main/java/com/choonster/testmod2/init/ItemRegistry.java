@@ -14,6 +14,7 @@ public class ItemRegistry {
 	public static ItemFoodSubtractor foodSubtractor;
 	public static ItemExhaustionReset foodExhaustionResetter;
 	public static ItemStaff staff;
+	public static ItemChiselAndHammer chiselAndHammer;
 
 	public static void registerItems() {
 		coloredBed = registerItem(new ItemColoredBed());
@@ -24,6 +25,7 @@ public class ItemRegistry {
 		foodSubtractor = registerItem(new ItemFoodSubtractor());
 		foodExhaustionResetter = registerItem(new ItemExhaustionReset());
 		staff = registerItem(new ItemStaff());
+		chiselAndHammer = registerItem(new ItemChiselAndHammer());
 	}
 
 	private static <T extends Item> T registerItem(T item){
