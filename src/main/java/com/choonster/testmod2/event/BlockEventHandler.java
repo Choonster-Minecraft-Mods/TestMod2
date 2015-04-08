@@ -10,6 +10,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EntityDamageSource;
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
@@ -62,6 +63,13 @@ public class BlockEventHandler {
 		if (event.block == Blocks.stone) {
 			event.setCanceled(true);
 			event.world.setBlock(event.x, event.y, event.z, Blocks.flowing_lava);
+		}
+	}
+
+	@SubscribeEvent
+	public void harvestDrops(BlockEvent.HarvestDropsEvent event) {
+		if (event.block == Blocks.cocoa && event.harvester != null) {
+			event.harvester.addChatComponentMessage(new ChatComponentText("Cocoa!"));
 		}
 	}
 }
