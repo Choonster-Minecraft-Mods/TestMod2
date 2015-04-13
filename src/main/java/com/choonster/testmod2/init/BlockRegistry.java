@@ -1,9 +1,13 @@
 package com.choonster.testmod2.init;
 
+import com.choonster.testmod2.References;
 import com.choonster.testmod2.block.*;
 import com.choonster.testmod2.item.ItemCandyButton;
+import com.choonster.testmod2.tileentity.TileEntityDisplayNameTest;
 import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
+import net.minecraft.tileentity.TileEntity;
 
 public class BlockRegistry {
 	public static BlockColoredBed[] coloredBeds;
@@ -13,6 +17,7 @@ public class BlockRegistry {
 	public static BlockCandyButton[] candyButtons;
 	public static BlockFakeBedrock fakeBedrock;
 	public static BlockCombustible blockCombustible;
+	public static BlockDisplayNameTest blockDisplayNameTest;
 
 	public static void registerBlocks() {
 		/*
@@ -43,11 +48,22 @@ public class BlockRegistry {
 			GameRegistry.registerBlock(candyButtons[i], ItemCandyButton.class, "candyButton_" + colours[i], i);
 		}
 
-		fakeBedrock = new BlockFakeBedrock();
-		GameRegistry.registerBlock(fakeBedrock, "fakeBedrock");
+		fakeBedrock = registerBlock(new BlockFakeBedrock());
 
-		blockCombustible = new BlockCombustible();
-		GameRegistry.registerBlock(blockCombustible, "combustible");
+		blockCombustible = registerBlock(new BlockCombustible());
 		Blocks.fire.setFireInfo(blockCombustible, 100, 0);
+
+		blockDisplayNameTest = registerBlock(new BlockDisplayNameTest());
+		registerTileEntity(TileEntityDisplayNameTest.class, "displayNameTest");
 	}
+
+	private static <T extends Block> T registerBlock(T block) {
+		GameRegistry.registerBlock(block, block.getUnlocalizedName().substring(5));
+		return block;
+	}
+
+	private static void registerTileEntity(Class<? extends TileEntity> tileEntity, String name) {
+		GameRegistry.registerTileEntity(tileEntity, References.MODID + ":" + name);
+	}
+
 }
