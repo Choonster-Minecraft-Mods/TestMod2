@@ -7,7 +7,6 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.ChatComponentTranslation;
 
 import java.util.List;
@@ -28,8 +27,7 @@ public class ItemDirtyDust extends Item {
 	@Override
 	public boolean onEntityItemUpdate(EntityItem entityItem) {
 		// If on the server, check if the EntityItem is in water
-		if (!entityItem.worldObj.isRemote && entityItem.isInsideOfMaterial(Material.water))
-		{
+		if (!entityItem.worldObj.isRemote && entityItem.isInsideOfMaterial(Material.water)) {
 			ChatUtils.sendServerMessage(new ChatComponentTranslation("Item in water! %s,%s,%s", entityItem.posX, entityItem.posY, entityItem.posZ));
 		}
 

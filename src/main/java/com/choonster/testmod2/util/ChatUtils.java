@@ -5,7 +5,7 @@ import net.minecraft.util.IChatComponent;
 
 public class ChatUtils {
 	// Send a message to all players on the server
-	public static void sendServerMessage(IChatComponent chatComponent){
+	public static void sendServerMessage(IChatComponent chatComponent) {
 		MinecraftServer.getServer().getConfigurationManager().sendChatMsg(chatComponent);
 	}
 }
