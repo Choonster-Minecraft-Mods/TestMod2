@@ -3,6 +3,7 @@ item.candyButton.name=Candy Button
 item.foodsubtractor.name=Food Subtractor
 item.foodadder.name=Food Adder
 item.chiselAndHammer.name=Chisel and Hammer
+item.record.solaris.desc=Solaris (Path of Exile)
 
 tile.candyButton.red.name=Red Candy Button
 tile.candyButton.orange.name=Orange Candy Button

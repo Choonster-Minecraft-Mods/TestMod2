@@ -1,8 +1,5 @@
 package com.choonster.testmod2;
 
-/**
- * Created by CoonPC on 2/12/2014.
- */
 public class References {
 	public static final String MODID = "testmod2";
 
