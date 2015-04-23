@@ -11,7 +11,11 @@ import net.minecraft.world.World;
 
 // http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/modification-development/2411998-checking-items-mode-before-using-it
 public class ItemEarthWand extends Item {
+	// The number of modes
 	public static final int NUM_MODES = 3;
+
+	// The block placed by each mode (index = mode)
+	public static final Block[] BLOCKS_FOR_MODES = new Block[]{Blocks.dirt, Blocks.cobblestone, Blocks.stone};
 
 	public ItemEarthWand() {
 		setMaxDamage(2000);
@@ -33,39 +37,10 @@ public class ItemEarthWand extends Item {
 		return stack.getTagCompound().getInteger("mode") % NUM_MODES; // Ensure mode is < NUM_MODES
 	}
 
-	// Cycle the ItemStack to the next mode
-	private void cycleMode(ItemStack stack) {
-		int mode = (getMode(stack) + 1) % NUM_MODES; // Increment the mode, but wrap back to 0 when the current mode is 2
-		stack.getTagCompound().setInteger("mode", mode);
-	}
-
 	// Called when the player right clicks a block
 	@Override
 	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ) {
-		if (world.isRemote)
-			return false; // If we're not on the server, do nothing (the server will sync any changes with the client)
-
-		if (player.isSneaking()) {
-			cycleMode(stack);
-			return true;
-		} else {
-			Block block;
-
-			switch (getMode(stack)) {
-				case 0:
-					block = Blocks.dirt;
-					break;
-				case 1:
-					block = Blocks.cobblestone;
-					break;
-				case 2:
-					block = Blocks.stone;
-					break;
-				default:
-					return false; // Invalid mode, do nothing
-			}
-
-
+		if (!world.isRemote && !player.isSneaking()) { // If we're on the server and the player isn't sneaking, place a block
 			if (world.getBlock(x, y, z) != Blocks.snow_layer) {
 				if (side == 0) --y; // This is equal to ForgeDirection.DOWN
 				if (side == 1) ++y; // This is equal to ForgeDirection.UP
@@ -76,6 +51,8 @@ public class ItemEarthWand extends Item {
 
 				if (!world.isAirBlock(x, y, z)) return false;
 			}
+
+			Block block = BLOCKS_FOR_MODES[getMode(stack)];
 
 			if (!player.canPlayerEdit(x, y, z, side, stack)) { // Make sure it's not Adventure mode
 				return false;
@@ -89,11 +66,12 @@ public class ItemEarthWand extends Item {
 		return false;
 	}
 
-	// Called when the player right clicks air
+	// Called when the player right clicks air or a block
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
 		if (!world.isRemote && player.isSneaking()) { // If we're on the server and the player is sneaking, cycle the mode
-			cycleMode(stack);
+			int mode = (getMode(stack) + 1) % NUM_MODES; // Increment the mode, but wrap back to 0 when the current mode is 2
+			stack.getTagCompound().setInteger("mode", mode);
 		}
 
 		return stack;
