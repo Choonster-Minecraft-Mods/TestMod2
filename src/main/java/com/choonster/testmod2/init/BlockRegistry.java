@@ -4,6 +4,7 @@ import com.choonster.testmod2.References;
 import com.choonster.testmod2.block.*;
 import com.choonster.testmod2.item.ItemCandyButton;
 import com.choonster.testmod2.tileentity.TileEntityDisplayNameTest;
+import com.choonster.testmod2.tileentity.TileEntityOwned;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
@@ -18,6 +19,7 @@ public class BlockRegistry {
 	public static BlockFakeBedrock fakeBedrock;
 	public static BlockCombustible blockCombustible;
 	public static BlockDisplayNameTest blockDisplayNameTest;
+	public static BlockOwned blockOwned;
 
 	public static void registerBlocks() {
 		/*
@@ -55,6 +57,9 @@ public class BlockRegistry {
 
 		blockDisplayNameTest = registerBlock(new BlockDisplayNameTest());
 		registerTileEntity(TileEntityDisplayNameTest.class, "displayNameTest");
+
+		blockOwned = registerBlock(new BlockOwned());
+		registerTileEntity(TileEntityOwned.class, "owned");
 	}
 
 	private static <T extends Block> T registerBlock(T block) {
