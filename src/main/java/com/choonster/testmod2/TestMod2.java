@@ -8,6 +8,7 @@ import com.choonster.testmod2.init.BlockRegistry;
 import com.choonster.testmod2.init.Entities;
 import com.choonster.testmod2.init.ItemRegistry;
 import com.choonster.testmod2.tweak.unpunchablelogs.UnpunchableLogs;
+import com.choonster.testmod2.util.SplitterTest;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -40,6 +41,8 @@ public class TestMod2 {
 		MinecraftForge.EVENT_BUS.register(new BlockEventHandler());
 		MinecraftForge.EVENT_BUS.register(new ItemDestroyEventHandler());
 		//ItemTooltipEventHandler.init();
+
+		SplitterTest.splitStrings();
 	}
 
 	@EventHandler
