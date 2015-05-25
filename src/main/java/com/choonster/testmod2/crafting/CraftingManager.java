@@ -5,6 +5,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
 
 
 public class CraftingManager {
@@ -34,6 +35,8 @@ public class CraftingManager {
 
 
 		GameRegistry.addShapedRecipe(new ItemStack(Blocks.stone_button), "G S", 'G', Items.gold_nugget, 'S', Blocks.stone);
+
+		GameRegistry.addShapelessRecipe(new ItemStack(Items.fish), new ItemStack(ItemRegistry.containerTest, 1, OreDictionary.WILDCARD_VALUE));
 
 	}
 
