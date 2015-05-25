@@ -1,5 +1,6 @@
 package com.choonster.testmod2;
 
+import com.choonster.testmod2.config.Config;
 import com.choonster.testmod2.crafting.CraftingManager;
 import com.choonster.testmod2.creativetab.CreativeTabTestMod2;
 import com.choonster.testmod2.event.BlockEventHandler;
@@ -23,7 +24,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.oredict.OreDictionary;
 
-@Mod(name = "Test Mod 2", modid = References.MODID)
+@Mod(name = "Test Mod 2", modid = References.MODID, guiFactory = "com.choonster.testmod2.config.GuiConfigFactoryTestMod2")
 public class TestMod2 {
 	@Instance
 	public static TestMod2 instance;
@@ -33,6 +34,8 @@ public class TestMod2 {
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		tab = new CreativeTabTestMod2();
+
+		Config.load(event);
 
 		BlockRegistry.registerBlocks();
 		ItemRegistry.registerItems();
