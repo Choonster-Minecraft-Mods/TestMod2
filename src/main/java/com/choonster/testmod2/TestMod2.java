@@ -8,11 +8,14 @@ import com.choonster.testmod2.event.ItemDestroyEventHandler;
 import com.choonster.testmod2.init.BlockRegistry;
 import com.choonster.testmod2.init.Entities;
 import com.choonster.testmod2.init.ItemRegistry;
+import com.choonster.testmod2.init.ModFluids;
+import com.choonster.testmod2.proxy.CommonProxy;
 import com.choonster.testmod2.tweak.unpunchablelogs.UnpunchableLogs;
 import com.choonster.testmod2.util.SplitterTest;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
+import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
@@ -31,12 +34,16 @@ public class TestMod2 {
 
 	public static CreativeTabs tab;
 
+	@SidedProxy(clientSide = "com.choonster.testmod2.proxy.ClientProxy", serverSide = "com.choonster.testmod2.proxy.ServerProxy")
+	public static CommonProxy proxy;
+
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		tab = new CreativeTabTestMod2();
 
 		Config.load(event);
 
+		ModFluids.registerFluids();
 		BlockRegistry.registerBlocks();
 		ItemRegistry.registerItems();
 		Entities.preInit();

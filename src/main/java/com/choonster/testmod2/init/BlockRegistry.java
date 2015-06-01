@@ -20,6 +20,7 @@ public class BlockRegistry {
 	public static BlockCombustible blockCombustible;
 	public static BlockDisplayNameTest blockDisplayNameTest;
 	public static BlockOwned blockOwned;
+	public static BlockCollisionTestFluid blockCollisionTestFluid;
 
 	public static void registerBlocks() {
 		/*
@@ -60,6 +61,8 @@ public class BlockRegistry {
 
 		blockOwned = registerBlock(new BlockOwned());
 		registerTileEntity(TileEntityOwned.class, "owned");
+
+		blockCollisionTestFluid = registerBlock(new BlockCollisionTestFluid(ModFluids.collisionTest));
 	}
 
 	private static <T extends Block> T registerBlock(T block) {

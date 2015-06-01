@@ -21,7 +21,7 @@ srcCompat = JavaVersion.VERSION_1_8
 targetCompat = JavaVersion.VERSION_1_8
 
 version = "1.0"
-group= "com.choonster.testmod2" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+group = "com.choonster.testmod2" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "TestMod2"
 
 minecraft {
@@ -30,24 +30,24 @@ minecraft {
 }
 
 processResources
-{
-    // this will ensure that this task is redone when the versions change.
-    inputs.property "version", project.version
-    inputs.property "mcversion", project.minecraft.version
+        {
+            // this will ensure that this task is redone when the versions change.
+            inputs.property "version", project.version
+            inputs.property "mcversion", project.minecraft.version
 
-    // replace stuff in mcmod.info, nothing else
-    from(sourceSets.main.resources.srcDirs) {
-        include 'mcmod.info'
-                
-        // replace version and mcversion
-        expand 'version':project.version, 'mcversion':project.minecraft.version
-    }
-        
-    // copy everything else, thats not the mcmod.info
-    from(sourceSets.main.resources.srcDirs) {
-        exclude 'mcmod.info'
-    }
-}
+            // replace stuff in mcmod.info, nothing else
+            from(sourceSets.main.resources.srcDirs) {
+                include 'mcmod.info'
+
+                // replace version and mcversion
+                expand 'version': project.version, 'mcversion': project.minecraft.version
+            }
+
+            // copy everything else, thats not the mcmod.info
+            from(sourceSets.main.resources.srcDirs) {
+                exclude 'mcmod.info'
+            }
+        }
 
 // Fix resources not being loaded in IDEA
 // http://stackoverflow.com/a/27624502
