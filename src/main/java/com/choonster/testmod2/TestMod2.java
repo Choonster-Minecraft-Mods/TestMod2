@@ -5,10 +5,7 @@ import com.choonster.testmod2.crafting.CraftingManager;
 import com.choonster.testmod2.creativetab.CreativeTabTestMod2;
 import com.choonster.testmod2.event.BlockEventHandler;
 import com.choonster.testmod2.event.ItemDestroyEventHandler;
-import com.choonster.testmod2.init.BlockRegistry;
-import com.choonster.testmod2.init.Entities;
-import com.choonster.testmod2.init.ItemRegistry;
-import com.choonster.testmod2.init.ModFluids;
+import com.choonster.testmod2.init.*;
 import com.choonster.testmod2.proxy.CommonProxy;
 import com.choonster.testmod2.tweak.unpunchablelogs.UnpunchableLogs;
 import com.choonster.testmod2.util.SplitterTest;
@@ -47,6 +44,7 @@ public class TestMod2 {
 		BlockRegistry.registerBlocks();
 		ItemRegistry.registerItems();
 		Entities.preInit();
+		ModBiomes.registerBiomes();
 
 		MinecraftForge.EVENT_BUS.register(new BlockEventHandler());
 		MinecraftForge.EVENT_BUS.register(new ItemDestroyEventHandler());
