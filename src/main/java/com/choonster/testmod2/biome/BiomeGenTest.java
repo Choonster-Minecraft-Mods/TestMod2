@@ -7,14 +7,14 @@ import net.minecraft.world.biome.BiomeGenBase;
 import java.util.Iterator;
 
 // http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/modification-development/2440392-removing-mobs-from-my-biome
-public class BiomeGenTest extends BiomeGenBase{
+public class BiomeGenTest extends BiomeGenBase {
 	@SuppressWarnings("unchecked")
 	public BiomeGenTest(int id) {
 		super(id);
 
-		for (Iterator<SpawnListEntry> iterator = spawnableMonsterList.iterator(); iterator.hasNext(); ){
+		for (Iterator<SpawnListEntry> iterator = spawnableMonsterList.iterator(); iterator.hasNext(); ) {
 			SpawnListEntry entry = iterator.next();
-			if (entry.entityClass.equals(EntityCreeper.class) || entry.entityClass.equals(EntityZombie.class)){
+			if (entry.entityClass.equals(EntityCreeper.class) || entry.entityClass.equals(EntityZombie.class)) {
 				iterator.remove();
 			}
 		}

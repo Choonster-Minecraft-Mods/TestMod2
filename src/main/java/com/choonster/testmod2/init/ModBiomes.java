@@ -7,7 +7,7 @@ import net.minecraftforge.common.BiomeManager;
 public class ModBiomes {
 	public static BiomeGenTest biomeGenTest;
 
-	public static void registerBiomes(){
+	public static void registerBiomes() {
 		biomeGenTest = new BiomeGenTest(100);
 		BiomeDictionary.registerBiomeType(biomeGenTest, BiomeDictionary.Type.COLD);
 		BiomeManager.addBiome(BiomeManager.BiomeType.ICY, new BiomeManager.BiomeEntry(biomeGenTest, 10));
