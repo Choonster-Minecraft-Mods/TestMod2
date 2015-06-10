@@ -20,9 +20,12 @@ tile.candyButton.dblue.name=Dark Blue Candy Button
 tile.candyButton.purple.name=Purple Candy Button
 tile.candyButton.pink.name=Pink Candy Button
 tile.owned.name=Owned Block
+
 tile.fluid.collisionTest.name=Collision Test
+tile.fluid.static.name=Static Fluid
 
 fluid.collisionTest=Collision Test
+fluid.static=Static Fluid
 
 enchantment.level.25=XXV
 
