@@ -1,5 +1,6 @@
 package com.choonster.testmod2;
 
+import com.choonster.testmod2.compat.BCCompat;
 import com.choonster.testmod2.config.Config;
 import com.choonster.testmod2.crafting.CraftingManager;
 import com.choonster.testmod2.creativetab.CreativeTabTestMod2;
@@ -61,6 +62,7 @@ public class TestMod2 {
 		CraftingManager.mainRegistry();
 
 		UnpunchableLogs.init();
+		BCCompat.init();
 	}
 
 	@EventHandler

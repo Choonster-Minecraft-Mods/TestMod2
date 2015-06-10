@@ -20,13 +20,35 @@ apply plugin: 'forge'
 srcCompat = JavaVersion.VERSION_1_8
 targetCompat = JavaVersion.VERSION_1_8
 
-version = "1.0"
-group = "com.choonster.testmod2" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "TestMod2"
+version = "${mc_version}-${mod_version}"
+group= "${package_group}" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = "${mod_name}"
 
 minecraft {
-    version = "1.7.10-10.13.3.1408-1.7.10"
+    version = "${mc_version}-${forge_version}"
     runDir = "eclipse"
+
+    if (project.hasProperty('mappings_version'))
+        mappings = project.mappings_version
+}
+
+repositories {
+    maven { url = "http://coloredlightscore.us.to/maven/chisel-2-dev/" }
+    ivy {
+        name "BuildCraft"
+        artifactPattern "http://www.mod-buildcraft.com/releases/BuildCraft/[revision]/[module]-[revision]-[classifier].[ext]"
+    }
+    maven { url = "http://mobiusstrip.eu/maven" }
+    maven { url = "http://chickenbones.net/maven/" }
+}
+
+dependencies {
+    compile "com.cricketcraft.chisel:Chisel2:${chisel_version}:deobf"
+    runtime name: "buildcraft", version: "${buildcraft_version}", classifier: "dev"
+    runtime "mcp.mobius.waila:Waila:${waila_version}"
+    runtime "codechicken:CodeChickenCore:${mc_version}-${ccc_version}:dev"
+    runtime "codechicken:CodeChickenLib:${mc_version}-${ccl_version}:dev"
+    runtime "codechicken:NotEnoughItems:${mc_version}-${nei_version}:dev"
 }
 
 processResources
