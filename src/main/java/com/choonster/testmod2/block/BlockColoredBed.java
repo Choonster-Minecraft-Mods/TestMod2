@@ -6,14 +6,17 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.BlockBed;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.util.Direction;
 import net.minecraft.util.IIcon;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 import java.util.Random;
 
+// http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/modification-development/2280852-crash-custom-bed?page=2
 public class BlockColoredBed extends BlockBed {
 	private int colorIndex;
 
@@ -53,17 +56,22 @@ public class BlockColoredBed extends BlockBed {
 	}
 
 	@Override
-	public Item getItem(World p_149694_1_, int p_149694_2_, int p_149694_3_, int p_149694_4_) {
+	public Item getItem(World world, int x, int y, int z) {
 		return ItemRegistry.coloredBed;
 	}
 
 	@Override
-	public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_) {
-		return isBlockHeadOfBed(p_149650_1_) ? Item.getItemById(0) : ItemRegistry.coloredBed;
+	public Item getItemDropped(int metadata, Random random, int fortune) {
+		return isBlockHeadOfBed(metadata) ? Item.getItemById(0) : ItemRegistry.coloredBed;
 	}
 
 	@Override
-	public int damageDropped(int p_149692_1_) {
+	public int damageDropped(int metadata) {
 		return colorIndex;
+	}
+
+	@Override
+	public boolean isBed(IBlockAccess world, int x, int y, int z, EntityLivingBase player) {
+		return true;
 	}
 }

@@ -1,7 +1,10 @@
+itemGroup.testmod2=TestMod2
+
 item.firewand.name=Fire Wand
 item.candyButton.name=Candy Button
 item.foodsubtractor.name=Food Subtractor
 item.foodadder.name=Food Adder
+item.exhaustionresetter.name=Exhaustion Resetter
 item.chiselAndHammer.name=Chisel and Hammer
 item.record.solaris.desc=Solaris (Path of Exile)
 item.earthWand.name=Earth Wand
@@ -10,6 +13,26 @@ item.earthWand.tier.1.name=Earth Wand (Tier 2)
 item.earthWand.tier.2.name=Earth Wand (Tier 3)
 item.containertest.name=Container Test
 item.barrelbomb.name=Barrel Bomb
+item.collisiontestitem.name=Collision Test Item
+item.dirtyDust.name=Dirty Dust
+item.snowball.nograv.name=Snowball (No Gravity)
+
+item.coloredBed.black.name=Black Colored Bed
+item.coloredBed.red.name=Red Colored Bed
+item.coloredBed.green.name=Green Colored Bed
+item.coloredBed.brown.name=Brown Colored Bed
+item.coloredBed.blue.name=Blue Colored Bed
+item.coloredBed.purple.name=Purple Colored Bed
+item.coloredBed.cyan.name=Cyan Colored Bed
+item.coloredBed.silver.name=Silver Colored Bed
+item.coloredBed.gray.name=Gray Colored Bed
+item.coloredBed.pink.name=Pink Colored Bed
+item.coloredBed.lime.name=Lime Colored Bed
+item.coloredBed.yellow.name=Yellow Colored Bed
+item.coloredBed.light_blue.name=Light Blue Colored Bed
+item.coloredBed.magenta.name=Magenta Colored Bed
+item.coloredBed.orange.name=Orange Colored Bed
+item.coloredBed.white.name=White Colored Bed
 
 tile.candyButton.red.name=Red Candy Button
 tile.candyButton.orange.name=Orange Candy Button
@@ -20,8 +43,14 @@ tile.candyButton.dblue.name=Dark Blue Candy Button
 tile.candyButton.purple.name=Purple Candy Button
 tile.candyButton.pink.name=Pink Candy Button
 tile.owned.name=Owned Block
+tile.combustible.name=Combustible Block
+tile.displayNameTest.name=Display Name Test
+tile.exampleblock.name=Example Block
+tile.fakeBedrock.name=Fake Bedrock
+tile.supertnt.name=Super TNT
+tile.testmod2:collisiontest.name=Collision Test Block
 
-tile.fluid.collisionTest.name=Collision Test
+tile.fluid.collisionTest.name=Collision Test Fluid
 tile.fluid.static.name=Static Fluid
 
 fluid.collisionTest=Collision Test

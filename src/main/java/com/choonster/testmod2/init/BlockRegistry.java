@@ -24,12 +24,11 @@ public class BlockRegistry {
 	public static BlockStaticFluid blockStaticFluid;
 
 	public static void registerBlocks() {
-		/*
-		coloredBeds = new Block[16];
+		coloredBeds = new BlockColoredBed[16];
 		for (int colorIndex = 0; colorIndex < coloredBeds.length; colorIndex++) {
 			String name = "coloredBed." + References.COLORS[colorIndex];
-			coloredBeds[colorIndex] = new BlockColoredBed(colorIndex).setBlockName(name);
-			GameRegistry.registerBlock(coloredBeds[colorIndex], name);
+			coloredBeds[colorIndex] = (BlockColoredBed) new BlockColoredBed(colorIndex).setBlockName(name);
+			GameRegistry.registerBlock(coloredBeds[colorIndex], null, name);
 		}
 
 		collisionTest = new BlockCollisionTest();
@@ -40,7 +39,7 @@ public class BlockRegistry {
 
 		superTNT = new BlockSuperTNT();
 		GameRegistry.registerBlock(superTNT, "supertnt");
-		*/
+
 
 		String[] colours = BlockCandyButton.COLOURS;
 		candyButtons = new BlockCandyButton[colours.length];

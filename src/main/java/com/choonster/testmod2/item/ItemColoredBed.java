@@ -4,6 +4,8 @@ import com.choonster.testmod2.References;
 import com.choonster.testmod2.TestMod2;
 import com.choonster.testmod2.block.BlockColoredBed;
 import com.choonster.testmod2.init.BlockRegistry;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -16,13 +18,10 @@ import net.minecraft.world.World;
 
 import java.util.List;
 
-//import com.millstone.MillstoneMod;
-//import com.millstone.lib.References;
-//import com.millstone.registry.BlockRegistry;
-
+// http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/modification-development/2280852-crash-custom-bed
 public class ItemColoredBed extends ItemBed {
 
-	//@SideOnly(Side.CLIENT)
+	@SideOnly(Side.CLIENT)
 	private final IIcon[] bedIcons = new IIcon[References.COLORS.length];
 
 	public ItemColoredBed() {
@@ -41,70 +40,66 @@ public class ItemColoredBed extends ItemBed {
 	}
 
 	@Override
-	public void registerIcons(IIconRegister par1IconRegister) {
+	public void registerIcons(IIconRegister iconRegister) {
 		for (int i = 0; i < bedIcons.length; i++) {
-			this.bedIcons[i] = par1IconRegister.registerIcon(this.getIconString() + "_" + References.COLORS[i]);
+			this.bedIcons[i] = iconRegister.registerIcon(this.getIconString() + "_" + References.COLORS[i]);
 		}
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public void getSubItems(Item par1Item, CreativeTabs par2CreativeTabs, @SuppressWarnings("rawtypes") List par3List) {
+	public void getSubItems(Item item, CreativeTabs creativeTab, @SuppressWarnings("rawtypes") List itemList) {
 		for (int j = 0; j < 16; ++j) {
-			par3List.add(new ItemStack(par1Item, 1, j));
+			itemList.add(new ItemStack(item, 1, j));
 		}
 	}
 
 	@Override
-	public String getUnlocalizedName(ItemStack par1ItemStack) {
-		int i = MathHelper.clamp_int(par1ItemStack.getItemDamage(), 0, 15);
+	public String getUnlocalizedName(ItemStack stack) {
+		int i = MathHelper.clamp_int(stack.getItemDamage(), 0, 15);
 		return super.getUnlocalizedName() + "." + References.COLORS[i];
 	}
 
-	/**
-	 * Callback for item usage. If the item does something special on right clicking, he will have one of those. Return
-	 * True if something happen and false if it don't. This is for ITEMS, not BLOCKS
-	 */
-	public boolean onItemUse(ItemStack p_77648_1_, EntityPlayer p_77648_2_, World p_77648_3_, int p_77648_4_, int p_77648_5_, int p_77648_6_, int p_77648_7_, float p_77648_8_, float p_77648_9_, float p_77648_10_) {
-		if (p_77648_3_.isRemote) {
+	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ) {
+		if (world.isRemote) {
 			return true;
-		} else if (p_77648_7_ != 1) {
+		} else if (side != 1) {
 			return false;
 		} else {
-			++p_77648_5_;
+			++y;
 
-			int colorIndex = p_77648_1_.getItemDamage();
-			BlockColoredBed coloredBed = (BlockColoredBed) BlockRegistry.coloredBeds[colorIndex];
+			int colorIndex = stack.getItemDamage();
+			BlockColoredBed coloredBed = BlockRegistry.coloredBeds[colorIndex];
 
-			int i1 = MathHelper.floor_double((double) (p_77648_2_.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
-			byte b0 = 0;
-			byte b1 = 0;
+			int i1 = MathHelper.floor_double((double) (player.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
+			byte offsetX = 0;
+			byte offsetZ = 0;
 
 			if (i1 == 0) {
-				b1 = 1;
+				offsetZ = 1;
 			}
 
 			if (i1 == 1) {
-				b0 = -1;
+				offsetX = -1;
 			}
 
 			if (i1 == 2) {
-				b1 = -1;
+				offsetZ = -1;
 			}
 
 			if (i1 == 3) {
-				b0 = 1;
+				offsetX = 1;
 			}
 
-			if (p_77648_2_.canPlayerEdit(p_77648_4_, p_77648_5_, p_77648_6_, p_77648_7_, p_77648_1_) && p_77648_2_.canPlayerEdit(p_77648_4_ + b0, p_77648_5_, p_77648_6_ + b1, p_77648_7_, p_77648_1_)) {
-				if (p_77648_3_.isAirBlock(p_77648_4_, p_77648_5_, p_77648_6_) && p_77648_3_.isAirBlock(p_77648_4_ + b0, p_77648_5_, p_77648_6_ + b1) && World.doesBlockHaveSolidTopSurface(p_77648_3_, p_77648_4_, p_77648_5_ - 1, p_77648_6_) && World.doesBlockHaveSolidTopSurface(p_77648_3_, p_77648_4_ + b0, p_77648_5_ - 1, p_77648_6_ + b1)) {
-					p_77648_3_.setBlock(p_77648_4_, p_77648_5_, p_77648_6_, coloredBed, i1, 3);
+			if (player.canPlayerEdit(x, y, z, side, stack) && player.canPlayerEdit(x + offsetX, y, z + offsetZ, side, stack)) {
+				if (world.isAirBlock(x, y, z) && world.isAirBlock(x + offsetX, y, z + offsetZ) && World.doesBlockHaveSolidTopSurface(world, x, y - 1, z) && World.doesBlockHaveSolidTopSurface(world, x + offsetX, y - 1, z + offsetZ)) {
+					world.setBlock(x, y, z, coloredBed, i1, 3);
 
-					if (p_77648_3_.getBlock(p_77648_4_, p_77648_5_, p_77648_6_) == coloredBed) {
-						p_77648_3_.setBlock(p_77648_4_ + b0, p_77648_5_, p_77648_6_ + b1, coloredBed, i1 + 8, 3);
+					if (world.getBlock(x, y, z) == coloredBed) {
+						world.setBlock(x + offsetX, y, z + offsetZ, coloredBed, i1 + 8, 3);
 					}
 
-					--p_77648_1_.stackSize;
+					--stack.stackSize;
 					return true;
 				} else {
 					return false;
