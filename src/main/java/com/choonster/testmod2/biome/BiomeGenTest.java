@@ -18,5 +18,7 @@ public class BiomeGenTest extends BiomeGenBase {
 				iterator.remove();
 			}
 		}
+
+		setBiomeName("Test");
 	}
 }
