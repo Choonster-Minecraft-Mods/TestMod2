@@ -10,7 +10,7 @@ import net.minecraft.world.World;
 public class ItemCollisionTest extends Item {
 	public ItemCollisionTest() {
 		setCreativeTab(TestMod2.tab);
-		setUnlocalizedName("collisiontest");
+		setUnlocalizedName("collisiontestitem");
 		setTextureName("brick");
 	}
 
