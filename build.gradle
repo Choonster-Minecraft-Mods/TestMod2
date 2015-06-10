@@ -21,7 +21,7 @@ srcCompat = JavaVersion.VERSION_1_8
 targetCompat = JavaVersion.VERSION_1_8
 
 version = "${mc_version}-${mod_version}"
-group= "${package_group}" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+group = "${package_group}" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "${mod_name}"
 
 minecraft {
