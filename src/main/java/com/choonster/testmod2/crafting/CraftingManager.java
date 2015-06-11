@@ -38,7 +38,11 @@ public class CraftingManager {
 
 		GameRegistry.addShapelessRecipe(new ItemStack(Items.fish), new ItemStack(ItemRegistry.containerTest, 1, OreDictionary.WILDCARD_VALUE));
 
-		GameRegistry.addShapelessRecipe(new ItemStack(Items.blaze_rod), new ItemStack(ItemRegistry.containerUnbreaking, 1, OreDictionary.WILDCARD_VALUE));
+
+		// The unbreaking container doesn't change metadata values, so just use it directly as an ingredient
+		GameRegistry.addShapelessRecipe(new ItemStack(Items.blaze_rod), ItemRegistry.containerUnbreaking);
+
+		// The breaking container does change metadata values, so use an ItemStack with OreDictionary.WILDCARD_VALUE as the metadata value
 		GameRegistry.addShapelessRecipe(new ItemStack(Items.blaze_rod), new ItemStack(ItemRegistry.containerBreaking, 1, OreDictionary.WILDCARD_VALUE));
 	}
 
