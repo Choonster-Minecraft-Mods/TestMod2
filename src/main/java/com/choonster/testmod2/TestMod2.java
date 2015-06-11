@@ -8,7 +8,6 @@ import com.choonster.testmod2.event.BlockEventHandler;
 import com.choonster.testmod2.event.ItemDestroyEventHandler;
 import com.choonster.testmod2.init.*;
 import com.choonster.testmod2.proxy.CommonProxy;
-import com.choonster.testmod2.tweak.unpunchablelogs.UnpunchableLogs;
 import com.choonster.testmod2.util.SplitterTest;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -61,7 +60,7 @@ public class TestMod2 {
 
 		CraftingManager.mainRegistry();
 
-		UnpunchableLogs.init();
+		//UnpunchableLogs.init();
 		BCCompat.init();
 	}
 

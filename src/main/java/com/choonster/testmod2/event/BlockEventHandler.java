@@ -1,8 +1,10 @@
 package com.choonster.testmod2.event;
 
+import com.choonster.testmod2.util.ChatUtils;
 import cpw.mods.fml.common.eventhandler.Event;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockLog;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.passive.EntityPig;
@@ -18,6 +20,7 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.BlockEvent;
 
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public class BlockEventHandler {
 	private Random random = new Random();
@@ -70,6 +73,27 @@ public class BlockEventHandler {
 	public void harvestDrops(BlockEvent.HarvestDropsEvent event) {
 		if (event.block == Blocks.cocoa && event.harvester != null) {
 			event.harvester.addChatComponentMessage(new ChatComponentText("Cocoa!"));
+		}
+	}
+
+	@SubscribeEvent
+	public void logsHarvest(BlockEvent.HarvestDropsEvent event) {
+		if (event.block instanceof BlockLog) {
+			// http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/modification-development/2444501-harvestdropevent-changing-drops-of-vanilla-blocks
+
+			ChatUtils.sendServerMessage("Logs! Harvester: %s Drops: %s", event.harvester != null ? event.harvester.getCommandSenderName() : "<none>", event.drops.stream().map(ItemStack::toString).collect(Collectors.joining(", ")));
+			if (event.harvester != null) {
+				ItemStack heldItem = event.harvester.getHeldItem();
+				if (heldItem == null || heldItem.getItem().getHarvestLevel(heldItem, "axe") < 1) {
+					event.drops.clear();
+					ChatUtils.sendServerMessage("Harvester had wrong tool, clearing drops");
+				} else {
+					ChatUtils.sendServerMessage("Harvester had correct tool, not clearing drops");
+				}
+			} else {
+				event.drops.clear();
+				ChatUtils.sendServerMessage("No harvester, clearing drops");
+			}
 		}
 	}
 }
