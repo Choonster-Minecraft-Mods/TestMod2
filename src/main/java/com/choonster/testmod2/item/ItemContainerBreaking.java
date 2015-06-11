@@ -20,7 +20,7 @@ public class ItemContainerBreaking extends Item {
 
 	@Override
 	public ItemStack getContainerItem(ItemStack itemStack) {
-		if (itemStack.attemptDamageItem(1, itemRand)){ // The item has run out of durability, return null
+		if (itemStack.attemptDamageItem(1, itemRand)) { // The item has run out of durability, return null
 			return null;
 		}
 
