@@ -38,6 +38,8 @@ public class CraftingManager {
 
 		GameRegistry.addShapelessRecipe(new ItemStack(Items.fish), new ItemStack(ItemRegistry.containerTest, 1, OreDictionary.WILDCARD_VALUE));
 
+		GameRegistry.addShapelessRecipe(new ItemStack(Items.blaze_rod), new ItemStack(ItemRegistry.containerUnbreaking, 1, OreDictionary.WILDCARD_VALUE));
+		GameRegistry.addShapelessRecipe(new ItemStack(Items.blaze_rod), new ItemStack(ItemRegistry.containerBreaking, 1, OreDictionary.WILDCARD_VALUE));
 	}
 
 	public static void addSmeltingRecipe() {

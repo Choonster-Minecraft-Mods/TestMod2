@@ -16,6 +16,8 @@ item.barrelbomb.name=Barrel Bomb
 item.collisiontestitem.name=Collision Test Item
 item.dirtyDust.name=Dirty Dust
 item.snowball.nograv.name=Snowball (No Gravity)
+item.containerUnbreaking.name=Unbreaking Container
+item.containerBreaking.name=Breaking Container
 
 item.coloredBed.black.name=Black Colored Bed
 item.coloredBed.red.name=Red Colored Bed
