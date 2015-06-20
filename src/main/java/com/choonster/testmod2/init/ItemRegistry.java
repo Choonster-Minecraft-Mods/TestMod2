@@ -26,6 +26,7 @@ public class ItemRegistry {
 	public static ItemBarrelBomb barrelBomb;
 	public static ItemContainerUnbreaking containerUnbreaking;
 	public static ItemContainerBreaking containerBreaking;
+	public static ItemGiver giver;
 
 	public static final Item.ToolMaterial TOOL_MATERIAL_GLOWSTONE = EnumHelper.addToolMaterial("glowstone", 1, 5, 0.5f, 1.0f, 10).setRepairItem(new ItemStack(Items.glowstone_dust));
 
@@ -46,6 +47,7 @@ public class ItemRegistry {
 		barrelBomb = registerItem(new ItemBarrelBomb());
 		containerUnbreaking = registerItem(new ItemContainerUnbreaking());
 		containerBreaking = registerItem(new ItemContainerBreaking());
+		giver = registerItem(new ItemGiver());
 	}
 
 	private static <T extends Item> T registerItem(T item) {

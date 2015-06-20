@@ -1,5 +1,7 @@
+# Creative Tabs
 itemGroup.testmod2=TestMod2
 
+# Items
 item.firewand.name=Fire Wand
 item.candyButton.name=Candy Button
 item.foodsubtractor.name=Food Subtractor
@@ -18,6 +20,7 @@ item.dirtyDust.name=Dirty Dust
 item.snowball.nograv.name=Snowball (No Gravity)
 item.containerUnbreaking.name=Unbreaking Container
 item.containerBreaking.name=Breaking Container
+item.giver.name=Giver
 
 item.coloredBed.black.name=Black Colored Bed
 item.coloredBed.red.name=Red Colored Bed
@@ -36,6 +39,10 @@ item.coloredBed.magenta.name=Magenta Colored Bed
 item.coloredBed.orange.name=Orange Colored Bed
 item.coloredBed.white.name=White Colored Bed
 
+# Item descriptions
+itemdesc.giver=Gives you an item when used.
+
+# Blocks
 tile.candyButton.red.name=Red Candy Button
 tile.candyButton.orange.name=Orange Candy Button
 tile.candyButton.yellow.name=Yellow Candy Button
@@ -55,14 +62,19 @@ tile.testmod2:collisiontest.name=Collision Test Block
 tile.fluid.collisionTest.name=Collision Test Fluid
 tile.fluid.static.name=Static Fluid
 
+# Fluids
 fluid.collisionTest=Collision Test
 fluid.static=Static Fluid
 
+# Enchantments
 enchantment.level.25=XXV
 
+# Chat messages
 message.owned.placed=Owned block placed at %s, %s, %s
 message.owned.notOwned=You do not own this block
 message.owned.rightClick=Hello, %s
+message.giver.give=The Giver gave you 1 Clay
 
+# Config GUI strings
 testmod2.config.title=TestMod2 Config
 testmod2.config.general=General
