@@ -78,3 +78,6 @@ message.giver.give=The Giver gave you 1 Clay
 # Config GUI strings
 testmod2.config.title=TestMod2 Config
 testmod2.config.general=General
+
+# Entities
+entity.testZombie.name=Test Zombie
