@@ -9,6 +9,7 @@ import com.choonster.testmod2.event.ItemDestroyEventHandler;
 import com.choonster.testmod2.init.*;
 import com.choonster.testmod2.proxy.CommonProxy;
 import com.choonster.testmod2.util.SplitterTest;
+import com.choonster.testmod2.worldgen.WorldGenSheepSpawner;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -62,6 +63,8 @@ public class TestMod2 {
 
 		//UnpunchableLogs.init();
 		BCCompat.init();
+
+		GameRegistry.registerWorldGenerator(new WorldGenSheepSpawner(), 100);
 	}
 
 	@EventHandler
