@@ -10,9 +10,17 @@ import net.minecraft.world.chunk.IChunkProvider;
 import java.util.Random;
 
 // Generates a sheep spawner in the overworld on the surface at 0,0 in chunks where the x and z coordinates are divisible by 16
+// Also generates a testZombie spawner next to it
 // Test for this thread:
 // http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/modification-development/2458637-how-do-i-create-a-custom-one-use-mob-entity
 public class WorldGenSheepSpawner implements IWorldGenerator {
+	private void generateSpawner(World world, int x, int y, int z, String entityName){
+		world.setBlock(x, y, z, Blocks.mob_spawner);
+		TileEntityMobSpawner spawner = (TileEntityMobSpawner) world.getTileEntity(x, y, z);
+		spawner.func_145881_a().setEntityName(entityName);
+		Logger.info("%s spawner at %d %d %d", entityName, x, y, z);
+	}
+
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider) {
 		if (world.provider.dimensionId == 0 && chunkX % 16 == 0 && chunkZ % 16 == 0) {
@@ -20,10 +28,8 @@ public class WorldGenSheepSpawner implements IWorldGenerator {
 			int z = chunkZ * 16;
 			int y = world.getTopSolidOrLiquidBlock(x, z) + 1;
 
-			world.setBlock(x, y, z, Blocks.mob_spawner);
-			TileEntityMobSpawner spawner = (TileEntityMobSpawner) world.getTileEntity(x, y, z);
-			spawner.func_145881_a().setEntityName("Sheep");
-			Logger.info("Sheep spawner at %d,%d,%d", x, y, z);
+			generateSpawner(world, x, y, z, "Sheep");
+			generateSpawner(world, x + 1, y, z, "testZombie");
 		}
 	}
 }
