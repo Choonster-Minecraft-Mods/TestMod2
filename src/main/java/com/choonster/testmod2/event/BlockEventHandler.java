@@ -61,13 +61,13 @@ public class BlockEventHandler {
 		}
 	}
 
-	@SubscribeEvent
+	/*@SubscribeEvent
 	public void onBlockBreak(BlockEvent.BreakEvent event) {
 		if (event.block == Blocks.stone) {
 			event.setCanceled(true);
 			event.world.setBlock(event.x, event.y, event.z, Blocks.flowing_lava);
 		}
-	}
+	}*/
 
 	@SubscribeEvent
 	public void harvestDrops(BlockEvent.HarvestDropsEvent event) {
