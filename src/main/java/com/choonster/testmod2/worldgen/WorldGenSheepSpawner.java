@@ -14,7 +14,7 @@ import java.util.Random;
 // Test for this thread:
 // http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/modification-development/2458637-how-do-i-create-a-custom-one-use-mob-entity
 public class WorldGenSheepSpawner implements IWorldGenerator {
-	private void generateSpawner(World world, int x, int y, int z, String entityName){
+	private void generateSpawner(World world, int x, int y, int z, String entityName) {
 		world.setBlock(x, y, z, Blocks.mob_spawner);
 		TileEntityMobSpawner spawner = (TileEntityMobSpawner) world.getTileEntity(x, y, z);
 		spawner.func_145881_a().setEntityName(entityName);
