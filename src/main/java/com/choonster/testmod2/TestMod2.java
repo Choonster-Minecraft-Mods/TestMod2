@@ -6,6 +6,7 @@ import com.choonster.testmod2.crafting.CraftingManager;
 import com.choonster.testmod2.creativetab.CreativeTabTestMod2;
 import com.choonster.testmod2.event.BlockEventHandler;
 import com.choonster.testmod2.event.ItemDestroyEventHandler;
+import com.choonster.testmod2.event.TerrainGenHandler;
 import com.choonster.testmod2.init.*;
 import com.choonster.testmod2.proxy.CommonProxy;
 import com.choonster.testmod2.util.SplitterTest;
@@ -49,6 +50,7 @@ public class TestMod2 {
 
 		MinecraftForge.EVENT_BUS.register(new BlockEventHandler());
 		MinecraftForge.EVENT_BUS.register(new ItemDestroyEventHandler());
+		MinecraftForge.TERRAIN_GEN_BUS.register(new TerrainGenHandler());
 		//ItemTooltipEventHandler.init();
 
 		SplitterTest.splitStrings();
