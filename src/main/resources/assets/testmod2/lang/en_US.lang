@@ -21,6 +21,7 @@ item.snowball.nograv.name=Snowball (No Gravity)
 item.containerUnbreaking.name=Unbreaking Container
 item.containerBreaking.name=Breaking Container
 item.giver.name=Giver
+item.finder.name=Finder
 
 item.coloredBed.black.name=Black Colored Bed
 item.coloredBed.red.name=Red Colored Bed
@@ -74,6 +75,9 @@ message.owned.placed=Owned block placed at %s, %s, %s
 message.owned.notOwned=You do not own this block
 message.owned.rightClick=Hello, %s
 message.giver.give=The Giver gave you 1 Clay
+message.finder.noBlock=You must have a block in the first slot of your hotbar
+message.finder.found=Found %s at %s, %s, %s
+message.finder.notFound=No %s found nearby
 
 # Config GUI strings
 testmod2.config.title=TestMod2 Config

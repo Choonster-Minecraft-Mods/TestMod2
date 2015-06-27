@@ -27,6 +27,7 @@ public class ItemRegistry {
 	public static ItemContainerUnbreaking containerUnbreaking;
 	public static ItemContainerBreaking containerBreaking;
 	public static ItemGiver giver;
+	public static ItemFinder finder;
 
 	public static final Item.ToolMaterial TOOL_MATERIAL_GLOWSTONE = EnumHelper.addToolMaterial("glowstone", 1, 5, 0.5f, 1.0f, 10).setRepairItem(new ItemStack(Items.glowstone_dust));
 
@@ -48,6 +49,7 @@ public class ItemRegistry {
 		containerUnbreaking = registerItem(new ItemContainerUnbreaking());
 		containerBreaking = registerItem(new ItemContainerBreaking());
 		giver = registerItem(new ItemGiver());
+		finder = registerItem(new ItemFinder());
 	}
 
 	private static <T extends Item> T registerItem(T item) {
