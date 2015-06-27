@@ -22,6 +22,7 @@ item.containerUnbreaking.name=Unbreaking Container
 item.containerBreaking.name=Breaking Container
 item.giver.name=Giver
 item.finder.name=Finder
+item.clearer.name=Clearer
 
 item.coloredBed.black.name=Black Colored Bed
 item.coloredBed.red.name=Red Colored Bed
@@ -78,6 +79,8 @@ message.giver.give=The Giver gave you 1 Clay
 message.finder.noBlock=You must have a block in the first slot of your hotbar
 message.finder.found=Found %s at %s, %s, %s
 message.finder.notFound=No %s found nearby
+message.clearer.clearing=Clearing the chunk at %s, %s
+message.clearer.cleared=Chunk cleared
 
 # Config GUI strings
 testmod2.config.title=TestMod2 Config
