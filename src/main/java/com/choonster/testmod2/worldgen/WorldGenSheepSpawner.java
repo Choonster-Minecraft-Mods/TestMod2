@@ -29,7 +29,7 @@ public class WorldGenSheepSpawner implements IWorldGenerator {
 			int y = world.getTopSolidOrLiquidBlock(x, z) + 1;
 
 			generateSpawner(world, x, y, z, "Sheep");
-			generateSpawner(world, x + 1, y, z, "testZombie");
+			generateSpawner(world, x + 1, y, z, "testmod2.TestZombie");
 		}
 	}
 }

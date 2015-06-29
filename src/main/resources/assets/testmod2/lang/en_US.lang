@@ -87,4 +87,5 @@ testmod2.config.title=TestMod2 Config
 testmod2.config.general=General
 
 # Entities
-entity.testZombie.name=Test Zombie
+entity.testmod2.TestZombie.name=Test Zombie
+entity.testmod2.BarrelBomb.name=Barrel Bomb
