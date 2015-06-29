@@ -30,6 +30,7 @@ public class WorldGenSheepSpawner implements IWorldGenerator {
 
 			generateSpawner(world, x, y, z, "Sheep");
 			generateSpawner(world, x + 1, y, z, "testmod2.TestZombie");
+			generateSpawner(world, x, y, z + 1, "testmod2.ArmouredSkeleton");
 		}
 	}
 }

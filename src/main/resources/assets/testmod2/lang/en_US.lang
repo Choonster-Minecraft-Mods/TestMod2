@@ -81,6 +81,7 @@ message.finder.found=Found %s at %s, %s, %s
 message.finder.notFound=No %s found nearby
 message.clearer.clearing=Clearing the chunk at %s, %s
 message.clearer.cleared=Chunk cleared
+message.armouredSkeleton.spawn=Armoured Skeleton spawned at %s %s %s
 
 # Config GUI strings
 testmod2.config.title=TestMod2 Config
@@ -89,3 +90,4 @@ testmod2.config.general=General
 # Entities
 entity.testmod2.TestZombie.name=Test Zombie
 entity.testmod2.BarrelBomb.name=Barrel Bomb
+entity.testmod2.ArmouredSkeleton.name=Armored Skeleton
