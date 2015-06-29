@@ -50,7 +50,7 @@ public class TestMod2 {
 
 		MinecraftForge.EVENT_BUS.register(new BlockEventHandler());
 		MinecraftForge.EVENT_BUS.register(new ItemDestroyEventHandler());
-		MinecraftForge.TERRAIN_GEN_BUS.register(new TerrainGenHandler());
+		//MinecraftForge.TERRAIN_GEN_BUS.register(new TerrainGenHandler());
 		//ItemTooltipEventHandler.init();
 
 		SplitterTest.splitStrings();
