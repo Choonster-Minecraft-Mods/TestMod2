@@ -20,6 +20,11 @@ public class BlockExample extends Block {
 		setBlockBounds();
 	}
 
+	@Override
+	public boolean isOpaqueCube() {
+		return false;
+	}
+
 	private void setBlockBounds() {
 		float min = ENTITY_COLLISION_MIN;
 		float max = 1 - min;
