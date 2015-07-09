@@ -7,7 +7,6 @@ import com.choonster.testmod2.entity.EntityBarrelBomb;
 import com.choonster.testmod2.entity.EntityZombieTest;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityList;
 
 public class Entities {
 	private static int entityID = 0;

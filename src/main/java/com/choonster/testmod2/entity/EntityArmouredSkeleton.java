@@ -25,7 +25,7 @@ public class EntityArmouredSkeleton extends EntitySkeleton {
 
 		setCurrentItemOrArmor(0, new ItemStack(Items.carrot_on_a_stick));
 
-		for (int slot = 4; slot > 0; slot--){
+		for (int slot = 4; slot > 0; slot--) {
 			ItemStack stack = new ItemStack(getArmorItemForSlot(slot, 3)); // Iron Armour
 			setCurrentItemOrArmor(slot, stack);
 		}
