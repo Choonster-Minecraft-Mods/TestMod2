@@ -14,7 +14,7 @@ public class EntityArmouredSkeleton extends EntitySkeleton {
 
 	@Override
 	public IEntityLivingData onSpawnWithEgg(IEntityLivingData p_110161_1_) {
-		ChatUtils.sendServerMessage("message.armouredSkeleton.spawn", posX, posY, posZ);
+		//ChatUtils.sendServerMessage("message.armouredSkeleton.spawn", posX, posY, posZ);
 
 		return super.onSpawnWithEgg(p_110161_1_);
 	}
