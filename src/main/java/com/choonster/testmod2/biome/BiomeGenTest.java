@@ -1,6 +1,5 @@
 package com.choonster.testmod2.biome;
 
-import com.choonster.testmod2.Logger;
 import cpw.mods.fml.common.FMLLog;
 import net.minecraft.block.Block;
 import net.minecraft.entity.monster.EntityCreeper;
@@ -8,7 +7,6 @@ import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
-import sun.rmi.runtime.Log;
 
 import java.util.Iterator;
 import java.util.Random;

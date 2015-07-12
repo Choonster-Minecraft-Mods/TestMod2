@@ -1,6 +1,5 @@
 package com.choonster.testmod2.entity;
 
-import com.choonster.testmod2.util.ChatUtils;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.init.Items;
