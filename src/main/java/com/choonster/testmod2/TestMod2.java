@@ -5,9 +5,11 @@ import com.choonster.testmod2.config.Config;
 import com.choonster.testmod2.crafting.CraftingManager;
 import com.choonster.testmod2.creativetab.CreativeTabTestMod2;
 import com.choonster.testmod2.event.BlockEventHandler;
+import com.choonster.testmod2.event.EntityEventHandler;
 import com.choonster.testmod2.event.ItemDestroyEventHandler;
 import com.choonster.testmod2.init.*;
 import com.choonster.testmod2.proxy.CommonProxy;
+import com.choonster.testmod2.util.ChatUtils;
 import com.choonster.testmod2.util.SplitterTest;
 import com.choonster.testmod2.worldgen.WorldGenSheepSpawner;
 import cpw.mods.fml.common.Mod;
@@ -17,6 +19,7 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.event.FMLServerStartedEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
@@ -50,6 +53,7 @@ public class TestMod2 {
 
 		MinecraftForge.EVENT_BUS.register(new BlockEventHandler());
 		MinecraftForge.EVENT_BUS.register(new ItemDestroyEventHandler());
+		MinecraftForge.EVENT_BUS.register(new EntityEventHandler());
 		//MinecraftForge.TERRAIN_GEN_BUS.register(new TerrainGenHandler());
 		//ItemTooltipEventHandler.init();
 

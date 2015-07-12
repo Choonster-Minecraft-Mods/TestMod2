@@ -71,6 +71,10 @@ processResources
             }
         }
 
+tasks.withType(JavaCompile) {
+     options.encoding = 'UTF-8'
+}
+
 // Fix resources not being loaded in IDEA
 // http://stackoverflow.com/a/27624502
 sourceSets {
