@@ -44,8 +44,9 @@ public class TestMod2 {
 		ModFluids.registerFluids();
 		BlockRegistry.registerBlocks();
 		ItemRegistry.registerItems();
-		Entities.preInit();
+
 		ModBiomes.registerBiomes();
+		Entities.preInit();
 
 		MinecraftForge.EVENT_BUS.register(new BlockEventHandler());
 		MinecraftForge.EVENT_BUS.register(new ItemDestroyEventHandler());
