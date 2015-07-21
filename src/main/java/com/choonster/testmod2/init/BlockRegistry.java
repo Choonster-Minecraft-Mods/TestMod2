@@ -2,7 +2,7 @@ package com.choonster.testmod2.init;
 
 import com.choonster.testmod2.References;
 import com.choonster.testmod2.block.*;
-import com.choonster.testmod2.item.ItemCandyButton;
+import com.choonster.testmod2.item.block.ItemCandyButton;
 import com.choonster.testmod2.item.block.ItemColoredMod;
 import com.choonster.testmod2.tileentity.TileEntityDisplayNameTest;
 import com.choonster.testmod2.tileentity.TileEntityOwned;

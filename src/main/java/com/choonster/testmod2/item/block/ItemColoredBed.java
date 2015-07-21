@@ -1,4 +1,4 @@
-package com.choonster.testmod2.item;
+package com.choonster.testmod2.item.block;
 
 import com.choonster.testmod2.References;
 import com.choonster.testmod2.TestMod2;

@@ -1,4 +1,4 @@
-package com.choonster.testmod2.item;
+package com.choonster.testmod2.item.block;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;

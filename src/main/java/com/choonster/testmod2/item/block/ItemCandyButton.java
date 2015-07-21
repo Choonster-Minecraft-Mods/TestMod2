@@ -1,4 +1,4 @@
-package com.choonster.testmod2.item;
+package com.choonster.testmod2.item.block;
 
 import com.choonster.testmod2.init.BlockRegistry;
 import com.choonster.testmod2.init.ItemRegistry;
