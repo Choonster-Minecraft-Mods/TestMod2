@@ -3,11 +3,13 @@ package com.choonster.testmod2.init;
 import com.choonster.testmod2.References;
 import com.choonster.testmod2.block.*;
 import com.choonster.testmod2.item.ItemCandyButton;
+import com.choonster.testmod2.item.block.ItemColoredMod;
 import com.choonster.testmod2.tileentity.TileEntityDisplayNameTest;
 import com.choonster.testmod2.tileentity.TileEntityOwned;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.tileentity.TileEntity;
 
 public class BlockRegistry {
@@ -22,6 +24,7 @@ public class BlockRegistry {
 	public static BlockOwned blockOwned;
 	public static BlockCollisionTestFluid blockCollisionTestFluid;
 	public static BlockStaticFluid blockStaticFluid;
+	public static BlockWaterGrass blockWaterGrass;
 
 	public static void registerBlocks() {
 		coloredBeds = new BlockColoredBed[16];
@@ -64,10 +67,17 @@ public class BlockRegistry {
 
 		blockCollisionTestFluid = registerBlock(new BlockCollisionTestFluid(ModFluids.collisionTest));
 		blockStaticFluid = registerBlock(new BlockStaticFluid(ModFluids.staticFluid));
+
+		blockWaterGrass = registerBlock(new BlockWaterGrass(), ItemColoredMod.class, true);
 	}
 
 	private static <T extends Block> T registerBlock(T block) {
 		GameRegistry.registerBlock(block, block.getUnlocalizedName().substring(5));
+		return block;
+	}
+
+	private static <T extends Block> T registerBlock(T block, Class<? extends ItemBlock> itemClass, Object... constructorArgs) {
+		GameRegistry.registerBlock(block, itemClass, block.getUnlocalizedName().substring(5), constructorArgs);
 		return block;
 	}
 
