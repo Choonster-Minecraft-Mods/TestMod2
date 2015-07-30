@@ -92,3 +92,4 @@ testmod2.config.general=General
 entity.testmod2.TestZombie.name=Test Zombie
 entity.testmod2.BarrelBomb.name=Barrel Bomb
 entity.testmod2.ArmouredSkeleton.name=Armored Skeleton
+entity.testmod2.Chicken.name=Mod Chicken
