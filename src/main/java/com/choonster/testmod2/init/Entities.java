@@ -8,10 +8,12 @@ import com.choonster.testmod2.entity.EntityModChicken;
 import com.choonster.testmod2.entity.EntityZombieTest;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EnumCreatureType;
 
+import java.util.BitSet;
+
 public class Entities {
-	private static int entityID = 0;
 
 	public static void preInit() {
 		registerMobEntityWithSpawnEgg(EntityZombieTest.class, "TestZombie", 96, 23, 173, 14, 2, 235);
@@ -38,7 +40,7 @@ public class Entities {
 	 */
 	private static void registerMobEntityWithSpawnEgg(Class<? extends Entity> entityClass, String entityName, int bgRed, int bgGreen, int bgBlue, int fgRed, int fgGreen, int fgBlue) {
 		// registerModEntity automatically prefixes the entity name with the mod ID, do the same here for consistency.
-		EntityRegistry.registerGlobalEntityID(entityClass, References.MODID + "." + entityName, EntityRegistry.findGlobalUniqueEntityId(), getRGBInt(bgRed, bgGreen, bgBlue), getRGBInt(fgRed, fgGreen, fgBlue));
+		INSTANCE.registerSpawnEgg(entityClass, References.MODID + "." + entityName, getRGBInt(bgRed, bgGreen, bgBlue), getRGBInt(fgRed, fgGreen, fgBlue));
 		registerMobEntity(entityClass, entityName);
 	}
 
@@ -51,7 +53,7 @@ public class Entities {
 	 * @param entityName  The entity's unique name
 	 */
 	private static void registerMobEntity(Class<? extends Entity> entityClass, String entityName) {
-		registerEntity(entityClass, entityName, 80, 3, true);
+		INSTANCE.registerEntity(entityClass, entityName, 80, 3, true);
 	}
 
 	/**
@@ -63,7 +65,7 @@ public class Entities {
 	 * @param entityName  The entity's unique name
 	 */
 	private static void registerProjectileEntity(Class<? extends Entity> entityClass, String entityName) {
-		registerEntity(entityClass, entityName, 64, 10, true);
+		INSTANCE.registerEntity(entityClass, entityName, 64, 10, true);
 	}
 
 	/**
@@ -75,10 +77,75 @@ public class Entities {
 	 * @param updateFrequency      The frequency of tracking updates
 	 * @param sendsVelocityUpdates Whether to send velocity information packets as well
 	 */
-	private static void registerEntity(Class<? extends Entity> entityClass, String entityName, int trackingRange, int updateFrequency, boolean sendsVelocityUpdates) {
+	private void registerEntity(Class<? extends Entity> entityClass, String entityName, int trackingRange, int updateFrequency, boolean sendsVelocityUpdates) {
 		EntityRegistry.registerModEntity(entityClass, entityName, entityID++, TestMod2.instance, trackingRange, updateFrequency, sendsVelocityUpdates);
 	}
 
+	private static final Entities INSTANCE = new Entities();
+
+	/**
+	 * The next mod-specific ID to use
+	 */
+	private int entityID = 0;
+
+	/**
+	 * The used global IDs greater than 255.
+	 * <p>
+	 * The bit at index N will be true if the ID N+256 has been used.
+	 */
+	private BitSet usedIDs;
+
+	private Entities() {
+		//EntityRegistry.instance(); // Make sure EntityRegistry has been loaded
+
+		usedIDs = new BitSet(256);
+		for (Object idObject : EntityList.IDtoClassMapping.keySet()) {
+			int id = (int) idObject;
+			if (id > 255) {
+				usedIDs.set(id - 256);
+			}
+		}
+	}
+
+	/**
+	 * Find the next available global ID greater than 255.
+	 *
+	 * @return The available ID
+	 * @throws RuntimeException If there are no free IDs
+	 */
+	private int findAvailableGlobalID() {
+		int index = usedIDs.nextClearBit(0);
+
+		while (true) {
+			usedIDs.set(index); // Mark the index as used
+
+			int id = index + 256;
+
+			if (!EntityList.IDtoClassMapping.containsKey(id)) { // If the ID is free, return it
+				return id;
+			}
+
+			if (id == Short.MAX_VALUE) {
+				break; // ItemStack metadata (used by spawn eggs as the entity ID) is saved as a short
+			}
+
+			index = usedIDs.nextClearBit(index + 1);
+		}
+
+		throw new RuntimeException("No free global entity ID was found! Do you really have 2^15-257 entities using global IDs greater than 255?");
+	}
+
+	/**
+	 * Register an entity with a spawn egg using a global ID greater than 255.
+	 *
+	 * @param entityClass The entity's class
+	 * @param entityName  The entity's unique name
+	 * @param bgColour    The spawn egg's background colour
+	 * @param fgColour    The spawn egg's foreground colour
+	 */
+	private void registerSpawnEgg(Class<? extends Entity> entityClass, String entityName, int bgColour, int fgColour) {
+		EntityList.addMapping(entityClass, entityName, findAvailableGlobalID(), bgColour, fgColour);
+	}
 
 	/**
 	 * Pack the specified RGB values (0-255) into a single int suitable for use in Item#getColorFromItemStack.
