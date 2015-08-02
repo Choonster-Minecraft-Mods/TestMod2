@@ -1,18 +1,24 @@
 package com.choonster.testmod2.event;
 
 import com.choonster.testmod2.Logger;
+import com.choonster.testmod2.init.Entities;
 import com.choonster.testmod2.util.ChatUtils;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.relauncher.ReflectionHelper;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.passive.EntityPig;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EntityDamageSource;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
+
+import java.lang.reflect.Field;
 
 public class EntityEventHandler {
 	@SubscribeEvent
@@ -49,6 +55,34 @@ public class EntityEventHandler {
 				Logger.info("EntityPig drops event");
 				event.drops.clear();
 				dropItem(event.entity, new ItemStack(Items.diamond, 64));
+			}
+		}
+	}
+
+	private Field scoreValueField = ReflectionHelper.findField(EntityLivingBase.class, "field_70744_aE", "scoreValue");
+
+	@SubscribeEvent
+	public void onEntityDeath(LivingDeathEvent event) {
+		EntityLivingBase victim = event.entityLiving;
+		EntityLivingBase killer = victim.func_94060_bK();
+
+		if (victim instanceof EntityPlayerMP) {
+			EntityPlayerMP victimPlayer = (EntityPlayerMP) victim;
+
+			Entities.ModEntityEggInfo entityEggInfo = Entities.getEntityEggInfo(killer);
+			if (entityEggInfo != null) {
+				victimPlayer.addStat(entityEggInfo.field_151513_e, 1);
+			}
+
+			try {
+				killer.addToPlayerScore(victimPlayer, (int) scoreValueField.get(victimPlayer));
+			} catch (IllegalAccessException e) {
+				Logger.error(e, "Error while adding score to killed player");
+			}
+		} else if (killer instanceof EntityPlayerMP) {
+			Entities.ModEntityEggInfo entityEggInfo = Entities.getEntityEggInfo(victim);
+			if (entityEggInfo != null) {
+				((EntityPlayerMP) killer).addStat(entityEggInfo.field_151512_d, 1);
 			}
 		}
 	}

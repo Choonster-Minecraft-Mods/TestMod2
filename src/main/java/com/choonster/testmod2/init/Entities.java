@@ -1,5 +1,6 @@
 package com.choonster.testmod2.init;
 
+import com.choonster.testmod2.Logger;
 import com.choonster.testmod2.References;
 import com.choonster.testmod2.TestMod2;
 import com.choonster.testmod2.entity.EntityArmouredSkeleton;
@@ -7,11 +8,17 @@ import com.choonster.testmod2.entity.EntityBarrelBomb;
 import com.choonster.testmod2.entity.EntityModChicken;
 import com.choonster.testmod2.entity.EntityZombieTest;
 import cpw.mods.fml.common.registry.EntityRegistry;
+import cpw.mods.fml.relauncher.ReflectionHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EnumCreatureType;
+import net.minecraft.stats.StatBase;
+import net.minecraft.util.ChatComponentTranslation;
 
+import java.lang.reflect.Field;
 import java.util.BitSet;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Entities {
 
@@ -22,6 +29,18 @@ public class Entities {
 		registerMobEntityWithSpawnEgg(EntityModChicken.class, "Chicken", 161, 161, 161, 255, 0, 0);
 
 		EntityRegistry.addSpawn(EntityArmouredSkeleton.class, 1000, 1, 10, EnumCreatureType.monster, ModBiomes.biomeGenTest);
+	}
+
+	public static Map<String, ModEntityEggInfo> getEntityEggs() {
+		return INSTANCE.ENTITY_EGGS;
+	}
+
+	public static ModEntityEggInfo getEntityEggInfo(Entity entity) {
+		return getEntityEggInfo(EntityList.getEntityString(entity));
+	}
+
+	public static ModEntityEggInfo getEntityEggInfo(String entityName) {
+		return INSTANCE.ENTITY_EGGS.get(entityName);
 	}
 
 	/**
@@ -39,9 +58,9 @@ public class Entities {
 	 * @param fgBlue      The blue component of the spawn egg's foreground colour
 	 */
 	private static void registerMobEntityWithSpawnEgg(Class<? extends Entity> entityClass, String entityName, int bgRed, int bgGreen, int bgBlue, int fgRed, int fgGreen, int fgBlue) {
+		registerMobEntity(entityClass, entityName);
 		// registerModEntity automatically prefixes the entity name with the mod ID, do the same here for consistency.
 		INSTANCE.registerSpawnEgg(entityClass, References.MODID + "." + entityName, getRGBInt(bgRed, bgGreen, bgBlue), getRGBInt(fgRed, fgGreen, fgBlue));
-		registerMobEntity(entityClass, entityName);
 	}
 
 	/**
@@ -81,10 +100,13 @@ public class Entities {
 		EntityRegistry.registerModEntity(entityClass, entityName, entityID++, TestMod2.instance, trackingRange, updateFrequency, sendsVelocityUpdates);
 	}
 
+	/**
+	 * The instance.
+	 */
 	private static final Entities INSTANCE = new Entities();
 
 	/**
-	 * The next mod-specific ID to use
+	 * The next mod-specific ID to use.
 	 */
 	private int entityID = 0;
 
@@ -93,7 +115,12 @@ public class Entities {
 	 * <p>
 	 * The bit at index N will be true if the ID N+256 has been used.
 	 */
-	private BitSet usedIDs;
+	private final BitSet usedIDs;
+
+	/**
+	 * The entity spawn eggs.
+	 */
+	private final Map<String, ModEntityEggInfo> ENTITY_EGGS = new HashMap<>();
 
 	private Entities() {
 		//EntityRegistry.instance(); // Make sure EntityRegistry has been loaded
@@ -121,7 +148,7 @@ public class Entities {
 
 			int id = index + 256;
 
-			if (!EntityList.IDtoClassMapping.containsKey(id)) { // If the ID is free, return it
+			if (!EntityList.IDtoClassMapping.containsKey(id) && !EntityList.entityEggs.containsKey(id)) { // If the ID is free, return it
 				return id;
 			}
 
@@ -135,8 +162,10 @@ public class Entities {
 		throw new RuntimeException("No free global entity ID was found! Do you really have 2^15-257 entities using global IDs greater than 255?");
 	}
 
+	private Field stringToIDMappingsField = ReflectionHelper.findField(EntityList.class, "field_75622_f", "stringToIDMapping");
+
 	/**
-	 * Register an entity with a spawn egg using a global ID greater than 255.
+	 * Register an spawn egg.
 	 *
 	 * @param entityClass The entity's class
 	 * @param entityName  The entity's unique name
@@ -144,7 +173,16 @@ public class Entities {
 	 * @param fgColour    The spawn egg's foreground colour
 	 */
 	private void registerSpawnEgg(Class<? extends Entity> entityClass, String entityName, int bgColour, int fgColour) {
-		EntityList.addMapping(entityClass, entityName, findAvailableGlobalID(), bgColour, fgColour);
+		int id = findAvailableGlobalID();
+		ModEntityEggInfo entityEggInfo = new ModEntityEggInfo(entityName, bgColour, fgColour);
+		EntityList.entityEggs.put(id, entityEggInfo);
+		ENTITY_EGGS.put(entityName, entityEggInfo);
+
+		try {
+			((Map<String, Integer>) stringToIDMappingsField.get(null)).put(entityName, id);
+		} catch (IllegalAccessException e) {
+			Logger.error(e, "Error registering spawn egg");
+		}
 	}
 
 	/**
@@ -157,5 +195,27 @@ public class Entities {
 	 */
 	private static int getRGBInt(int r, int g, int b) {
 		return (r << 16) + (g << 8) + b;
+	}
+
+	public static class ModEntityEggInfo extends EntityList.EntityEggInfo {
+		private static Field killedStatField = ReflectionHelper.findField(EntityList.EntityEggInfo.class, "field_151512_d");
+		private static Field killedByStatField = ReflectionHelper.findField(EntityList.EntityEggInfo.class, "field_151513_e");
+
+		private static StatBase createStat(String entityName, String statName, String messageTranslationKey) {
+			return new StatBase(String.format(statName, entityName), new ChatComponentTranslation(messageTranslationKey, new ChatComponentTranslation("entity." + entityName + ".name"))).registerStat();
+		}
+
+		public final String entityName;
+
+		public ModEntityEggInfo(String entityName, int primaryColour, int secondaryColour) {
+			super(-1, primaryColour, secondaryColour);
+			this.entityName = entityName;
+			try {
+				killedStatField.set(this, createStat(entityName, "stat.killEntity.%s", "stat.entityKill"));
+				killedByStatField.set(this, createStat(entityName, "stat.entityKilledBy.%s", "stat.entityKilledBy"));
+			} catch (IllegalAccessException e) {
+				Logger.error(e, "Error creating stats for spawn egg");
+			}
+		}
 	}
 }
