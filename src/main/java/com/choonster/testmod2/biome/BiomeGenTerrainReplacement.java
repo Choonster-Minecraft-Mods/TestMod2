@@ -1,6 +1,5 @@
 package com.choonster.testmod2.biome;
 
-import com.choonster.testmod2.Logger;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
@@ -38,13 +37,13 @@ public class BiomeGenTerrainReplacement extends BiomeGenPlains {
 	/**
 	 * Adapted from {@link BiomeGenBase#genBiomeTerrain}. Does the same thing but generates Nether Brick instead of Stone.
 	 *
-	 * @param world         The World being generated
-	 * @param random        The Random object
-	 * @param blocks        The Block array to populate
-	 * @param metadataArray The metadata array to populate
-	 * @param genX          The x coordinate to generate
-	 * @param genZ          The z coordinate to generate
-	 * @param fillerThicknessChance    The stone noise for these coordinates. Determines the thickness of the filler layer.
+	 * @param world                 The World being generated
+	 * @param random                The Random object
+	 * @param blocks                The Block array to populate
+	 * @param metadataArray         The metadata array to populate
+	 * @param genX                  The x coordinate to generate
+	 * @param genZ                  The z coordinate to generate
+	 * @param fillerThicknessChance The stone noise for these coordinates. Determines the thickness of the filler layer.
 	 */
 	public void genCustomTerrain(World world, Random random, Block[] blocks, byte[] metadataArray, int genX, int genZ, double fillerThicknessChance) {
 		Block topBlock = this.topBlock;
