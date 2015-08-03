@@ -18,6 +18,7 @@ public class Config {
 
 	public static boolean disableOtherBiomes;
 	public static int testBiomeID;
+	public static int terrainReplacementBiomeID;
 
 	public static void load(FMLPreInitializationEvent event) {
 		config = new Configuration(event.getSuggestedConfigurationFile());
@@ -32,6 +33,7 @@ public class Config {
 
 		disableOtherBiomes = config.get(CATEGORY_BIOME, "disableOtherBiomes", false, "If true, disable all other biomes").setRequiresMcRestart(true).getBoolean();
 		testBiomeID = getBiomeID("test", 50, "Test Biome");
+		terrainReplacementBiomeID = getBiomeID("terrainReplacement", 51, "Terrain Replacement Biome");
 
 		if (config.hasChanged()) {
 			config.save();

@@ -26,7 +26,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.oredict.OreDictionary;
 
-@Mod(name = "Test Mod 2", modid = References.MODID, guiFactory = "com.choonster.testmod2.config.GuiConfigFactoryTestMod2")
+@Mod(name = "Test Mod 2", modid = References.MODID, guiFactory = "com.choonster.testmod2.config.GuiConfigFactoryTestMod2", dependencies = "after:BiomesOPlenty")
 public class TestMod2 {
 	@Instance
 	public static TestMod2 instance;
