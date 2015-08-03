@@ -1,5 +1,6 @@
 package com.choonster.testmod2.biome;
 
+import com.choonster.testmod2.Logger;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
@@ -43,14 +44,14 @@ public class BiomeGenTerrainReplacement extends BiomeGenPlains {
 	 * @param metadataArray The metadata array to populate
 	 * @param genX          The x coordinate to generate
 	 * @param genZ          The z coordinate to generate
-	 * @param stoneNoise    The stone noise for these coordinates
+	 * @param fillerThicknessChance    The stone noise for these coordinates. Determines the thickness of the filler layer.
 	 */
-	public void genCustomTerrain(World world, Random random, Block[] blocks, byte[] metadataArray, int genX, int genZ, double stoneNoise) {
+	public void genCustomTerrain(World world, Random random, Block[] blocks, byte[] metadataArray, int genX, int genZ, double fillerThicknessChance) {
 		Block topBlock = this.topBlock;
 		byte metadata = (byte) (this.field_150604_aj & 255);
 		Block fillerBlock = this.fillerBlock;
-		int k = -1;
-		int l = (int) (stoneNoise / 3.0D + 3.0D + random.nextDouble() * 0.25D);
+		int fillerHeight = -1;
+		int fillerThickness = (int) (fillerThicknessChance / 3.0D + 3.0D + random.nextDouble() * 0.25D);
 		int x = genX & 15;
 		int z = genZ & 15;
 		int multiplier = blocks.length / 256;
@@ -67,8 +68,8 @@ public class BiomeGenTerrainReplacement extends BiomeGenPlains {
 					if (existingBlock == Blocks.stone) {
 						blocks[index] = Blocks.nether_brick;
 
-						if (k == -1) {
-							if (l <= 0) {
+						if (fillerHeight == -1) {
+							if (fillerThickness <= 0) {
 								topBlock = null;
 								metadata = 0;
 								fillerBlock = Blocks.nether_brick;
@@ -88,30 +89,30 @@ public class BiomeGenTerrainReplacement extends BiomeGenPlains {
 								}
 							}
 
-							k = l;
+							fillerHeight = fillerThickness;
 
 							if (y >= 62) {
 								blocks[index] = topBlock;
 								metadataArray[index] = metadata;
-							} else if (y < 56 - l) {
+							} else if (y < 56 - fillerThickness) {
 								topBlock = null;
 								fillerBlock = Blocks.nether_brick;
 								blocks[index] = Blocks.gravel;
 							} else {
 								blocks[index] = fillerBlock;
 							}
-						} else if (k > 0) {
-							--k;
+						} else if (fillerHeight > 0) {
+							--fillerHeight;
 							blocks[index] = fillerBlock;
 
-							if (k == 0 && fillerBlock == Blocks.sand) {
-								k = random.nextInt(4) + Math.max(0, y - 63);
+							if (fillerHeight == 0 && fillerBlock == Blocks.sand) {
+								fillerHeight = random.nextInt(4) + Math.max(0, y - 63);
 								fillerBlock = Blocks.sandstone;
 							}
 						}
 					}
 				} else {
-					k = -1;
+					fillerHeight = -1;
 				}
 			}
 		}
