@@ -12,7 +12,7 @@ import java.util.Random;
 /**
  * A plains-like biome that uses Nether Brick instead of Stone for its underground terrain.
  * <p>
- * Note that Lava lakes generate Stone around them after the Biome generates its terrain, so there will be small amounts of Stone in the biome.
+ * Note that Lava lakes generate Stone around them after the biome generates its terrain, so there will be small amounts of Stone in the biome.
  * <p>
  * Test for this thread:
  * http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/modification-development/2492418-biome-difficulty
@@ -37,10 +37,10 @@ public class BiomeGenTerrainReplacement extends BiomeGenPlains {
 	/**
 	 * Adapted from {@link BiomeGenBase#genBiomeTerrain}. Does the same thing but generates Nether Brick instead of Stone.
 	 *
-	 * @param world         The World
+	 * @param world         The World being generated
 	 * @param random        The Random object
-	 * @param blocks        The Block array
-	 * @param metadataArray The metadata array
+	 * @param blocks        The Block array to populate
+	 * @param metadataArray The metadata array to populate
 	 * @param genX          The x coordinate to generate
 	 * @param genZ          The z coordinate to generate
 	 * @param stoneNoise    The stone noise for these coordinates
