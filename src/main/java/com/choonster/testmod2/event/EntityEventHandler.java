@@ -54,7 +54,7 @@ public class EntityEventHandler {
 			if (heldItem != null && heldItem.getItem() == Items.iron_pickaxe) {
 				Logger.info("EntityPig drops event");
 				event.drops.clear();
-				dropItem(event.entity, new ItemStack(Items.diamond, 64));
+				event.drops.add(dropItem(event.entity, new ItemStack(Items.diamond, 64)));
 			}
 		}
 	}
