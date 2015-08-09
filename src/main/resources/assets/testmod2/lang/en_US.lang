@@ -23,6 +23,7 @@ item.containerBreaking.name=Breaking Container
 item.giver.name=Giver
 item.finder.name=Finder
 item.clearer.name=Clearer
+item.useCountTest.name=Use Count Test
 
 item.coloredBed.black.name=Black Colored Bed
 item.coloredBed.red.name=Red Colored Bed
@@ -83,6 +84,11 @@ message.finder.notFound=No %s found nearby
 message.clearer.clearing=Clearing the chunk at %s, %s
 message.clearer.cleared=Chunk cleared
 message.armouredSkeleton.spawn=Armoured Skeleton spawned at %s %s %s
+message.useCountTest.updateSent=Stats update sent
+
+# Tooltips
+tooltip.useCountTest.count=Use Count: %s
+tooltip.useCountTest.update=Shift Right Click in air to update
 
 # Config GUI strings
 testmod2.config.title=TestMod2 Config
