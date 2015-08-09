@@ -9,6 +9,7 @@ import com.choonster.testmod2.event.EntityEventHandler;
 import com.choonster.testmod2.event.ItemDestroyEventHandler;
 import com.choonster.testmod2.init.*;
 import com.choonster.testmod2.proxy.CommonProxy;
+import com.choonster.testmod2.tweak.moddedstatsfix.ModdedStatsFix;
 import com.choonster.testmod2.util.SplitterTest;
 import com.choonster.testmod2.worldgen.WorldGenSheepSpawner;
 import cpw.mods.fml.common.Mod;
@@ -73,6 +74,6 @@ public class TestMod2 {
 
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
-
+		ModdedStatsFix.addStats();
 	}
 }
