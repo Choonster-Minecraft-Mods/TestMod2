@@ -7,8 +7,7 @@ import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeManager;
 
-import static net.minecraftforge.common.BiomeDictionary.Type.COLD;
-import static net.minecraftforge.common.BiomeDictionary.Type.PLAINS;
+import static net.minecraftforge.common.BiomeDictionary.Type.*;
 
 public class ModBiomes {
 	public static BiomeGenTest biomeGenTest;
@@ -16,7 +15,7 @@ public class ModBiomes {
 
 	public static void registerBiomes() {
 		biomeGenTest = reigsterBiome(new BiomeGenTest(Config.testBiomeID), BiomeManager.BiomeType.ICY, 10000, COLD);
-		biomeGenTerrainReplacement = reigsterBiome(new BiomeGenTerrainReplacement(Config.terrainReplacementBiomeID), BiomeManager.BiomeType.COOL, 10000, PLAINS);
+		biomeGenTerrainReplacement = reigsterBiome(new BiomeGenTerrainReplacement(Config.terrainReplacementBiomeID), BiomeManager.BiomeType.COOL, 10000, PLAINS, JUNGLE, SANDY, SWAMP);
 
 		if (Config.disableOtherBiomes) {
 			removeOtherBiomes();
