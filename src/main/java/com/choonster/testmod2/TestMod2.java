@@ -11,7 +11,7 @@ import com.choonster.testmod2.init.*;
 import com.choonster.testmod2.proxy.CommonProxy;
 import com.choonster.testmod2.tweak.moddedstatsfix.ModdedStatsFix;
 import com.choonster.testmod2.util.SplitterTest;
-import com.choonster.testmod2.worldgen.WorldGenSheepSpawner;
+import com.choonster.testmod2.world.gen.WorldGenSheepSpawner;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -49,11 +49,11 @@ public class TestMod2 {
 
 		ModBiomes.registerBiomes();
 		Entities.preInit();
+		ModMapGen.registerMapGen();
 
 		MinecraftForge.EVENT_BUS.register(new BlockEventHandler());
 		MinecraftForge.EVENT_BUS.register(new ItemDestroyEventHandler());
 		MinecraftForge.EVENT_BUS.register(new EntityEventHandler());
-		//MinecraftForge.TERRAIN_GEN_BUS.register(new TerrainGenHandler());
 		//ItemTooltipEventHandler.init();
 
 		SplitterTest.splitStrings();

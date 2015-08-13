@@ -1,4 +1,4 @@
-package com.choonster.testmod2.worldgen;
+package com.choonster.testmod2.world.gen;
 
 import com.google.common.collect.ImmutableList;
 import net.minecraft.block.Block;

@@ -1,4 +1,4 @@
-package com.choonster.testmod2.worldgen;
+package com.choonster.testmod2.world.gen;
 
 import com.choonster.testmod2.Logger;
 import cpw.mods.fml.common.IWorldGenerator;
