@@ -1,7 +1,7 @@
 package com.choonster.testmod2.event;
 
 import com.choonster.testmod2.Logger;
-import com.choonster.testmod2.init.Entities;
+import com.choonster.testmod2.init.ModEntities;
 import com.choonster.testmod2.util.ChatUtils;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.relauncher.ReflectionHelper;
@@ -69,7 +69,7 @@ public class EntityEventHandler {
 		if (victim instanceof EntityPlayerMP) {
 			EntityPlayerMP victimPlayer = (EntityPlayerMP) victim;
 
-			Entities.ModEntityEggInfo entityEggInfo = Entities.getEntityEggInfo(killer);
+			ModEntities.ModEntityEggInfo entityEggInfo = ModEntities.getEntityEggInfo(killer);
 			if (entityEggInfo != null) {
 				victimPlayer.addStat(entityEggInfo.field_151513_e, 1);
 			}
@@ -80,7 +80,7 @@ public class EntityEventHandler {
 				Logger.error(e, "Error while adding score to killed player");
 			}
 		} else if (killer instanceof EntityPlayerMP) {
-			Entities.ModEntityEggInfo entityEggInfo = Entities.getEntityEggInfo(victim);
+			ModEntities.ModEntityEggInfo entityEggInfo = ModEntities.getEntityEggInfo(victim);
 			if (entityEggInfo != null) {
 				((EntityPlayerMP) killer).addStat(entityEggInfo.field_151512_d, 1);
 			}

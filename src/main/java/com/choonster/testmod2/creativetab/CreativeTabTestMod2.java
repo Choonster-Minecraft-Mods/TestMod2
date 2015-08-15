@@ -1,6 +1,6 @@
 package com.choonster.testmod2.creativetab;
 
-import com.choonster.testmod2.init.ItemRegistry;
+import com.choonster.testmod2.init.ModItems;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.init.Items;
@@ -20,7 +20,7 @@ public class CreativeTabTestMod2 extends CreativeTabs {
 
 	@Override
 	public Item getTabIconItem() {
-		return ItemRegistry.candyButton;
+		return ModItems.candyButton;
 	}
 
 	@Override

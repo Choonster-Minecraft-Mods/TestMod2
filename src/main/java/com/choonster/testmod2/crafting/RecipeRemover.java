@@ -2,7 +2,6 @@ package com.choonster.testmod2.crafting;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.*;
 import net.minecraftforge.common.ChestGenHooks;
 

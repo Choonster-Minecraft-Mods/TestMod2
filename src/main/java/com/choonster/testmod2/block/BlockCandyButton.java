@@ -1,7 +1,7 @@
 package com.choonster.testmod2.block;
 
 import com.choonster.testmod2.TestMod2;
-import com.choonster.testmod2.init.ItemRegistry;
+import com.choonster.testmod2.init.ModItems;
 import net.minecraft.block.BlockButton;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
@@ -28,17 +28,17 @@ public class BlockCandyButton extends BlockButton {
 
 	@Override
 	public Item getItem(World world, int x, int y, int z) {
-		return ItemRegistry.candyButton;
+		return ModItems.candyButton;
 	}
 
 	@Override
 	public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_) {
-		return ItemRegistry.candyButton;
+		return ModItems.candyButton;
 	}
 
 	@Override
 	protected ItemStack createStackedBlock(int p_149644_1_) {
-		return new ItemStack(ItemRegistry.candyButton, 1, 0);
+		return new ItemStack(ModItems.candyButton, 1, 0);
 	}
 
 	@Override

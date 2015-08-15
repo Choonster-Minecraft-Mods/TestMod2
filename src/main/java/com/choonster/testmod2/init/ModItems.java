@@ -9,7 +9,7 @@ import net.minecraft.item.ItemRecord;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.util.EnumHelper;
 
-public class ItemRegistry {
+public class ModItems {
 	public static ItemColoredBed coloredBed;
 	public static ItemCollisionTest collisionTest;
 	public static ItemFireWand fireWand;

@@ -1,7 +1,7 @@
 package com.choonster.testmod2.item.block;
 
-import com.choonster.testmod2.init.BlockRegistry;
-import com.choonster.testmod2.init.ItemRegistry;
+import com.choonster.testmod2.init.ModBlocks;
+import com.choonster.testmod2.init.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemBlock;
@@ -13,7 +13,7 @@ public class ItemCandyButton extends ItemBlock {
 		super(block);
 
 		if (colourIndex == 0) {
-			ItemRegistry.candyButton = this;
+			ModItems.candyButton = this;
 		}
 	}
 
@@ -31,7 +31,7 @@ public class ItemCandyButton extends ItemBlock {
 	@Override
 	public boolean placeBlockAt(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ, int metadata) {
 		// Randomly choose a Candy Button to place
-		Block blockCandyButton = BlockRegistry.candyButtons[itemRand.nextInt(BlockRegistry.candyButtons.length)];
+		Block blockCandyButton = ModBlocks.candyButtons[itemRand.nextInt(ModBlocks.candyButtons.length)];
 
 		if (!world.setBlock(x, y, z, blockCandyButton, metadata, 3)) {
 			return false;

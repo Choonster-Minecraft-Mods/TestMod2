@@ -1,7 +1,7 @@
 package com.choonster.testmod2.block;
 
 import com.choonster.testmod2.References;
-import com.choonster.testmod2.init.ItemRegistry;
+import com.choonster.testmod2.init.ModItems;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.BlockBed;
@@ -57,12 +57,12 @@ public class BlockColoredBed extends BlockBed {
 
 	@Override
 	public Item getItem(World world, int x, int y, int z) {
-		return ItemRegistry.coloredBed;
+		return ModItems.coloredBed;
 	}
 
 	@Override
 	public Item getItemDropped(int metadata, Random random, int fortune) {
-		return isBlockHeadOfBed(metadata) ? Item.getItemById(0) : ItemRegistry.coloredBed;
+		return isBlockHeadOfBed(metadata) ? Item.getItemById(0) : ModItems.coloredBed;
 	}
 
 	@Override

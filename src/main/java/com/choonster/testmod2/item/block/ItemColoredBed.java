@@ -3,7 +3,7 @@ package com.choonster.testmod2.item.block;
 import com.choonster.testmod2.References;
 import com.choonster.testmod2.TestMod2;
 import com.choonster.testmod2.block.BlockColoredBed;
-import com.choonster.testmod2.init.BlockRegistry;
+import com.choonster.testmod2.init.ModBlocks;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -69,7 +69,7 @@ public class ItemColoredBed extends ItemBed {
 			++y;
 
 			int colorIndex = stack.getItemDamage();
-			BlockColoredBed coloredBed = BlockRegistry.coloredBeds[colorIndex];
+			BlockColoredBed coloredBed = ModBlocks.coloredBeds[colorIndex];
 
 			int i1 = MathHelper.floor_double((double) (player.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
 			byte offsetX = 0;

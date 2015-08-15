@@ -20,7 +20,7 @@ import java.util.BitSet;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Entities {
+public class ModEntities {
 
 	public static void preInit() {
 		registerMobEntityWithSpawnEgg(EntityZombieTest.class, "TestZombie", 96, 23, 173, 14, 2, 235);
@@ -103,7 +103,7 @@ public class Entities {
 	/**
 	 * The instance.
 	 */
-	private static final Entities INSTANCE = new Entities();
+	private static final ModEntities INSTANCE = new ModEntities();
 
 	/**
 	 * The next mod-specific ID to use.
@@ -122,7 +122,7 @@ public class Entities {
 	 */
 	private final Map<String, ModEntityEggInfo> ENTITY_EGGS = new HashMap<>();
 
-	private Entities() {
+	private ModEntities() {
 		//EntityRegistry.instance(); // Make sure EntityRegistry has been loaded
 
 		usedIDs = new BitSet(256);

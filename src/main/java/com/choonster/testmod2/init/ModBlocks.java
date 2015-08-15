@@ -12,7 +12,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.tileentity.TileEntity;
 
-public class BlockRegistry {
+public class ModBlocks {
 	public static BlockColoredBed[] coloredBeds;
 	public static BlockCollisionTest collisionTest;
 	public static BlockExample exampleBlock;

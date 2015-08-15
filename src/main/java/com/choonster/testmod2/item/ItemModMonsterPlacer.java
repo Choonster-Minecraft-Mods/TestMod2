@@ -1,6 +1,6 @@
 package com.choonster.testmod2.item;
 
-import com.choonster.testmod2.init.Entities;
+import com.choonster.testmod2.init.ModEntities;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -73,7 +73,7 @@ public class ItemModMonsterPlacer extends Item {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public int getColorFromItemStack(ItemStack stack, int renderPass) {
-		Entities.ModEntityEggInfo entityegginfo = Entities.getEntityEggInfo(getEntityName(stack));
+		ModEntities.ModEntityEggInfo entityegginfo = ModEntities.getEntityEggInfo(getEntityName(stack));
 		return entityegginfo != null ? (renderPass == 0 ? entityegginfo.primaryColor : entityegginfo.secondaryColor) : 16777215;
 	}
 
@@ -157,7 +157,7 @@ public class ItemModMonsterPlacer extends Item {
 	 * Spawns the creature specified by the egg's type in the location specified by the last three parameters.
 	 */
 	public static Entity spawnCreature(World world, String entityName, double x, double y, double z) {
-		if (Entities.getEntityEggInfo(entityName) == null) {
+		if (ModEntities.getEntityEggInfo(entityName) == null) {
 			return null;
 		} else {
 			Entity entity = null;
@@ -200,7 +200,7 @@ public class ItemModMonsterPlacer extends Item {
 		itemsList.removeIf(stack -> ((ItemStack) stack).getItem() == Items.spawn_egg && ((ItemStack) stack).getItemDamage() == 0);
 
 		// Create a list of mod spawn egg ItemStacks from the registered eggs
-		List<ItemStack> eggs = Entities.getEntityEggs().keySet().stream().map(name -> setEntityName(new ItemStack(item, 1), name)).collect(Collectors.toList());
+		List<ItemStack> eggs = ModEntities.getEntityEggs().keySet().stream().map(name -> setEntityName(new ItemStack(item, 1), name)).collect(Collectors.toList());
 
 		// Add the eggs list to the items list
 		itemsList.addAll(eggs);
