@@ -19,9 +19,13 @@ public class ModRecipes {
 	}
 
 	public static void registerRecipeClasses() {
+		RecipeSorter.register("testmod2:shapedenchanting", ShapedEnchantingRecipe.class, RecipeSorter.Category.SHAPED, "after:forge:shapedore");
 	}
 
 	public static void addCraftingRecipes() {
+		// -- Enchanting Recipe --
+		GameRegistry.addRecipe(new ShapedEnchantingRecipe(Items.book, 30, " A ", "ABA", " A ", 'A', "ingotGold", 'B', Items.book));
+
 		// -- Staff Upgrade --
 		ItemStack staffLevel1 = new ItemStack(ModItems.staff, 1, 0); // Metadata 0 = level 1
 		ItemStack staffLevel2 = new ItemStack(ModItems.staff, 1, 1); // Metadata 1 = level 2
@@ -53,4 +57,3 @@ public class ModRecipes {
 
 	}
 }
-
