@@ -43,7 +43,7 @@ item.coloredBed.orange.name=Orange Colored Bed
 item.coloredBed.white.name=White Colored Bed
 
 # Item descriptions
-itemdesc.giver=Gives you an item when used.
+item.giver.tooltip=Gives you an item when used.
 
 # Blocks
 tile.candyButton.red.name=Red Candy Button

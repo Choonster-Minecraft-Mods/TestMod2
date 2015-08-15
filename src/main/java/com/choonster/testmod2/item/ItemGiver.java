@@ -25,7 +25,7 @@ public class ItemGiver extends Item {
 	public void addInformation(ItemStack stack, EntityPlayer player, List tooltipLines, boolean advancedTooltips) {
 		super.addInformation(stack, player, tooltipLines, advancedTooltips);
 
-		tooltipLines.add(StatCollector.translateToLocal("itemdesc.giver"));
+		tooltipLines.add(StatCollector.translateToLocal("item.giver.tooltip"));
 	}
 
 	@Override
