@@ -24,6 +24,7 @@ item.giver.name=Giver
 item.finder.name=Finder
 item.clearer.name=Clearer
 item.useCountTest.name=Use Count Test
+item.xpSubtractor.name=XP Subtractor
 
 item.coloredBed.black.name=Black Colored Bed
 item.coloredBed.red.name=Red Colored Bed
@@ -44,6 +45,7 @@ item.coloredBed.white.name=White Colored Bed
 
 # Item descriptions
 item.giver.tooltip=Gives you an item when used.
+item.xpSubtractor.tooltip=Subtracts 100 XP when right clicked (doesn't work) or 1 level when sneak-right clicked.
 
 # Blocks
 tile.candyButton.red.name=Red Candy Button
