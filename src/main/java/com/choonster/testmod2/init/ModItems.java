@@ -33,6 +33,7 @@ public class ModItems {
 	public static ItemModMonsterPlacer spawnEgg;
 	public static ItemUseCountTest useCountTest;
 	public static ItemXPSubtractor xpSubtractor;
+	public static ItemPotionApplier potionApplier;
 
 	public static final Item.ToolMaterial TOOL_MATERIAL_GLOWSTONE = EnumHelper.addToolMaterial("glowstone", 1, 5, 0.5f, 1.0f, 10).setRepairItem(new ItemStack(Items.glowstone_dust));
 
@@ -59,6 +60,7 @@ public class ModItems {
 		spawnEgg = registerItem(new ItemModMonsterPlacer());
 		useCountTest = registerItem(new ItemUseCountTest());
 		xpSubtractor = registerItem(new ItemXPSubtractor());
+		potionApplier = registerItem(new ItemPotionApplier());
 	}
 
 	private static <T extends Item> T registerItem(T item) {
