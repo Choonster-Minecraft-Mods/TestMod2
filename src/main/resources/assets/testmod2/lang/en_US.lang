@@ -26,6 +26,7 @@ item.clearer.name=Clearer
 item.useCountTest.name=Use Count Test
 item.xpSubtractor.name=XP Subtractor
 item.potionApplier.name=Potion Applier
+item.record.rawk.desc=Kevin MacLeod - Universal
 
 item.coloredBed.black.name=Black Colored Bed
 item.coloredBed.red.name=Red Colored Bed

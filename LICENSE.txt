@@ -1,5 +1,9 @@
 The file src/main/resources/assets/testmod2/sounds/records/solaris.ogg is taken from Path of Exile, (c) 2010 - 2015 Grinding Gear Games.
 
+The file src/main/resources/assets/testmod2/sounds/audio/test.ogg is "Universal" by Kevin MacLeod (incompetech.com)
+Licensed under Creative Commons: By Attribution 3.0
+http://creativecommons.org/licenses/by/3.0/
+
 All other files are licensed under the terms below:
 
 The MIT License (MIT)

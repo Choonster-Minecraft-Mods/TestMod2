@@ -34,6 +34,7 @@ public class ModItems {
 	public static ItemUseCountTest useCountTest;
 	public static ItemXPSubtractor xpSubtractor;
 	public static ItemPotionApplier potionApplier;
+	public static ItemRecordRawk recordRawk;
 
 	public static final Item.ToolMaterial TOOL_MATERIAL_GLOWSTONE = EnumHelper.addToolMaterial("glowstone", 1, 5, 0.5f, 1.0f, 10).setRepairItem(new ItemStack(Items.glowstone_dust));
 
@@ -48,7 +49,7 @@ public class ModItems {
 		staff = registerItem(new ItemStaff());
 		chiselAndHammer = registerItem(new ItemChiselAndHammer());
 		dirtyDust = registerItem(new ItemDirtyDust());
-		solarisRecord = registerItem(new ItemRecordSolaris());
+		solarisRecord = registerItem(new ItemRecordSolaris(), "recordSolaris");
 		earthWand = registerItem(new ItemEarthWand());
 		containerTest = registerItem(new ItemContainerTest());
 		barrelBomb = registerItem(new ItemBarrelBomb());
@@ -61,10 +62,16 @@ public class ModItems {
 		useCountTest = registerItem(new ItemUseCountTest());
 		xpSubtractor = registerItem(new ItemXPSubtractor());
 		potionApplier = registerItem(new ItemPotionApplier());
+		recordRawk = registerItem(new ItemRecordRawk(), "recordRawk");
 	}
 
 	private static <T extends Item> T registerItem(T item) {
 		GameRegistry.registerItem(item, item.getUnlocalizedName().substring(5));
+		return item;
+	}
+
+	private static <T extends Item> T registerItem(T item, String name) {
+		GameRegistry.registerItem(item, name);
 		return item;
 	}
 }

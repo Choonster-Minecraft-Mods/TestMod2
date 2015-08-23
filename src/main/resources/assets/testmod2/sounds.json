@@ -7,5 +7,14 @@
 				"stream": true
 			}
 		]
+	},
+	"record.rawk": {
+		"category": "record",
+		"sounds": [
+			{
+				"name": "audio/test",
+				"stream": true
+			}
+		]
 	}
 }
