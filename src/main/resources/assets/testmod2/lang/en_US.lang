@@ -66,6 +66,7 @@ tile.fakeBedrock.name=Fake Bedrock
 tile.supertnt.name=Super TNT
 tile.testmod2:collisiontest.name=Collision Test Block
 tile.watergrass.name=Water Grass
+tile.fallingNoCollision.name=Falling Block - No Collision
 
 tile.fluid.collisionTest.name=Collision Test Fluid
 tile.fluid.static.name=Static Fluid
