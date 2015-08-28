@@ -47,6 +47,8 @@ public class ModRecipes {
 
 		GameRegistry.addRecipe(new ItemStack(Blocks.diamond_block), "PP", "PP", 'P', Blocks.planks);
 		GameRegistry.addRecipe(new ItemStack(Blocks.diamond_block), "SSS", 'S', new ItemStack(Items.dye, 1, OreDictionary.WILDCARD_VALUE));
+
+		GameRegistry.addShapelessRecipe(new ItemStack(Items.record_13), new ItemStack(Blocks.tallgrass, 1, 1), new ItemStack(Blocks.tallgrass, 1, 1));
 	}
 
 	public static void addSmeltingRecipes() {
