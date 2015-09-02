@@ -4,8 +4,6 @@ import com.choonster.testmod2.References;
 import com.choonster.testmod2.TestMod2;
 import com.choonster.testmod2.block.BlockColoredBed;
 import com.choonster.testmod2.init.ModBlocks;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -21,7 +19,6 @@ import java.util.List;
 // http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/modification-development/2280852-crash-custom-bed
 public class ItemColoredBed extends ItemBed {
 
-	@SideOnly(Side.CLIENT)
 	private final IIcon[] bedIcons = new IIcon[References.COLORS.length];
 
 	public ItemColoredBed() {
