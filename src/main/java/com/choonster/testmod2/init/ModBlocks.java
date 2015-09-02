@@ -26,6 +26,7 @@ public class ModBlocks {
 	public static BlockStaticFluid blockStaticFluid;
 	public static BlockWaterGrass blockWaterGrass;
 	public static BlockFallingNoCollision blockFallingNoCollision;
+	public static BlockCollisionPotionEffects blockCollisionPotionEffects;
 
 	public static void registerBlocks() {
 		coloredBeds = new BlockColoredBed[16];
@@ -72,6 +73,7 @@ public class ModBlocks {
 		blockWaterGrass = registerBlock(new BlockWaterGrass(), ItemColoredMod.class, true);
 
 		blockFallingNoCollision = registerBlock(new BlockFallingNoCollision());
+		blockCollisionPotionEffects = registerBlock(new BlockCollisionPotionEffects());
 	}
 
 	private static <T extends Block> T registerBlock(T block) {
