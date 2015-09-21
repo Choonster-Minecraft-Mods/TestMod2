@@ -12,7 +12,7 @@ import net.minecraft.world.World;
 
 /**
  * A block that applies a potion effect to any entity that collides with it.
- *
+ * <p>
  * Test for this thread:
  * http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/modification-development/2516174-blocks-give-potion-effects
  */
