@@ -1,5 +1,6 @@
 package com.choonster.testmod2.init;
 
+import com.choonster.testmod2.TestMod2;
 import com.choonster.testmod2.item.*;
 import com.choonster.testmod2.item.block.ItemColoredBed;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -35,6 +36,7 @@ public class ModItems {
 	public static ItemXPSubtractor xpSubtractor;
 	public static ItemPotionApplier potionApplier;
 	public static ItemRecordRawk recordRawk;
+	public static Item unicode;
 
 	public static final Item.ToolMaterial TOOL_MATERIAL_GLOWSTONE = EnumHelper.addToolMaterial("glowstone", 1, 5, 0.5f, 1.0f, 10).setRepairItem(new ItemStack(Items.glowstone_dust));
 
@@ -63,6 +65,7 @@ public class ModItems {
 		xpSubtractor = registerItem(new ItemXPSubtractor());
 		potionApplier = registerItem(new ItemPotionApplier());
 		recordRawk = registerItem(new ItemRecordRawk(), "recordRawk");
+		unicode = registerItem(new Item().setUnlocalizedName("unicode").setTextureName("minecraft:apple").setCreativeTab(TestMod2.tab));
 	}
 
 	private static <T extends Item> T registerItem(T item) {
