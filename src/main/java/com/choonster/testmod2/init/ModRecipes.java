@@ -11,18 +11,24 @@ import net.minecraftforge.oredict.RecipeSorter;
 
 public class ModRecipes {
 
+	/**
+	 * Called during init to register our custom recipe classes and add our recipes
+	 */
 	public static void registerRecipes() {
 		registerRecipeClasses();
+		addOreDictionaryEntries();
 		addCraftingRecipes();
 		addSmeltingRecipes();
-		removeRecipes();
 	}
 
-	public static void registerRecipeClasses() {
+	private static void addOreDictionaryEntries() {
+	}
+
+	private static void registerRecipeClasses() {
 		RecipeSorter.register("testmod2:shapedenchanting", ShapedEnchantingRecipe.class, RecipeSorter.Category.SHAPED, "after:forge:shapedore");
 	}
 
-	public static void addCraftingRecipes() {
+	private static void addCraftingRecipes() {
 		// -- Enchanting Recipe --
 		GameRegistry.addRecipe(new ShapedEnchantingRecipe(Items.book, 30, " A ", "ABA", " A ", 'A', "ingotGold", 'B', Items.book));
 
@@ -51,11 +57,18 @@ public class ModRecipes {
 		GameRegistry.addShapelessRecipe(new ItemStack(Items.record_13), new ItemStack(Blocks.tallgrass, 1, 1), new ItemStack(Blocks.tallgrass, 1, 1));
 	}
 
-	public static void addSmeltingRecipes() {
+	private static void addSmeltingRecipes() {
 		GameRegistry.addSmelting(Blocks.coal_block, new ItemStack(Blocks.obsidian, 1), 20.0f);
 	}
 
-	public static void removeRecipes() {
+	/**
+	 * Called during postInit to replace and remove recipes
+	 */
+	public static void replaceAndRemoveRecipes() {
+		removeRecipes();
+	}
+
+	private static void removeRecipes() {
 
 	}
 }

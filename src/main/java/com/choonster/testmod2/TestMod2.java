@@ -71,5 +71,6 @@ public class TestMod2 {
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
 		ModdedStatsFix.addStats();
+		ModRecipes.replaceAndRemoveRecipes();
 	}
 }
