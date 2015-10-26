@@ -4,7 +4,6 @@ import com.choonster.testmod2.compat.BCCompat;
 import com.choonster.testmod2.config.Config;
 import com.choonster.testmod2.creativetab.CreativeTabTestMod2;
 import com.choonster.testmod2.event.BlockEventHandler;
-import com.choonster.testmod2.event.EdibleSugarEventHandler;
 import com.choonster.testmod2.event.EntityEventHandler;
 import com.choonster.testmod2.event.ItemDestroyEventHandler;
 import com.choonster.testmod2.init.*;
@@ -50,7 +49,6 @@ public class TestMod2 {
 		MinecraftForge.EVENT_BUS.register(new BlockEventHandler());
 		MinecraftForge.EVENT_BUS.register(new ItemDestroyEventHandler());
 		MinecraftForge.EVENT_BUS.register(new EntityEventHandler());
-		MinecraftForge.EVENT_BUS.register(new EdibleSugarEventHandler());
 		//ItemTooltipEventHandler.init();
 
 		SplitterTest.splitStrings();

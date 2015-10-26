@@ -28,6 +28,7 @@ item.xpSubtractor.name=XP Subtractor
 item.potionApplier.name=Potion Applier
 item.record.rawk.desc=Kevin MacLeod - Universal
 item.unicode.name=§a§oItalic Green Text§r §c§lBold Red Text§r
+item.edibleSugar.name=Edible Sugar
 
 item.coloredBed.black.name=Black Colored Bed
 item.coloredBed.red.name=Red Colored Bed

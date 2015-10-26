@@ -1,6 +1,7 @@
 package com.choonster.testmod2.init;
 
 import com.choonster.testmod2.recipe.ShapedEnchantingRecipe;
+import com.choonster.testmod2.tweak.ediblesugar.EdibleSugar;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -19,9 +20,13 @@ public class ModRecipes {
 		addOreDictionaryEntries();
 		addCraftingRecipes();
 		addSmeltingRecipes();
+
+		EdibleSugar.addRecipes();
 	}
 
 	private static void addOreDictionaryEntries() {
+		OreDictionary.registerOre("listAllsugar", Items.sugar); // Use same ore name as Pam's HarvestCraft
+		OreDictionary.registerOre("listAllsugar", ModItems.edibleSugar);
 	}
 
 	private static void registerRecipeClasses() {
@@ -66,6 +71,8 @@ public class ModRecipes {
 	 */
 	public static void replaceAndRemoveRecipes() {
 		removeRecipes();
+
+		EdibleSugar.replaceRecipes();
 	}
 
 	private static void removeRecipes() {

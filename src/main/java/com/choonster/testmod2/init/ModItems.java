@@ -6,9 +6,14 @@ import com.choonster.testmod2.item.block.ItemColoredBed;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemRecord;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionHelper;
 import net.minecraftforge.common.util.EnumHelper;
+
+import static com.choonster.testmod2.tweak.ediblesugar.EdibleSugar.*;
 
 public class ModItems {
 	public static ItemColoredBed coloredBed;
@@ -37,6 +42,7 @@ public class ModItems {
 	public static ItemPotionApplier potionApplier;
 	public static ItemRecordRawk recordRawk;
 	public static Item unicode;
+	public static ItemFood edibleSugar;
 
 	public static final Item.ToolMaterial TOOL_MATERIAL_GLOWSTONE = EnumHelper.addToolMaterial("glowstone", 1, 5, 0.5f, 1.0f, 10).setRepairItem(new ItemStack(Items.glowstone_dust));
 
@@ -66,6 +72,13 @@ public class ModItems {
 		potionApplier = registerItem(new ItemPotionApplier());
 		recordRawk = registerItem(new ItemRecordRawk(), "recordRawk");
 		unicode = registerItem(new Item().setUnlocalizedName("unicode").setTextureName("minecraft:apple").setCreativeTab(TestMod2.tab));
+
+		edibleSugar = (ItemFood) registerItem(
+				new ItemFood(SUGAR_FOOD_LEVEL, SUGAR_SATURATION_LEVEL, false)
+						.setPotionEffect(Potion.moveSpeed.getId(), SUGAR_SPEED_DURATION, SUGAR_SPEED_AMPLIFIER, SUGAR_SPEED_PROBABILITY)
+						.setAlwaysEdible().setPotionEffect(PotionHelper.sugarEffect)
+						.setUnlocalizedName("edibleSugar").setTextureName("sugar").setCreativeTab(TestMod2.tab)
+		);
 	}
 
 	private static <T extends Item> T registerItem(T item) {
