@@ -43,6 +43,8 @@ public class ModItems {
 	public static ItemRecordRawk recordRawk;
 	public static Item unicode;
 	public static ItemFood edibleSugar;
+	public static ItemHarvestSword woodenHarvestSword;
+	public static ItemHarvestSword diamondHarvestSword;
 
 	public static final Item.ToolMaterial TOOL_MATERIAL_GLOWSTONE = EnumHelper.addToolMaterial("glowstone", 1, 5, 0.5f, 1.0f, 10).setRepairItem(new ItemStack(Items.glowstone_dust));
 
@@ -79,6 +81,9 @@ public class ModItems {
 						.setAlwaysEdible().setPotionEffect(PotionHelper.sugarEffect)
 						.setUnlocalizedName("edibleSugar").setTextureName("sugar").setCreativeTab(TestMod2.tab)
 		);
+
+		woodenHarvestSword = (ItemHarvestSword) registerItem(new ItemHarvestSword(Item.ToolMaterial.WOOD).setUnlocalizedName("harvestSwordWood").setTextureName("wood_sword"));
+		diamondHarvestSword = (ItemHarvestSword) registerItem(new ItemHarvestSword(Item.ToolMaterial.EMERALD).setUnlocalizedName("harvestSwordDiamond").setTextureName("diamond_sword"));
 	}
 
 	private static <T extends Item> T registerItem(T item) {
