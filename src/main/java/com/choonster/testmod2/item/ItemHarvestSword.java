@@ -8,15 +8,13 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
+import net.minecraftforge.common.ForgeHooks;
 
 import java.util.Collections;
 import java.util.Set;
 
 /**
  * A tool that can function as a sword, pickaxe, axe or shovel.
- * <p>
- * Currently mines some blocks (e.g. Block of Coal, Dropper, Stairs, Doors) slower than the proper tool should while mining others at the proper speed.
- * I don't know why this is.
  * <p>
  * Test for this thread:
  * http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/modification-development/2550421-how-to-make-a-tool-e-g-a-sword-have-the-abilities
@@ -49,19 +47,26 @@ public class ItemHarvestSword extends ItemTool {
 	 * <p>
 	 * This should only be used by {@link EntityPlayer#isCurrentToolAdventureModeExempt(int, int, int)}, use the tool class/harvest level system where possible.
 	 *
-	 * @param par1Block The Block
+	 * @param block     The Block
 	 * @param itemStack The tool
 	 * @return Can this tool harvest the Block?
 	 */
 	@Override
-	public boolean canHarvestBlock(Block par1Block, ItemStack itemStack) {
-		return EFFECTIVE_MATERIALS.contains(par1Block.getMaterial());
+	public boolean canHarvestBlock(Block block, ItemStack itemStack) {
+		return EFFECTIVE_MATERIALS.contains(block.getMaterial());
+	}
+
+	@Override
+	public float getDigSpeed(ItemStack stack, Block block, int meta) {
+		// Not all blocks have a harvest tool/level set, so we need to fall back to checking the Material like the vanilla tools do
+		if (ForgeHooks.isToolEffective(stack, block, meta) || EFFECTIVE_MATERIALS.contains(block.getMaterial())) {
+			return efficiencyOnProperMaterial;
+		}
+		return super.getDigSpeed(stack, block, meta);
 	}
 
 	public boolean hitEntity(ItemStack itemStack, EntityLivingBase target, EntityLivingBase attacker) {
 		itemStack.damageItem(1, attacker); // Only reduce the durability by 1 point (like swords do) instead of 2 (like tools do)
 		return true;
 	}
-
-
 }
