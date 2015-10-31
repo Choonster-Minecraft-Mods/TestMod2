@@ -45,11 +45,12 @@ public class ItemHarvestSword extends ItemTool {
 	/**
 	 * Can this tool harvest the {@link Block}?
 	 * <p>
-	 * This should only be used by {@link EntityPlayer#isCurrentToolAdventureModeExempt(int, int, int)}, use the tool class/harvest level system where possible.
+	 * This should only be used by {@link EntityPlayer#isCurrentToolAdventureModeExempt(int, int, int)} and {@link ForgeHooks#canHarvestBlock(Block, EntityPlayer, int)},
+	 * use the tool class/harvest level system where possible.
 	 *
 	 * @param block     The Block
 	 * @param itemStack The tool
-	 * @return Can this tool harvest the Block?
+	 * @return Is this tool effective on the {@link Block's} {@link Material}?
 	 */
 	@Override
 	public boolean canHarvestBlock(Block block, ItemStack itemStack) {
@@ -59,9 +60,10 @@ public class ItemHarvestSword extends ItemTool {
 	@Override
 	public float getDigSpeed(ItemStack stack, Block block, int meta) {
 		// Not all blocks have a harvest tool/level set, so we need to fall back to checking the Material like the vanilla tools do
-		if (ForgeHooks.isToolEffective(stack, block, meta) || EFFECTIVE_MATERIALS.contains(block.getMaterial())) {
+		if (EFFECTIVE_MATERIALS.contains(block.getMaterial())) {
 			return efficiencyOnProperMaterial;
 		}
+
 		return super.getDigSpeed(stack, block, meta);
 	}
 
