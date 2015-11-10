@@ -7,6 +7,6 @@ public class ItemDestroyEventHandler {
 
 	@SubscribeEvent
 	public void onItemDestroyed(PlayerDestroyItemEvent event) {
-		new Exception().printStackTrace();
+//		new Exception().printStackTrace();
 	}
 }
