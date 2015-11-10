@@ -45,6 +45,9 @@ public class ModItems {
 	public static ItemFood edibleSugar;
 	public static ItemHarvestSword woodenHarvestSword;
 	public static ItemHarvestSword diamondHarvestSword;
+	public static Item canOpener;
+	public static ItemCannedFood cannedPeaches;
+	public static ItemFood cannedPeachesOpen;
 
 	public static final Item.ToolMaterial TOOL_MATERIAL_GLOWSTONE = EnumHelper.addToolMaterial("glowstone", 1, 5, 0.5f, 1.0f, 10).setRepairItem(new ItemStack(Items.glowstone_dust));
 
@@ -84,6 +87,10 @@ public class ModItems {
 
 		woodenHarvestSword = (ItemHarvestSword) registerItem(new ItemHarvestSword(Item.ToolMaterial.WOOD).setUnlocalizedName("harvestSwordWood").setTextureName("wood_sword"));
 		diamondHarvestSword = (ItemHarvestSword) registerItem(new ItemHarvestSword(Item.ToolMaterial.EMERALD).setUnlocalizedName("harvestSwordDiamond").setTextureName("diamond_sword"));
+
+		canOpener = registerItem(new Item().setMaxDamage(19).setMaxStackSize(1).setUnlocalizedName("canOpener").setTextureName("testmod2:canOpener").setCreativeTab(TestMod2.tab));
+		cannedPeachesOpen = (ItemFood) registerItem(new ItemFood(8, 0.6f, false).setUnlocalizedName("cannedPeachesOpen").setTextureName("testmod2:cannedPeachesOpen").setCreativeTab(TestMod2.tab));
+		cannedPeaches = (ItemCannedFood) registerItem(new ItemCannedFood().setCanOpener(canOpener).setOpenCan(new ItemStack(cannedPeachesOpen)).setUnlocalizedName("cannedPeaches").setTextureName("testmod2:cannedPeaches").setCreativeTab(TestMod2.tab));
 	}
 
 	private static <T extends Item> T registerItem(T item) {
