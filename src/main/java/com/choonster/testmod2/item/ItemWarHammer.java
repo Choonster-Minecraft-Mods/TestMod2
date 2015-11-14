@@ -17,7 +17,7 @@ import java.util.UUID;
 
 /**
  * A weapon that gains the Knockback II enchantment and slows down the player when held and automatically removes the enchantment (if it's an equal or lesser level) when not held.
- *
+ * <p>
  * Test for this thread:
  * http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/modification-development/2558880-help-adding-enchant-to-item-when-held-and-remove
  */
@@ -52,9 +52,11 @@ public class ItemWarHammer extends ItemSword {
 	public void onUpdate(ItemStack itemStack, World world, Entity entity, int slot, boolean isHeld) {
 		super.onUpdate(itemStack, world, entity, slot, isHeld);
 
+		int currentKnockbackLevel = EnchantmentHelper.getEnchantmentLevel(Enchantment.knockback.effectId, itemStack);
 
-		// If the item's Knockback level (0 if it doesn't have Knockback) is less than or equal to KNOCKBACK_LEVEL,
-		if (EnchantmentHelper.getEnchantmentLevel(Enchantment.knockback.effectId, itemStack) <= KNOCKBACK_LEVEL) {
+		// If the item is currently held and the current Knockback level is less than KNOCKBACK_LEVEL
+		// Or it's not held and the current Knockback level is less than or equal to KNOCKBACK_LEVEL
+		if ((isHeld && currentKnockbackLevel < KNOCKBACK_LEVEL) || (!isHeld && currentKnockbackLevel <= KNOCKBACK_LEVEL)) {
 			// Remove any level of Knockback from it
 			EnchantmentUtil.removeEnchantment(Enchantment.knockback, itemStack);
 
