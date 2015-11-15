@@ -1,6 +1,7 @@
 package com.choonster.testmod2.crafting;
 
 import com.choonster.testmod2.Logger;
+import com.google.common.collect.Lists;
 import cpw.mods.fml.relauncher.ReflectionHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
@@ -57,8 +58,10 @@ public class RecipeReplacer {
 						replacedRecipes.put(recipe, replacement);
 						return replacement;
 					}
-				} catch (OreDictStuff.InvalidOreException | IllegalAccessException e) {
-					Logger.error(e, "Error replacing recipe for %s", originalItem);
+				} catch (UnableToReplaceRecipeException e) {
+					// Log it at DEBUG (log file only) rather than ERROR (console and log file) because the most common cause is an empty ore list ingredient.
+					// If this is the case, the player can't craft the original recipe anyway; so they probably don't care that it wasn't replaced.
+					Logger.debug(e, "Error replacing recipe for original item %s", originalItem);
 				}
 			}
 
@@ -176,16 +179,21 @@ public class RecipeReplacer {
 	 * @param replacementOutputItem   The new output item
 	 * @param replacementInputOreName The new input ore name
 	 * @return The new recipe, or {@code null} if no replacement was needed
-	 * @throws OreDictStuff.InvalidOreException When no matching ore name is found for an ore list ingredient
+	 * @throws UnableToReplaceRecipeException When the recipe couldn't be replaced
 	 */
-	private static IRecipe convertShapedRecipe(ShapedRecipes recipe, ItemStack originalItem, ItemStack replacementOutputItem, String replacementInputOreName) throws OreDictStuff.InvalidOreException {
-		List<Object> input = createShapedInputs(recipe.recipeItems, recipe.recipeHeight, recipe.recipeWidth, originalItem, replacementInputOreName);
-		boolean inputMatches = input.contains(replacementInputOreName);
+	private static IRecipe convertShapedRecipe(ShapedRecipes recipe, ItemStack originalItem, ItemStack replacementOutputItem, String replacementInputOreName) throws UnableToReplaceRecipeException {
+		try {
+			List<Object> input = createShapedInputs(recipe.recipeItems, recipe.recipeHeight, recipe.recipeWidth, originalItem, replacementInputOreName);
 
-		boolean outputMatches = OreDictionary.itemMatches(originalItem, recipe.getRecipeOutput(), true);
-		ItemStack output = outputMatches ? replacementOutputItem : recipe.getRecipeOutput();
+			boolean inputMatches = input.contains(replacementInputOreName);
 
-		return (inputMatches || outputMatches) ? new ShapedOreRecipe(output, input.toArray()) : null;
+			boolean outputMatches = OreDictionary.itemMatches(originalItem, recipe.getRecipeOutput(), true);
+			ItemStack output = outputMatches ? replacementOutputItem : recipe.getRecipeOutput();
+
+			return (inputMatches || outputMatches) ? new ShapedOreRecipe(output, input.toArray()) : null;
+		} catch (OreDictStuff.InvalidOreException e) {
+			throw new UnableToReplaceRecipeException(recipe, recipe.recipeItems, e);
+		}
 	}
 
 	// We need access to the height and width of the recipe to build the shape strings for the replacement, but there are no getters so we have to use reflection.
@@ -200,16 +208,20 @@ public class RecipeReplacer {
 	 * @param replacementOutputItem   The new output item
 	 * @param replacementInputOreName The new input ore name
 	 * @return The new recipe, or {@code null} if no replacement was needed
-	 * @throws OreDictStuff.InvalidOreException When no matching ore name is found for an ore list ingredient
+	 * @throws UnableToReplaceRecipeException When the recipe couldn't be replaced
 	 */
-	private static IRecipe convertShapedRecipe(ShapedOreRecipe recipe, ItemStack originalItem, ItemStack replacementOutputItem, String replacementInputOreName) throws IllegalAccessException, OreDictStuff.InvalidOreException {
-		List<Object> input = createShapedInputs(recipe.getInput(), SHAPED_ORE_RECIPE_HEIGHT.getInt(recipe), SHAPED_ORE_RECIPE_WIDTH.getInt(recipe), originalItem, replacementInputOreName);
-		boolean inputMatches = input.contains(replacementInputOreName);
+	private static IRecipe convertShapedRecipe(ShapedOreRecipe recipe, ItemStack originalItem, ItemStack replacementOutputItem, String replacementInputOreName) throws UnableToReplaceRecipeException {
+		try {
+			List<Object> input = createShapedInputs(recipe.getInput(), SHAPED_ORE_RECIPE_HEIGHT.getInt(recipe), SHAPED_ORE_RECIPE_WIDTH.getInt(recipe), originalItem, replacementInputOreName);
+			boolean inputMatches = input.contains(replacementInputOreName);
 
-		boolean outputMatches = OreDictionary.itemMatches(originalItem, recipe.getRecipeOutput(), true);
-		ItemStack output = outputMatches ? replacementOutputItem : recipe.getRecipeOutput();
+			boolean outputMatches = OreDictionary.itemMatches(originalItem, recipe.getRecipeOutput(), true);
+			ItemStack output = outputMatches ? replacementOutputItem : recipe.getRecipeOutput();
 
-		return (inputMatches || outputMatches) ? new ShapedOreRecipe(output, input.toArray()) : null;
+			return (inputMatches || outputMatches) ? new ShapedOreRecipe(output, input.toArray()) : null;
+		} catch (OreDictStuff.InvalidOreException | IllegalAccessException e) {
+			throw new UnableToReplaceRecipeException(recipe, recipe.getInput(), e);
+		}
 	}
 
 	/**
@@ -220,17 +232,21 @@ public class RecipeReplacer {
 	 * @param replacementOutputItem   The new output item
 	 * @param replacementInputOreName The new input ore name
 	 * @return The new recipe, or {@code null} if no replacement was needed
-	 * @throws OreDictStuff.InvalidOreException When no matching ore name is found for an ore list ingredient
+	 * @throws UnableToReplaceRecipeException When the recipe couldn't be replaced
 	 */
-	private static IRecipe convertShapelessRecipe(ShapelessRecipes recipe, ItemStack originalItem, ItemStack replacementOutputItem, String replacementInputOreName) throws OreDictStuff.InvalidOreException {
-		@SuppressWarnings("unchecked")
-		List<Object> input = createShapelessInputs(recipe.recipeItems, originalItem, replacementInputOreName);
-		boolean inputMatches = input.contains(replacementInputOreName);
+	private static IRecipe convertShapelessRecipe(ShapelessRecipes recipe, ItemStack originalItem, ItemStack replacementOutputItem, String replacementInputOreName) throws UnableToReplaceRecipeException {
+		try {
+			@SuppressWarnings("unchecked")
+			List<Object> input = createShapelessInputs(recipe.recipeItems, originalItem, replacementInputOreName);
+			boolean inputMatches = input.contains(replacementInputOreName);
 
-		boolean outputMatches = OreDictionary.itemMatches(originalItem, recipe.getRecipeOutput(), true);
-		ItemStack output = outputMatches ? replacementOutputItem : recipe.getRecipeOutput();
+			boolean outputMatches = OreDictionary.itemMatches(originalItem, recipe.getRecipeOutput(), true);
+			ItemStack output = outputMatches ? replacementOutputItem : recipe.getRecipeOutput();
 
-		return (inputMatches || outputMatches) ? new ShapelessOreRecipe(output, input.toArray()) : null;
+			return (inputMatches || outputMatches) ? new ShapelessOreRecipe(output, input.toArray()) : null;
+		} catch (OreDictStuff.InvalidOreException e) {
+			throw new UnableToReplaceRecipeException(recipe, recipe.recipeItems, e);
+		}
 	}
 
 	/**
@@ -241,16 +257,38 @@ public class RecipeReplacer {
 	 * @param replacementOutputItem   The new output item
 	 * @param replacementInputOreName The new input ore name
 	 * @return The new recipe, or {@code null} if no replacement was needed
-	 * @throws OreDictStuff.InvalidOreException When no matching ore name is found for an ore list ingredient
+	 * @throws UnableToReplaceRecipeException When the recipe couldn't be replaced
 	 */
-	private static IRecipe convertShapelessRecipe(ShapelessOreRecipe recipe, ItemStack originalItem, ItemStack replacementOutputItem, String replacementInputOreName) throws OreDictStuff.InvalidOreException {
-		@SuppressWarnings("unchecked")
-		List<Object> input = createShapelessInputs(recipe.getInput(), originalItem, replacementInputOreName);
-		boolean inputMatches = input.contains(replacementInputOreName);
+	private static IRecipe convertShapelessRecipe(ShapelessOreRecipe recipe, ItemStack originalItem, ItemStack replacementOutputItem, String replacementInputOreName) throws UnableToReplaceRecipeException {
+		try {
+			List<Object> input = createShapelessInputs(recipe.getInput(), originalItem, replacementInputOreName);
+			boolean inputMatches = input.contains(replacementInputOreName);
 
-		boolean outputMatches = OreDictionary.itemMatches(originalItem, recipe.getRecipeOutput(), true);
-		ItemStack output = outputMatches ? replacementOutputItem : recipe.getRecipeOutput();
+			boolean outputMatches = OreDictionary.itemMatches(originalItem, recipe.getRecipeOutput(), true);
+			ItemStack output = outputMatches ? replacementOutputItem : recipe.getRecipeOutput();
 
-		return (inputMatches || outputMatches) ? new ShapelessOreRecipe(output, input.toArray()) : null;
+			return (inputMatches || outputMatches) ? new ShapelessOreRecipe(output, input.toArray()) : null;
+		} catch (OreDictStuff.InvalidOreException e) {
+			throw new UnableToReplaceRecipeException(recipe, recipe.getInput(), e);
+		}
+	}
+
+	/**
+	 * Thrown when a recipe can't be replaced for some reason. Creates a human-readable message from the original recipe's class, output and inputs.
+	 */
+	public static class UnableToReplaceRecipeException extends Exception {
+		public UnableToReplaceRecipeException(IRecipe recipe, List<Object> input, Throwable cause) {
+			super(getMessageFromRecipe(recipe, input), cause);
+		}
+
+		public UnableToReplaceRecipeException(IRecipe recipe, Object[] input, Throwable cause) {
+			this(recipe, Lists.newArrayList(input), cause);
+		}
+
+		private static String getMessageFromRecipe(IRecipe recipe, List<Object> input) {
+			return "Class: " + recipe.getClass().getSimpleName() +
+					" - Output: " + recipe.getRecipeOutput() +
+					" - Input: " + input;
+		}
 	}
 }

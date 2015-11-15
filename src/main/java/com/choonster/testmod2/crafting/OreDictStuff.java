@@ -34,7 +34,9 @@ public class OreDictStuff {
 	 */
 	public static String getOreNameForOreList(List<ItemStack> ores) throws InvalidOreException {
 		// OreDictionary.getOres returns an empty list if no ores have been registered for the specified name
-		if (!ores.isEmpty()) {
+		if (ores.isEmpty()) {
+			throw new InvalidOreException("Ore list is empty");
+		} else {
 			for (String possibleOreName : getOreNames(ores.get(0))) {
 				if (ores.equals(OreDictionary.getOres(possibleOreName))) {
 					return possibleOreName;
