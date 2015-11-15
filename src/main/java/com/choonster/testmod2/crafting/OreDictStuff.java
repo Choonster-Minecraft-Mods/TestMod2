@@ -33,9 +33,12 @@ public class OreDictStuff {
 	 * @throws InvalidOreException When no matching ore name is found
 	 */
 	public static String getOreNameForOreList(List<ItemStack> ores) throws InvalidOreException {
-		for (String possibleOreName : getOreNames(ores.get(0))) {
-			if (ores.equals(OreDictionary.getOres(possibleOreName))) {
-				return possibleOreName;
+		// OreDictionary.getOres returns an empty list if no ores have been registered for the specified name
+		if (!ores.isEmpty()) {
+			for (String possibleOreName : getOreNames(ores.get(0))) {
+				if (ores.equals(OreDictionary.getOres(possibleOreName))) {
+					return possibleOreName;
+				}
 			}
 		}
 
