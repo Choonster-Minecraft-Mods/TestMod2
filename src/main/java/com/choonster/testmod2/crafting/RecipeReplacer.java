@@ -82,10 +82,18 @@ public class RecipeReplacer {
 	 * @param recipeWidth  The recipe width
 	 * @return The shape strings
 	 */
-	private static String[] getShapeStrings(int recipeHeight, int recipeWidth) {
+	private static String[] getShapeStrings(Object[] ingredients, int recipeHeight, int recipeWidth) {
 		String[] result = new String[recipeHeight];
 		for (int row = 0; row < recipeHeight; row++) {
-			result[row] = SHAPE_STRINGS[row][recipeWidth - 1];
+			char[] shapeString = SHAPE_STRINGS[row][recipeWidth - 1].toCharArray();
+
+			for (int col = 0; col < recipeWidth; col++) {
+				if (ingredients[row * recipeWidth + col] == null) { // If this ingredient is null,
+					shapeString[col] = ' '; // Replace it with a space in the shape string
+				}
+			}
+
+			result[row] = String.valueOf(shapeString);
 		}
 		return result;
 	}
@@ -123,17 +131,19 @@ public class RecipeReplacer {
 	 * @throws OreDictStuff.InvalidOreException When no matching ore name is found for an ore list ingredient
 	 */
 	private static List<Object> createShapedInputs(Object[] ingredients, int recipeHeight, int recipeWidth, ItemStack originalItem, String replacementInputOreName) throws OreDictStuff.InvalidOreException {
-		String[] shapeStrings = getShapeStrings(recipeHeight, recipeWidth);
+		String[] shapeStrings = getShapeStrings(ingredients, recipeHeight, recipeWidth);
 		String fullShapeString = StringUtils.join(shapeStrings);
 
 		List<Object> input = new ArrayList<>();
 		input.add(shapeStrings); // Add the shape strings
 
 		for (int i = 0; i < ingredients.length; i++) { // For each ingredient,
-			char inputChar = fullShapeString.charAt(i);
-			input.add(inputChar); // Add the character for the ingredient
-
-			input.add(replaceIngredient(ingredients[i], originalItem, replacementInputOreName)); // Add the replacement ingredient
+			Object ingredient = ingredients[i];
+			if (ingredient != null) {
+				char inputChar = fullShapeString.charAt(i);
+				input.add(inputChar); // Add the character for the ingredient
+				input.add(replaceIngredient(ingredient, originalItem, replacementInputOreName)); // Add the replacement ingredient
+			}
 		}
 
 		return input;
