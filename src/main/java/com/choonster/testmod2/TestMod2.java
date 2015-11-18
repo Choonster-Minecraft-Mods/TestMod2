@@ -57,6 +57,8 @@ public class TestMod2 {
 		//ItemTooltipEventHandler.init();
 
 		SplitterTest.splitStrings();
+
+		proxy.preInit();
 	}
 
 	@EventHandler
@@ -69,11 +71,15 @@ public class TestMod2 {
 		BCCompat.init();
 
 		GameRegistry.registerWorldGenerator(new WorldGenSheepSpawner(), 100);
+
+		proxy.init();
 	}
 
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
 		ModdedStatsFix.addStats();
 		ModRecipes.replaceAndRemoveRecipes();
+
+		proxy.postInit();
 	}
 }
