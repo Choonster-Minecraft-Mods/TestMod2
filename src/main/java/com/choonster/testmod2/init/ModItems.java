@@ -49,6 +49,7 @@ public class ModItems {
 	public static ItemCannedFood cannedPeaches;
 	public static ItemFood cannedPeachesOpen;
 	public static ItemWarHammer diamondWarHammer;
+	public static ItemModPotion potion;
 	public static ItemBlockDebugger blockDebugger;
 
 	public static final Item.ToolMaterial TOOL_MATERIAL_GLOWSTONE = EnumHelper.addToolMaterial("glowstone", 1, 5, 0.5f, 1.0f, 10).setRepairItem(new ItemStack(Items.glowstone_dust));
@@ -96,6 +97,7 @@ public class ModItems {
 		cannedPeachesOpen = (ItemFood) registerItem(new ItemFood(8, 0.6f, false).setUnlocalizedName("cannedPeachesOpen").setTextureName("testmod2:cannedPeachesOpen").setCreativeTab(TestMod2.tab));
 		cannedPeaches = (ItemCannedFood) registerItem(new ItemCannedFood().setCanOpener(canOpener).setOpenCan(new ItemStack(cannedPeachesOpen)).setUnlocalizedName("cannedPeaches").setTextureName("testmod2:cannedPeaches").setCreativeTab(TestMod2.tab));
 
+		potion = registerItem(new ItemModPotion());
 		blockDebugger = registerItem(new ItemBlockDebugger());
 	}
 

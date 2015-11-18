@@ -3,10 +3,7 @@ package com.choonster.testmod2.init;
 import com.choonster.testmod2.Logger;
 import com.choonster.testmod2.References;
 import com.choonster.testmod2.TestMod2;
-import com.choonster.testmod2.entity.EntityArmouredSkeleton;
-import com.choonster.testmod2.entity.EntityBarrelBomb;
-import com.choonster.testmod2.entity.EntityModChicken;
-import com.choonster.testmod2.entity.EntityZombieTest;
+import com.choonster.testmod2.entity.*;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.relauncher.ReflectionHelper;
 import net.minecraft.entity.Entity;
@@ -27,6 +24,7 @@ public class ModEntities {
 		registerProjectileEntity(EntityBarrelBomb.class, "BarrelBomb");
 		registerMobEntityWithSpawnEgg(EntityArmouredSkeleton.class, "ArmouredSkeleton", 66, 66, 66, 88, 88, 88);
 		registerMobEntityWithSpawnEgg(EntityModChicken.class, "Chicken", 161, 161, 161, 255, 0, 0);
+		registerProjectileEntity(EntityModPotion.class, "ModPotion");
 
 		EntityRegistry.addSpawn(EntityArmouredSkeleton.class, 1000, 1, 10, EnumCreatureType.monster, ModBiomes.biomeGenTest);
 	}

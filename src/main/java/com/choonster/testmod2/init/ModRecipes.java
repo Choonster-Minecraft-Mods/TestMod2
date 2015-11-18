@@ -1,5 +1,6 @@
 package com.choonster.testmod2.init;
 
+import com.choonster.testmod2.item.ItemModPotion;
 import com.choonster.testmod2.recipe.ShapedEnchantingRecipe;
 import com.choonster.testmod2.recipe.ShapelessNBTRecipe;
 import com.choonster.testmod2.tweak.ediblesugar.EdibleSugar;
@@ -7,8 +8,14 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.RecipeSorter;
+
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 
 public class ModRecipes {
@@ -53,6 +60,31 @@ public class ModRecipes {
 
 		// The breaking container does change metadata values, so use an ItemStack with OreDictionary.WILDCARD_VALUE as the metadata value as an ingredient
 		GameRegistry.addShapelessRecipe(new ItemStack(Items.blaze_rod), new ItemStack(ModItems.containerBreaking, 1, OreDictionary.WILDCARD_VALUE));
+
+		// -- Potion Recipes --
+		final double defaultBlindnessDuration = ItemModPotion.getDefaultDuration(Potion.blindness);
+
+		PotionEffect[] blindnessEffects = new PotionEffect[]{
+				new PotionEffect(Potion.blindness.getId(), (int) Math.round(defaultBlindnessDuration)),
+				new PotionEffect(Potion.blindness.getId(), (int) Math.round(defaultBlindnessDuration * ItemModPotion.DURATION_MULTIPLIER_EXTENDED)),
+		};
+
+		List<ItemStack> blindnessPotions = Stream.of(blindnessEffects).map(potionEffect -> ModItems.potion.getCustomPotion(false, potionEffect)).collect(Collectors.toList());
+
+		ItemStack blindnessPotionBase = blindnessPotions.get(0);
+		addShapelessNBTRecipe(blindnessPotionBase, Items.potionitem, Items.nether_wart, Items.coal);
+		addShapelessNBTRecipe(blindnessPotions.get(1), blindnessPotionBase, Items.redstone);
+
+		PotionEffect[] blindnessSplashEffects = new PotionEffect[]{
+				new PotionEffect(Potion.blindness.getId(), (int) Math.round(defaultBlindnessDuration * ItemModPotion.DURATION_MULTIPLIER_SPLASH)),
+				new PotionEffect(Potion.blindness.getId(), (int) Math.round(defaultBlindnessDuration * ItemModPotion.DURATION_MULTIPLIER_EXTENDED * ItemModPotion.DURATION_MULTIPLIER_SPLASH)),
+		};
+
+		for (int i = 0; i < blindnessSplashEffects.length; i++) {
+			ItemStack blindnessPotion = blindnessPotions.get(i);
+			ItemStack blindnessSplashPotion = ModItems.potion.getCustomPotion(true, blindnessSplashEffects[i]);
+			addShapelessNBTRecipe(blindnessSplashPotion, blindnessPotion, Items.gunpowder);
+		}
 
 		// -- Miscellaneous Recipes --
 		GameRegistry.addRecipe(new ItemStack(Items.stick, 1), "X ", "X ", 'X', Blocks.obsidian);
