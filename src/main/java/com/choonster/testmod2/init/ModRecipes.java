@@ -1,6 +1,7 @@
 package com.choonster.testmod2.init;
 
 import com.choonster.testmod2.recipe.ShapedEnchantingRecipe;
+import com.choonster.testmod2.recipe.ShapelessNBTRecipe;
 import com.choonster.testmod2.tweak.ediblesugar.EdibleSugar;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.init.Blocks;
@@ -31,6 +32,7 @@ public class ModRecipes {
 
 	private static void registerRecipeClasses() {
 		RecipeSorter.register("testmod2:shapedenchanting", ShapedEnchantingRecipe.class, RecipeSorter.Category.SHAPED, "after:forge:shapedore");
+		RecipeSorter.register("testmod2:shapelessnbt", ShapelessNBTRecipe.class, RecipeSorter.Category.SHAPELESS, "after:forge:shapelessore");
 	}
 
 	private static void addCraftingRecipes() {
@@ -60,6 +62,10 @@ public class ModRecipes {
 		GameRegistry.addRecipe(new ItemStack(Blocks.diamond_block), "SSS", 'S', new ItemStack(Items.dye, 1, OreDictionary.WILDCARD_VALUE));
 
 		GameRegistry.addShapelessRecipe(new ItemStack(Items.record_13), new ItemStack(Blocks.tallgrass, 1, 1), new ItemStack(Blocks.tallgrass, 1, 1));
+	}
+
+	private static void addShapelessNBTRecipe(ItemStack result, Object... recipe) {
+		GameRegistry.addRecipe(new ShapelessNBTRecipe(result, recipe));
 	}
 
 	private static void addSmeltingRecipes() {
