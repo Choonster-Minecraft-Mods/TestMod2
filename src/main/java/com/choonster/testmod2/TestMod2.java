@@ -63,8 +63,6 @@ public class TestMod2 {
 
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
-
-
 		ModRecipes.registerRecipes();
 
 		//UnpunchableLogs.init();

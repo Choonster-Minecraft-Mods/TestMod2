@@ -1,8 +1,6 @@
 package com.choonster.testmod2;
 
-import com.choonster.testmod2.crafting.RecipeReplacer;
 import cpw.mods.fml.common.FMLLog;
-import net.minecraft.item.ItemStack;
 import org.apache.logging.log4j.Level;
 
 public class Logger {
