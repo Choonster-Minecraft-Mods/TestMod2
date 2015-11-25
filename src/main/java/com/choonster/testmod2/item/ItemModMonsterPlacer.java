@@ -155,6 +155,13 @@ public class ItemModMonsterPlacer extends Item {
 
 	/**
 	 * Spawns the creature specified by the egg's type in the location specified by the last three parameters.
+	 *
+	 * @param world      The world
+	 * @param entityName The name of the entity to spawn
+	 * @param x          The x coordinate to spawn the entity at
+	 * @param y          The y coordinate to spawn the entity at
+	 * @param z          The z coordinate to spawn the entity at
+	 * @return The entity that was spawned
 	 */
 	public static Entity spawnCreature(World world, String entityName, double x, double y, double z) {
 		if (ModEntities.getEntityEggInfo(entityName) == null) {
