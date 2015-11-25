@@ -20,8 +20,8 @@ public class BlockCollisionPotionEffects extends Block {
 	public BlockCollisionPotionEffects() {
 		super(Material.rock);
 		setCreativeTab(TestMod2.tab);
-		setBlockName("collisionPotionEffects");
-		setBlockTextureName("minecraft:diamond_block");
+		setUnlocalizedName("collisionPotionEffects");
+		setTextureName("minecraft:diamond_block");
 	}
 
 	@Override

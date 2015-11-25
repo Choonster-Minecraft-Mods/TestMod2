@@ -129,7 +129,7 @@ public class ItemModPotion extends ItemPotion {
 	@Override
 	public ItemStack onItemRightClick(ItemStack itemStack, World world, EntityPlayer player) {
 		// If this is a splash potion, spawn an EntityModPotion so the correct liquid colour is used
-		if (isSplash(itemStack.getItemDamage())){
+		if (isSplash(itemStack.getMetadata())){
 			if (!player.capabilities.isCreativeMode)
 			{
 				--itemStack.stackSize;

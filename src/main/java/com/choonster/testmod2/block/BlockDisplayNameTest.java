@@ -17,8 +17,8 @@ import net.minecraft.world.World;
 public class BlockDisplayNameTest extends Block implements ITileEntityProvider {
 	public BlockDisplayNameTest() {
 		super(Material.rock);
-		setBlockTextureName("bedrock");
-		setBlockName("displayNameTest");
+		setTextureName("bedrock");
+		setUnlocalizedName("displayNameTest");
 		setCreativeTab(TestMod2.tab);
 	}
 

@@ -93,7 +93,7 @@ public class ModItems {
 
 		diamondWarHammer = (ItemWarHammer) registerItem(new ItemWarHammer(Item.ToolMaterial.EMERALD).setUnlocalizedName("warHammerDiamond").setTextureName("diamond_sword"));
 
-		canOpener = registerItem(new Item().setMaxDamage(19).setMaxStackSize(1).setUnlocalizedName("canOpener").setTextureName("testmod2:canOpener").setCreativeTab(TestMod2.tab));
+		canOpener = registerItem(new Item().setMaxDurability(19).setMaxStackSize(1).setUnlocalizedName("canOpener").setTextureName("testmod2:canOpener").setCreativeTab(TestMod2.tab));
 		cannedPeachesOpen = (ItemFood) registerItem(new ItemFood(8, 0.6f, false).setUnlocalizedName("cannedPeachesOpen").setTextureName("testmod2:cannedPeachesOpen").setCreativeTab(TestMod2.tab));
 		cannedPeaches = (ItemCannedFood) registerItem(new ItemCannedFood().setCanOpener(canOpener).setOpenCan(new ItemStack(cannedPeachesOpen)).setUnlocalizedName("cannedPeaches").setTextureName("testmod2:cannedPeaches").setCreativeTab(TestMod2.tab));
 

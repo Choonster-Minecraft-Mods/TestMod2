@@ -23,8 +23,8 @@ public class BlockWaterGrass extends BlockBush {
 	public BlockWaterGrass() {
 		super(Material.water);
 		setCreativeTab(TestMod2.tab);
-		setBlockName("watergrass");
-		setBlockTextureName("tallgrass");
+		setUnlocalizedName("watergrass");
+		setTextureName("tallgrass");
 		float f = 0.4F;
 		this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 0.8F, 0.5F + f);
 	}

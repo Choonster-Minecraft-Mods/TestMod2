@@ -17,8 +17,8 @@ public class BlockOwned extends BlockContainer {
 	public BlockOwned() {
 		super(Material.rock);
 		setCreativeTab(TestMod2.tab);
-		setBlockName("owned");
-		setBlockTextureName("minecraft:bedrock");
+		setUnlocalizedName("owned");
+		setTextureName("minecraft:bedrock");
 		setHardness(2.0f);
 		setHarvestLevel("pickaxe", 1);
 	}

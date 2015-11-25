@@ -39,7 +39,7 @@ public class ItemChiselAndHammer extends Item {
 
 			if (p_77648_7_ != 0 && block == Blocks.clay) {
 				Block block1 = Blocks.stone;
-				world.playSoundEffect((double) ((float) blockx + 0.5F), (double) ((float) blocky + 0.5F), (double) ((float) blockz + 0.5F), block1.stepSound.getStepResourcePath(), (block1.stepSound.getVolume() + 1.0F) / 2.0F, block1.stepSound.getPitch() * 0.8F);
+				world.playSoundEffect((double) ((float) blockx + 0.5F), (double) ((float) blocky + 0.5F), (double) ((float) blockz + 0.5F), block1.stepSound.getStepSound(), (block1.stepSound.getVolume() + 1.0F) / 2.0F, block1.stepSound.getFrequency() * 0.8F);
 
 				if (world.isRemote) {
 					return true;

@@ -26,7 +26,7 @@ public class ItemFinder extends Item {
 				player.addChatComponentMessage(new ChatComponentTranslation("message.finder.noBlock"));
 			} else {
 				Block blockToFind = Block.getBlockFromItem(stackToFind.getItem());
-				int metaToFind = stackToFind.getItemDamage();
+				int metaToFind = stackToFind.getMetadata();
 
 				String name = stackToFind.getDisplayName();
 

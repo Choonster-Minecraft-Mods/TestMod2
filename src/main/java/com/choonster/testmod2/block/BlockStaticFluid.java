@@ -13,7 +13,7 @@ public class BlockStaticFluid extends BlockFluidFinite {
 	public BlockStaticFluid(Fluid fluid) {
 		super(fluid, Material.water);
 		setCreativeTab(TestMod2.tab);
-		setBlockName(fluid.getUnlocalizedName());
+		setUnlocalizedName(fluid.getUnlocalizedName());
 	}
 
 	@Override

@@ -53,7 +53,7 @@ public class ItemColoredBed extends ItemBed {
 
 	@Override
 	public String getUnlocalizedName(ItemStack stack) {
-		int i = MathHelper.clamp_int(stack.getItemDamage(), 0, 15);
+		int i = MathHelper.clamp_int(stack.getMetadata(), 0, 15);
 		return super.getUnlocalizedName() + "." + References.COLORS[i];
 	}
 
@@ -65,7 +65,7 @@ public class ItemColoredBed extends ItemBed {
 		} else {
 			++y;
 
-			int colorIndex = stack.getItemDamage();
+			int colorIndex = stack.getMetadata();
 			BlockColoredBed coloredBed = ModBlocks.coloredBeds[colorIndex];
 
 			int i1 = MathHelper.floor_double((double) (player.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;

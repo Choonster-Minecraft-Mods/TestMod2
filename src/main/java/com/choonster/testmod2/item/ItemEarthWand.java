@@ -18,7 +18,7 @@ public class ItemEarthWand extends Item {
 	public static final Block[] BLOCKS_FOR_MODES = new Block[]{Blocks.dirt, Blocks.cobblestone, Blocks.stone};
 
 	public ItemEarthWand() {
-		setMaxDamage(2000);
+		setMaxDurability(2000);
 		setUnlocalizedName("earthWand"); // Set the base unlocalised name
 
 		// Replace these with the appropriate creative tab and texture

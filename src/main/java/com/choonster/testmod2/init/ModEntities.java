@@ -124,7 +124,7 @@ public class ModEntities {
 		//EntityRegistry.instance(); // Make sure EntityRegistry has been loaded
 
 		usedIDs = new BitSet(256);
-		for (Object idObject : EntityList.IDtoClassMapping.keySet()) {
+		for (Object idObject : EntityList.idToClassMap.keySet()) {
 			int id = (int) idObject;
 			if (id > 255) {
 				usedIDs.set(id - 256);
@@ -146,7 +146,7 @@ public class ModEntities {
 
 			int id = index + 256;
 
-			if (!EntityList.IDtoClassMapping.containsKey(id) && !EntityList.entityEggs.containsKey(id)) { // If the ID is free, return it
+			if (!EntityList.idToClassMap.containsKey(id) && !EntityList.entityEggs.containsKey(id)) { // If the ID is free, return it
 				return id;
 			}
 

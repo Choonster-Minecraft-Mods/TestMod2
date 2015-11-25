@@ -9,8 +9,8 @@ public class BlockFakeBedrock extends Block {
 	public BlockFakeBedrock() {
 		super(Material.rock);
 
-		setBlockName("fakeBedrock");
-		setBlockTextureName("testmod2:candybutton_green");
+		setUnlocalizedName("fakeBedrock");
+		setTextureName("testmod2:candybutton_green");
 		setCreativeTab(TestMod2.tab);
 	}
 

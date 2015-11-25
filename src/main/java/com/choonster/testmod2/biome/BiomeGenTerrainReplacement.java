@@ -47,7 +47,7 @@ public class BiomeGenTerrainReplacement extends BiomeGenPlains {
 	 */
 	public void genCustomTerrain(World world, Random random, Block[] blocks, byte[] metadataArray, int genX, int genZ, double fillerThicknessChance) {
 		Block topBlock = this.topBlock;
-		byte metadata = (byte) (this.field_150604_aj & 255);
+		byte metadata = (byte) (this.topBlockMetadata & 255);
 		Block fillerBlock = this.fillerBlock;
 		int fillerHeight = -1;
 		int fillerThickness = (int) (fillerThicknessChance / 3.0D + 3.0D + random.nextDouble() * 0.25D);
@@ -74,7 +74,7 @@ public class BiomeGenTerrainReplacement extends BiomeGenPlains {
 								fillerBlock = Blocks.nether_brick;
 							} else if (y >= 59 && y <= 64) {
 								topBlock = this.topBlock;
-								metadata = (byte) (this.field_150604_aj & 255);
+								metadata = (byte) (this.topBlockMetadata & 255);
 								fillerBlock = this.fillerBlock;
 							}
 

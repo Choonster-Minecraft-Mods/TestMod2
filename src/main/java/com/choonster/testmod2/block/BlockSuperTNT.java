@@ -9,8 +9,8 @@ import net.minecraft.world.World;
 public class BlockSuperTNT extends BlockTNT {
 	public BlockSuperTNT() {
 		super();
-		setBlockName("supertnt");
-		setBlockTextureName("minecraft:tnt");
+		setUnlocalizedName("supertnt");
+		setTextureName("minecraft:tnt");
 		setCreativeTab(TestMod2.tab);
 	}
 

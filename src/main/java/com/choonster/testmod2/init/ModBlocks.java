@@ -33,7 +33,7 @@ public class ModBlocks {
 		coloredBeds = new BlockColoredBed[16];
 		for (int colorIndex = 0; colorIndex < coloredBeds.length; colorIndex++) {
 			String name = "coloredBed." + References.COLORS[colorIndex];
-			coloredBeds[colorIndex] = (BlockColoredBed) new BlockColoredBed(colorIndex).setBlockName(name);
+			coloredBeds[colorIndex] = (BlockColoredBed) new BlockColoredBed(colorIndex).setUnlocalizedName(name);
 			GameRegistry.registerBlock(coloredBeds[colorIndex], null, name);
 		}
 

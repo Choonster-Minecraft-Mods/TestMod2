@@ -11,8 +11,8 @@ public class BlockCombustible extends Block {
 	public BlockCombustible() {
 		super(Material.rock);
 		setCreativeTab(TestMod2.tab);
-		setBlockTextureName("minecraft:stonebrick_chiseled");
-		setBlockName("combustible");
+		setTextureName("minecraft:stonebrick_chiseled");
+		setUnlocalizedName("combustible");
 	}
 
 	@Override

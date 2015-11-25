@@ -197,7 +197,7 @@ public class ItemModMonsterPlacer extends Item {
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(Item item, CreativeTabs creativeTab, List itemsList) {
 		// Remove any vanilla spawn eggs with metadata 0
-		itemsList.removeIf(stack -> ((ItemStack) stack).getItem() == Items.spawn_egg && ((ItemStack) stack).getItemDamage() == 0);
+		itemsList.removeIf(stack -> ((ItemStack) stack).getItem() == Items.spawn_egg && ((ItemStack) stack).getMetadata() == 0);
 
 		// Create a list of mod spawn egg ItemStacks from the registered eggs
 		List<ItemStack> eggs = ModEntities.getEntityEggs().keySet().stream().map(name -> setEntityName(new ItemStack(item, 1), name)).collect(Collectors.toList());

@@ -16,8 +16,8 @@ public class BlockCandyButton extends BlockButton {
 
 	public BlockCandyButton(int colourIndex) {
 		super(false);
-		setBlockName("candyButton." + COLOURS[colourIndex]);
-		//setBlockTextureName(References.MODID + ":" + this.getUnlocalizedName().substring(5));
+		setUnlocalizedName("candyButton." + COLOURS[colourIndex]);
+		//setTextureName(References.MODID + ":" + this.getUnlocalizedName().substring(5));
 
 		if (colourIndex == 0) {
 			setCreativeTab(TestMod2.tab);

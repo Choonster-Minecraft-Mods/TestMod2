@@ -19,7 +19,7 @@ public class BlockCollisionTestFluid extends BlockFluidClassic {
 	public BlockCollisionTestFluid(Fluid fluid) {
 		super(fluid, Material.water);
 		setCreativeTab(TestMod2.tab);
-		setBlockName(fluid.getUnlocalizedName());
+		setUnlocalizedName(fluid.getUnlocalizedName());
 	}
 
 	@Override
@@ -46,7 +46,7 @@ public class BlockCollisionTestFluid extends BlockFluidClassic {
 
 			if (!world.isRemote) { // If this is the server
 				ItemStack newStack = stack.copy(); // Copy the stack
-				newStack.func_150996_a(Items.baked_potato); // Replace its Item with Baked Potato
+				newStack.setItem(Items.baked_potato); // Replace its Item with Baked Potato
 
 				EntityItem newEntityItem = new EntityItem(world, posX, posY, posZ, newStack); // Create a new EntityItem at the same position
 				world.spawnEntityInWorld(newEntityItem); // Spawn it

@@ -15,8 +15,8 @@ public class BlockItemDebugger extends Block {
 	public BlockItemDebugger() {
 		super(Material.iron);
 		setCreativeTab(TestMod2.tab);
-		setBlockName("itemDebugger");
-		setBlockTextureName("minecraft:redstone_lamp_off");
+		setUnlocalizedName("itemDebugger");
+		setTextureName("minecraft:redstone_lamp_off");
 	}
 
 	@Override

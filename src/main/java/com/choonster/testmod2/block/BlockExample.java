@@ -16,7 +16,7 @@ public class BlockExample extends Block {
 	public BlockExample() {
 		super(Material.rock);
 		setCreativeTab(TestMod2.tab);
-		setBlockName("exampleblock");
+		setUnlocalizedName("exampleblock");
 		setBlockBounds();
 	}
 

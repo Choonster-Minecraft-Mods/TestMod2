@@ -124,7 +124,7 @@ public class ItemCannedFood extends Item {
 	}
 
 	@Override
-	public ItemStack onEaten(ItemStack itemStack, World world, EntityPlayer player) {
+	public ItemStack onItemUseFinish(ItemStack itemStack, World world, EntityPlayer player) {
 		if (canPlayerOpenCan(itemStack, player)) { // If the player can open this can,
 			damageCanOpener(itemStack, player); // Damage the Can Opener
 

@@ -24,8 +24,8 @@ public class BlockFallingNoCollision extends BlockFalling {
 	public BlockFallingNoCollision() {
 		super(Material.glass);
 		setCreativeTab(TestMod2.tab);
-		setBlockName("fallingNoCollision");
-		setBlockTextureName("minecraft:glass_black");
+		setUnlocalizedName("fallingNoCollision");
+		setTextureName("minecraft:glass_black");
 		setLightLevel(1);
 	}
 

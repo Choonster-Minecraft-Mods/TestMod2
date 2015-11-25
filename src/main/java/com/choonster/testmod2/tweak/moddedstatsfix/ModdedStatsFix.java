@@ -71,7 +71,7 @@ public class ModdedStatsFix {
 			}
 		}
 
-		for (Object resultObject : FurnaceRecipes.smelting().getSmeltingList().values()) {
+		for (Object resultObject : FurnaceRecipes.instance().getSmeltingList().values()) {
 			ItemStack resultItemStack = (ItemStack) resultObject;
 			craftableItems.add(resultItemStack.getItem());
 		}

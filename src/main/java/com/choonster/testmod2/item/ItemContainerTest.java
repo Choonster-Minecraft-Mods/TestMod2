@@ -9,7 +9,7 @@ import net.minecraft.item.ItemStack;
 // http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/modification-development/2433786-i-need-a-durable-item-i-created-to-return-an-item
 public class ItemContainerTest extends Item {
 	public ItemContainerTest() {
-		setMaxDamage(3);
+		setMaxDurability(3);
 		setUnlocalizedName("containertest");
 		setTextureName("mushroom_stew");
 		setCreativeTab(TestMod2.tab);

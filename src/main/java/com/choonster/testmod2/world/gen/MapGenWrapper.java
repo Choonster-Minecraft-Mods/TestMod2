@@ -16,11 +16,11 @@ public class MapGenWrapper extends MapGenBase {
 	}
 
 	@Override
-	public void func_151539_a(IChunkProvider chunkProvider, World world, int centreX, int centreZ, Block[] blocks) {
-		base.func_151539_a(chunkProvider, world, centreX, centreZ, blocks);
+	public void generate(IChunkProvider chunkProvider, World world, int centreX, int centreZ, Block[] blocks) {
+		base.generate(chunkProvider, world, centreX, centreZ, blocks);
 
 		for (MapGenBase generator : generators) {
-			generator.func_151539_a(chunkProvider, world, centreX, centreZ, blocks);
+			generator.generate(chunkProvider, world, centreX, centreZ, blocks);
 		}
 	}
 }

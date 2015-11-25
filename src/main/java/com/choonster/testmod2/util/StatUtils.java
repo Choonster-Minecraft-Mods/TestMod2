@@ -12,7 +12,7 @@ public class StatUtils {
 
 	public static void forceStatsUpdate(EntityPlayerMP player) {
 		try {
-			StatisticsFile statisticsFile = player.func_147099_x(); // Get the player's StatisticsFile
+			StatisticsFile statisticsFile = player.getStatFile(); // Get the player's StatisticsFile
 			hasAchievementField.set(statisticsFile, true); // Make it think that it has an unsynced achievement
 			statisticsFile.func_150876_a(player); // Send the unsynced stats to the client
 		} catch (IllegalAccessException e) {

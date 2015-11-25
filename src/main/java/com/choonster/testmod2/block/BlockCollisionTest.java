@@ -21,8 +21,8 @@ public class BlockCollisionTest extends Block {
 		super(Material.glass);
 		setLightOpacity(0);
 		setCreativeTab(TestMod2.tab);
-		setBlockName("testmod2:collisiontest");
-		setBlockTextureName("minecraft:glass");
+		setUnlocalizedName("testmod2:collisiontest");
+		setTextureName("minecraft:glass");
 		setHardness(0.5F);
 		//setBlockBounds(0, 0, 0, 1, 1, 1);
 	}

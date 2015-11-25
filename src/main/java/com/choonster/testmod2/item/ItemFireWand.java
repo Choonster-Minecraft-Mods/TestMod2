@@ -28,7 +28,7 @@ public class ItemFireWand extends Item {
 		int posX = (int) player.posX, posY = (int) player.posY, posZ = (int) player.posZ;
 		world.setBlock(posX, posY, posZ, Blocks.command_block);
 		TileEntityCommandBlock tileEntity = (TileEntityCommandBlock) world.getTileEntity(posX, posY, posZ);
-		tileEntity.func_145993_a().func_145752_a("say hello");
+		tileEntity.func_145993_a().setCommand("say hello");
 
 		return stack;
 	}
