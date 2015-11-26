@@ -36,19 +36,21 @@ repositories {
     maven { url = "http://maven.tterrag.com/" }
     ivy {
         name "BuildCraft"
-        artifactPattern "http://www.mod-buildcraft.com/releases/BuildCraft/[revision]/[module]-[revision]-[classifier].[ext]"
+//        artifactPattern "http://www.mod-buildcraft.com/releases/BuildCraft/[revision]/[module]-[revision]-[classifier].[ext]"
+        artifactPattern "http://www.mod-buildcraft.com/releases/BuildCraft/[revision]/[module]-[revision].[ext]"
     }
     maven { url = "http://mobiusstrip.eu/maven" }
     maven { url = "http://chickenbones.net/maven/" }
 }
 
 dependencies {
-    runtime name: "buildcraft", version: "${buildcraft_version}", classifier: "dev"
+    runtime name: "buildcraft", version: "${buildcraft_version}" /*, classifier: ""*/
     runtime "mcp.mobius.waila:Waila:${waila_version}"
 
-    compile "team.chisel.ctmlib:CTMLib:MC${mc_version}-${ctmlib_version}:deobf"
+    compile "team.chisel.ctmlib:CTMLib:MC${mc_version}-${ctmlib_version}"
     compile "team.chisel.ctmlib:CTMLib:MC${mc_version}-${ctmlib_version}:sources"
-    compile "team.chisel:Chisel:${chisel_version}:deobf"
+
+    compile "team.chisel:Chisel:${chisel_version}"
     compile "team.chisel:Chisel:${chisel_version}:sources"
 
     runtime "codechicken:CodeChickenLib:${mc_version}-${ccl_version}:dev"
