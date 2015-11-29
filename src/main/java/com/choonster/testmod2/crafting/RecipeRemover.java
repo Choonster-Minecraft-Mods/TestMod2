@@ -21,8 +21,7 @@ import java.util.Map;
 @SuppressWarnings("unchecked")
 public class RecipeRemover {
 	public static void removeShapedRecipes(List<ItemStack> removelist) {
-		for (ItemStack stack : removelist)
-			removeShapedRecipe(stack);
+		removelist.forEach(RecipeRemover::removeShapedRecipe);
 	}
 
 	public static void removeAnyRecipe(ItemStack resultItem) {

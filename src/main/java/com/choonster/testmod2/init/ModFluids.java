@@ -12,10 +12,6 @@ public class ModFluids {
 		staticFluid = registerFluid(new Fluid("static").setLuminosity(10).setDensity(800).setViscosity(1500).setUnlocalizedName("static"));
 	}
 
-	public static void setFluidIcons() {
-
-	}
-
 	private static Fluid registerFluid(Fluid fluid) {
 		if (!FluidRegistry.registerFluid(fluid)) {
 			throw new IllegalStateException(String.format("Unable to register fluid %s", fluid.getID()));

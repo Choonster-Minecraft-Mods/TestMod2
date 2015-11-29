@@ -47,7 +47,7 @@ public class EntityModPotion extends EntityPotion implements IEntityAdditionalSp
 		}
 	}
 
-	public void setPotion(ItemStack itemStack){
+	public void setPotion(ItemStack itemStack) {
 		try {
 			POTION_FIELD.set(this, itemStack);
 		} catch (IllegalAccessException e) {

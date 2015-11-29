@@ -58,7 +58,7 @@ public class ModEntities {
 	private static void registerMobEntityWithSpawnEgg(Class<? extends Entity> entityClass, String entityName, int bgRed, int bgGreen, int bgBlue, int fgRed, int fgGreen, int fgBlue) {
 		registerMobEntity(entityClass, entityName);
 		// registerModEntity automatically prefixes the entity name with the mod ID, do the same here for consistency.
-		INSTANCE.registerSpawnEgg(entityClass, References.MODID + "." + entityName, getRGBInt(bgRed, bgGreen, bgBlue), getRGBInt(fgRed, fgGreen, fgBlue));
+		INSTANCE.registerSpawnEgg(References.MODID + "." + entityName, getRGBInt(bgRed, bgGreen, bgBlue), getRGBInt(fgRed, fgGreen, fgBlue));
 	}
 
 	/**
@@ -160,17 +160,17 @@ public class ModEntities {
 		throw new RuntimeException("No free global entity ID was found! Do you really have 2^15-257 entities using global IDs greater than 255?");
 	}
 
-	private Field stringToIDMappingsField = ReflectionHelper.findField(EntityList.class, "field_75622_f", "stringToIDMapping");
+	private final Field stringToIDMappingsField = ReflectionHelper.findField(EntityList.class, "field_75622_f", "stringToIDMapping");
 
 	/**
 	 * Register an spawn egg.
 	 *
-	 * @param entityClass The entity's class
-	 * @param entityName  The entity's unique name
-	 * @param bgColour    The spawn egg's background colour
-	 * @param fgColour    The spawn egg's foreground colour
+	 * @param entityName The entity's unique name
+	 * @param bgColour   The spawn egg's background colour
+	 * @param fgColour   The spawn egg's foreground colour
 	 */
-	private void registerSpawnEgg(Class<? extends Entity> entityClass, String entityName, int bgColour, int fgColour) {
+	@SuppressWarnings("unchecked")
+	private void registerSpawnEgg(String entityName, int bgColour, int fgColour) {
 		int id = findAvailableGlobalID();
 		ModEntityEggInfo entityEggInfo = new ModEntityEggInfo(entityName, bgColour, fgColour);
 		EntityList.entityEggs.put(id, entityEggInfo);
@@ -196,8 +196,8 @@ public class ModEntities {
 	}
 
 	public static class ModEntityEggInfo extends EntityList.EntityEggInfo {
-		private static Field killedStatField = ReflectionHelper.findField(EntityList.EntityEggInfo.class, "field_151512_d");
-		private static Field killedByStatField = ReflectionHelper.findField(EntityList.EntityEggInfo.class, "field_151513_e");
+		private static final Field killedStatField = ReflectionHelper.findField(EntityList.EntityEggInfo.class, "field_151512_d");
+		private static final Field killedByStatField = ReflectionHelper.findField(EntityList.EntityEggInfo.class, "field_151513_e");
 
 		private static StatBase createStat(String entityName, String statName, String messageTranslationKey) {
 			return new StatBase(String.format(statName, entityName), new ChatComponentTranslation(messageTranslationKey, new ChatComponentTranslation("entity." + entityName + ".name"))).registerStat();

@@ -26,22 +26,22 @@ public class ItemWarHammer extends ItemSword {
 	/**
 	 * The {@link UUID} of the speed modifier
 	 */
-	public static final UUID SPEED_MODIFIER_ID = UUID.fromString("1735a950-ce32-4300-9dcb-8773516aa94d");
+	private static final UUID SPEED_MODIFIER_ID = UUID.fromString("1735a950-ce32-4300-9dcb-8773516aa94d");
 
 	/**
 	 * The amount of the speed modifier (same as {@link Potion#moveSlowdown})
 	 */
-	public static final double SPEED_MODIFIER_AMOUNT = -0.15;
+	private static final double SPEED_MODIFIER_AMOUNT = -0.15;
 
 	/**
 	 * The operation of the speed modifier (same as {@link Potion#moveSlowdown})
 	 */
-	public static final int SPEED_MODIFIER_OPERATION = 2;
+	private static final int SPEED_MODIFIER_OPERATION = 2;
 
 	/**
 	 * The level of Knockback to apply
 	 */
-	public static final int KNOCKBACK_LEVEL = 2;
+	private static final int KNOCKBACK_LEVEL = 2;
 
 	public ItemWarHammer(ToolMaterial toolMaterial) {
 		super(toolMaterial);

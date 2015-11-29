@@ -12,10 +12,10 @@ import net.minecraft.world.World;
 // http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/modification-development/2411998-checking-items-mode-before-using-it
 public class ItemEarthWand extends Item {
 	// The number of modes
-	public static final int NUM_MODES = 3;
+	private static final int NUM_MODES = 3;
 
 	// The block placed by each mode (index = mode)
-	public static final Block[] BLOCKS_FOR_MODES = new Block[]{Blocks.dirt, Blocks.cobblestone, Blocks.stone};
+	private static final Block[] BLOCKS_FOR_MODES = new Block[]{Blocks.dirt, Blocks.cobblestone, Blocks.stone};
 
 	public ItemEarthWand() {
 		setMaxDurability(2000);

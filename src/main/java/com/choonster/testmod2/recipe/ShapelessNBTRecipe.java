@@ -32,48 +32,38 @@ public class ShapelessNBTRecipe extends ShapelessOreRecipe {
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public boolean matches(InventoryCrafting var1, World world)
-	{
+	public boolean matches(InventoryCrafting var1, World world) {
 		ArrayList<Object> required = new ArrayList<>(getInput());
 
-		for (int x = 0; x < var1.getSizeInventory(); x++)
-		{
+		for (int x = 0; x < var1.getSizeInventory(); x++) {
 			ItemStack slot = var1.getStackInSlot(x);
 
-			if (slot != null)
-			{
+			if (slot != null) {
 				boolean inRecipe = false;
 				Iterator<Object> req = required.iterator();
 
-				while (req.hasNext())
-				{
+				while (req.hasNext()) {
 					boolean match = false;
 
 					Object next = req.next();
 
-					if (next instanceof ItemStack)
-					{
-						match = itemMatches((ItemStack)next, slot, false);
-					}
-					else if (next instanceof ArrayList)
-					{
-						Iterator<ItemStack> itr = ((ArrayList<ItemStack>)next).iterator();
-						while (itr.hasNext() && !match)
-						{
+					if (next instanceof ItemStack) {
+						match = itemMatches((ItemStack) next, slot, false);
+					} else if (next instanceof ArrayList) {
+						Iterator<ItemStack> itr = ((ArrayList<ItemStack>) next).iterator();
+						while (itr.hasNext() && !match) {
 							match = itemMatches(itr.next(), slot, false);
 						}
 					}
 
-					if (match)
-					{
+					if (match) {
 						inRecipe = true;
 						req.remove();
 						break;
 					}
 				}
 
-				if (!inRecipe)
-				{
+				if (!inRecipe) {
 					return false;
 				}
 			}
@@ -82,7 +72,7 @@ public class ShapelessNBTRecipe extends ShapelessOreRecipe {
 		return required.isEmpty();
 	}
 
-	protected boolean itemMatches(ItemStack target, ItemStack input, boolean strict){
+	protected boolean itemMatches(ItemStack target, ItemStack input, boolean strict) {
 		return OreDictionary.itemMatches(target, input, strict) && ItemStack.areItemStackTagsEqual(target, input);
 	}
 }

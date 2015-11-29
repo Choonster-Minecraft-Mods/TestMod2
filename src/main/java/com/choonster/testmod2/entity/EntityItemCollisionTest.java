@@ -4,6 +4,7 @@ import com.choonster.testmod2.Logger;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
@@ -28,12 +29,13 @@ public class EntityItemCollisionTest extends EntityItem {
 	public void moveEntity(double x, double y, double z) {
 		if (!worldObj.isRemote) {
 
-			List list = this.worldObj.getCollidingBoundingBoxes(this, this.boundingBox.addCoord(x, y, z));
+			@SuppressWarnings("unchecked")
+			List<AxisAlignedBB> list = this.worldObj.getCollidingBoundingBoxes(this, this.boundingBox.addCoord(x, y, z));
 
 			Logger.debug("moveEntity %s - %d,%d,%d - %d", this, MathHelper.floor_double(x), MathHelper.floor_double(y), MathHelper.floor_double(z), list.size());
 
-			for (int i = 0; i < list.size(); i++) {
-				Logger.debug("%s", list.get(i));
+			for (AxisAlignedBB boundingBox : list) {
+				Logger.debug("%s", boundingBox);
 			}
 		}
 

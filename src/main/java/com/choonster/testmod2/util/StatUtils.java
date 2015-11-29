@@ -8,7 +8,7 @@ import net.minecraft.stats.StatisticsFile;
 import java.lang.reflect.Field;
 
 public class StatUtils {
-	private static Field hasAchievementField = ReflectionHelper.findField(StatisticsFile.class, "field_150886_g");
+	private static final Field hasAchievementField = ReflectionHelper.findField(StatisticsFile.class, "field_150886_g");
 
 	public static void forceStatsUpdate(EntityPlayerMP player) {
 		try {

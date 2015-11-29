@@ -234,9 +234,9 @@ public class RecipeReplacer {
 	 * @return The new recipe, or {@code null} if no replacement was needed
 	 * @throws UnableToReplaceRecipeException When the recipe couldn't be replaced
 	 */
+	@SuppressWarnings("unchecked")
 	private static IRecipe convertShapelessRecipe(ShapelessRecipes recipe, ItemStack originalItem, ItemStack replacementOutputItem, String replacementInputOreName) throws UnableToReplaceRecipeException {
 		try {
-			@SuppressWarnings("unchecked")
 			List<Object> input = createShapelessInputs(recipe.recipeItems, originalItem, replacementInputOreName);
 			boolean inputMatches = input.contains(replacementInputOreName);
 

@@ -16,10 +16,8 @@ public class GuiConfigTestMod2 extends GuiConfig {
 	}
 
 	private static List<IConfigElement> getConfigElements() {
-		List<IConfigElement> list = Config.config.getCategoryNames().stream()
+		return Config.config.getCategoryNames().stream()
 				.map(categoryName -> new ConfigElement<>(Config.config.getCategory(categoryName).setLanguageKey("testmod2.config." + categoryName)))
 				.collect(Collectors.toList());
-
-		return list;
 	}
 }

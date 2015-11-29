@@ -18,7 +18,7 @@ import java.util.Random;
 
 // http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/modification-development/2280852-crash-custom-bed?page=2
 public class BlockColoredBed extends BlockBed {
-	private int colorIndex;
+	private final int colorIndex;
 
 	private IIcon[] topIcons;
 	private IIcon[] endIcons;

@@ -5,7 +5,6 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.projectile.EntityPotion;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemPotion;
 import net.minecraft.item.ItemStack;
@@ -24,7 +23,7 @@ import java.util.Map;
 
 /**
  * An extension of the vanilla potion item that correctly calculates the liquid colour for potions using the CustomPotionEffects tag list.
- *
+ * <p>
  * Test for this thread:
  * http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/modification-development/2559988-crafting-unimplemented-potions-like-the-potion-of
  */
@@ -32,7 +31,7 @@ public class ItemModPotion extends ItemPotion {
 	/**
 	 * The default duration of potions in ticks (3 minutes)
 	 */
-	public static final int DEFAULT_DURATION = 3 * 60 * 20;
+	private static final int DEFAULT_DURATION = 3 * 60 * 20;
 
 	/**
 	 * The duration multiplier for Tier II potions
@@ -42,7 +41,7 @@ public class ItemModPotion extends ItemPotion {
 	/**
 	 * The duration multiplier for Extended potions
 	 */
-	public static final double DURATION_MULTIPLIER_EXTENDED = 8.0/3.0;
+	public static final double DURATION_MULTIPLIER_EXTENDED = 8.0 / 3.0;
 
 	/**
 	 * The duration multiplier for Splash potions
@@ -51,10 +50,11 @@ public class ItemModPotion extends ItemPotion {
 
 	/**
 	 * Get the default duration of the specified {@link Potion} ({@link #DEFAULT_DURATION} * {@link Potion#getEffectiveness()})
+	 *
 	 * @param potion The potion
 	 * @return The default duration
 	 */
-	public static double getDefaultDuration(Potion potion){
+	public static double getDefaultDuration(Potion potion) {
 		return DEFAULT_DURATION * potion.getEffectiveness();
 	}
 
@@ -95,7 +95,7 @@ public class ItemModPotion extends ItemPotion {
 		return itemStack.getTagCompound().getTagList("CustomPotionEffects", Constants.NBT.TAG_COMPOUND);
 	}
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({"unchecked", "EmptyMethod"})
 	@Override
 	public List<PotionEffect> getEffects(ItemStack p_77832_1_) {
 		return super.getEffects(p_77832_1_);
@@ -129,16 +129,14 @@ public class ItemModPotion extends ItemPotion {
 	@Override
 	public ItemStack onItemRightClick(ItemStack itemStack, World world, EntityPlayer player) {
 		// If this is a splash potion, spawn an EntityModPotion so the correct liquid colour is used
-		if (isSplash(itemStack.getMetadata())){
-			if (!player.capabilities.isCreativeMode)
-			{
+		if (isSplash(itemStack.getMetadata())) {
+			if (!player.capabilities.isCreativeMode) {
 				--itemStack.stackSize;
 			}
 
 			world.playSoundAtEntity(player, "random.bow", 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
 
-			if (!world.isRemote)
-			{
+			if (!world.isRemote) {
 				world.spawnEntityInWorld(new EntityModPotion(world, player, itemStack));
 			}
 
@@ -150,13 +148,14 @@ public class ItemModPotion extends ItemPotion {
 
 	/**
 	 * Get a potion {@link ItemStack} with the specified {@link PotionEffect}s. The {@link ItemStack} is used a sub-item.
-	 * @param isSplash Should the potion be a splash potion?
+	 *
+	 * @param isSplash      Should the potion be a splash potion?
 	 * @param potionEffects The potion effects to apply
 	 * @return The potion {@link ItemStack}
 	 */
 	public ItemStack getCustomPotion(boolean isSplash, PotionEffect... potionEffects) {
 		NBTTagList customEffectsTagList = new NBTTagList();
-		for (PotionEffect potionEffect : potionEffects){
+		for (PotionEffect potionEffect : potionEffects) {
 			customEffectsTagList.appendTag(potionEffect.writeCustomPotionEffectToNBT(new NBTTagCompound()));
 		}
 

@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class UnpunchableLogs {
 
-	public static MaterialUnpunchableLogs materialUnpunchableLogs = new MaterialUnpunchableLogs(); // Instantiate the custom Material
+	public static final MaterialUnpunchableLogs materialUnpunchableLogs = new MaterialUnpunchableLogs(); // Instantiate the custom Material
 
 	public static void init() {
 		ArrayList<ItemStack> logItemStacks = OreDictionary.getOres("logWood"); // Get a list of ItemStacks registered for "logWood"

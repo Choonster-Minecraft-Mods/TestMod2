@@ -10,7 +10,7 @@ import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.config.Property;
 
 public class Config {
-	public static final String CATEGORY_BIOME = "biomes";
+	private static final String CATEGORY_BIOME = "biomes";
 
 	public static Configuration config;
 
@@ -29,7 +29,7 @@ public class Config {
 		FMLCommonHandler.instance().bus().register(new Config());
 	}
 
-	public static void reloadConfig() {
+	private static void reloadConfig() {
 		barrelBombExplosionSize = config.getFloat("barrelBombExplosionSize", Configuration.CATEGORY_GENERAL, 2.0f, 0.0f, 1000.0f,
 				"The size of the Barrel Bomb's explosion. TNT uses a size of 4.0, Creepers use a size of 3.0 (6.0 if charged).\nHigher numbers will cause strange explosion patterns, a lot of lag and possibly server crashes.");
 

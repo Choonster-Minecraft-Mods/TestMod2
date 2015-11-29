@@ -1,6 +1,8 @@
 package com.choonster.testmod2.creativetab;
 
 import com.choonster.testmod2.init.ModItems;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.init.Items;
@@ -12,7 +14,7 @@ import java.util.List;
 
 public class CreativeTabTestMod2 extends CreativeTabs {
 
-	private ItemSorter itemSorter = new ItemSorter();
+	private final ItemSorter itemSorter = new ItemSorter();
 
 	public CreativeTabTestMod2() {
 		super("testmod2");
@@ -23,6 +25,8 @@ public class CreativeTabTestMod2 extends CreativeTabs {
 		return ModItems.candyButton;
 	}
 
+	@SideOnly(Side.CLIENT)
+	@SuppressWarnings("unchecked")
 	@Override
 	public void displayAllReleventItems(List items) {
 		super.displayAllReleventItems(items);

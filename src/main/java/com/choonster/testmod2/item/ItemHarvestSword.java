@@ -25,17 +25,17 @@ public class ItemHarvestSword extends ItemTool {
 	/**
 	 * The speed at which Cobwebs are harvested
 	 */
-	public static final float DIG_SPEED_WEB = 15.0f;
+	private static final float DIG_SPEED_WEB = 15.0f;
 
 	/**
 	 * The speed at which Sword-effective {@link Material}s are harvested
 	 */
-	public static final float DIG_SPEED_SWORD = 1.5f;
+	private static final float DIG_SPEED_SWORD = 1.5f;
 
 	/**
 	 * The speed at which blocks are harvested if this isn't their correct tool
 	 */
-	public static final float DIG_SPEED_DEFAULT = 1.0f;
+	private static final float DIG_SPEED_DEFAULT = 1.0f;
 
 	public ItemHarvestSword(ToolMaterial toolMaterial) {
 		super(4.0f, toolMaterial, Collections.EMPTY_SET);
@@ -52,7 +52,7 @@ public class ItemHarvestSword extends ItemTool {
 	/**
 	 * The {@link Material}s that this tool is effective on.
 	 */
-	public static final Set<Material> EFFECTIVE_MATERIALS = ImmutableSet.of(
+	private static final Set<Material> EFFECTIVE_MATERIALS = ImmutableSet.of(
 			// Pickaxe
 			Material.rock, Material.iron, Material.ice, Material.glass, Material.piston, Material.anvil, Material.circuits,
 
@@ -66,7 +66,7 @@ public class ItemHarvestSword extends ItemTool {
 	/**
 	 * The {@link Material}s that Swords are effective on.
 	 */
-	public static final Set<Material> SWORD_MATERIALS = ImmutableSet.of(
+	private static final Set<Material> SWORD_MATERIALS = ImmutableSet.of(
 			Material.plants, Material.vine, Material.coral, Material.leaves, Material.gourd
 	);
 

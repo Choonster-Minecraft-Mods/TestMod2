@@ -8,7 +8,7 @@ import java.util.List;
 
 public class SplitterTest {
 	// Copied from StringTranslate
-	private static Splitter equalSignSplitter = Splitter.on('=').limit(2);
+	private static final Splitter equalSignSplitter = Splitter.on('=').limit(2);
 
 	public static void splitStrings() {
 		splitString("abc.123=ABC 123");

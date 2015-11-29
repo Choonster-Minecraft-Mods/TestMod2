@@ -17,7 +17,7 @@ import java.util.Random;
 import java.util.stream.Collectors;
 
 public class BlockEventHandler {
-	private Random random = new Random();
+	private final Random random = new Random();
 
 	@SubscribeEvent
 	public void onBlockLeftClicked(PlayerInteractEvent event) {

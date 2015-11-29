@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ItemSorter implements Comparator<ItemStack> {
-	private Map<ItemStack, OreDictionaryPriority> oreDictPriorityCache = new HashMap<>();
+	private final Map<ItemStack, OreDictionaryPriority> oreDictPriorityCache = new HashMap<>();
 
 	private OreDictionaryPriority getOreDictionaryPriority(ItemStack itemStack) {
 		OreDictionaryPriority priority = oreDictPriorityCache.get(itemStack);

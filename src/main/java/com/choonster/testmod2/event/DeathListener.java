@@ -16,8 +16,4 @@ public class DeathListener {
 
 	}
 
-	public void onPlayerDeath() {
-
-
-	}
 }

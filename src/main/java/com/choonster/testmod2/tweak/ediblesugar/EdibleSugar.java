@@ -27,7 +27,7 @@ public class EdibleSugar {
 	 * <p>
 	 * This is the same name used by Pam's HarvestCraft.
 	 */
-	public static final String ORE_NAME_SUGAR = "listAllsugar";
+	private static final String ORE_NAME_SUGAR = "listAllsugar";
 
 	public static final int SUGAR_FOOD_LEVEL = 0;
 	public static final float SUGAR_SATURATION_LEVEL = 0.0f;

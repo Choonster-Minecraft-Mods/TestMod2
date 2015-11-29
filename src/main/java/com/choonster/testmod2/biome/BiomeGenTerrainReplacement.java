@@ -45,7 +45,7 @@ public class BiomeGenTerrainReplacement extends BiomeGenPlains {
 	 * @param genZ                  The z coordinate to generate
 	 * @param fillerThicknessChance The stone noise for these coordinates. Determines the thickness of the filler layer.
 	 */
-	public void genCustomTerrain(World world, Random random, Block[] blocks, byte[] metadataArray, int genX, int genZ, double fillerThicknessChance) {
+	private void genCustomTerrain(World world, Random random, Block[] blocks, byte[] metadataArray, int genX, int genZ, double fillerThicknessChance) {
 		Block topBlock = this.topBlock;
 		byte metadata = (byte) (this.topBlockMetadata & 255);
 		Block fillerBlock = this.fillerBlock;

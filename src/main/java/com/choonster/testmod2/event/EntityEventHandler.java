@@ -59,7 +59,7 @@ public class EntityEventHandler {
 		}
 	}
 
-	private Field scoreValueField = ReflectionHelper.findField(EntityLivingBase.class, "field_70744_aE", "scoreValue");
+	private final Field scoreValueField = ReflectionHelper.findField(EntityLivingBase.class, "field_70744_aE", "scoreValue");
 
 	@SubscribeEvent
 	public void onEntityDeath(LivingDeathEvent event) {

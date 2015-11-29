@@ -2,6 +2,8 @@ package com.choonster.testmod2.item;
 
 import com.choonster.testmod2.TestMod2;
 import com.choonster.testmod2.util.ChatUtils;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -19,6 +21,8 @@ public class ItemDirtyDust extends Item {
 		setTextureName("redstone_dust");
 	}
 
+	@SideOnly(Side.CLIENT)
+	@SuppressWarnings("unchecked")
 	@Override
 	public void addInformation(ItemStack itemStack, EntityPlayer player, List tooltipLines, boolean advancedTooltips) {
 		tooltipLines.add("Does stuff when thrown in water");
