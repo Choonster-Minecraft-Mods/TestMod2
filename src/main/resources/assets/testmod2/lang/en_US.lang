@@ -101,6 +101,7 @@ message.clearer.clearing=Clearing the chunk at %s, %s
 message.clearer.cleared=Chunk cleared
 message.armouredSkeleton.spawn=Armoured Skeleton spawned at %s %s %s
 message.useCountTest.updateSent=Stats update sent
+message.chatComponentDeferred.error=Error resolving deferred chat component: %s
 
 # Tooltips
 tooltip.useCountTest.count=Use Count: %s

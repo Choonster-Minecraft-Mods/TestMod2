@@ -20,6 +20,8 @@ public class Config {
 	public static int testBiomeID;
 	public static int terrainReplacementBiomeID;
 
+	public static boolean writeStatRemappingLogs;
+
 	public static void load(FMLPreInitializationEvent event) {
 		config = new Configuration(event.getSuggestedConfigurationFile());
 		reloadConfig();
@@ -34,6 +36,8 @@ public class Config {
 		disableOtherBiomes = config.get(CATEGORY_BIOME, "disableOtherBiomes", false, "If true, disable all other biomes").setRequiresMcRestart(true).getBoolean();
 		testBiomeID = getBiomeID("test", 50, "Test Biome");
 		terrainReplacementBiomeID = getBiomeID("terrainReplacement", 51, "Terrain Replacement Biome");
+
+		writeStatRemappingLogs = config.getBoolean("writeStatRemappingLogs", Configuration.CATEGORY_GENERAL, false, "If true, write stat remapping logs");
 
 		if (config.hasChanged()) {
 			config.save();
