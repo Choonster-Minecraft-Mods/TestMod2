@@ -78,6 +78,7 @@ tile.watergrass.name=Water Grass
 tile.fallingNoCollision.name=Falling Block - No Collision
 tile.collisionPotionEffects.name=Collision Potion Effects
 tile.itemDebugger.name=Item Debugger
+tile.rightClickLoot.name=Right Click Loot Block
 
 tile.fluid.collisionTest.name=Collision Test Fluid
 tile.fluid.static.name=Static Fluid

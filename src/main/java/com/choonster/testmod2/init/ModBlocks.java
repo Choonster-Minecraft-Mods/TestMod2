@@ -28,6 +28,7 @@ public class ModBlocks {
 	public static BlockFallingNoCollision blockFallingNoCollision;
 	public static BlockCollisionPotionEffects blockCollisionPotionEffects;
 	public static BlockItemDebugger blockItemDebugger;
+	public static BlockRightClickLoot blockRightClickLoot;
 
 	public static void registerBlocks() {
 		coloredBeds = new BlockColoredBed[16];
@@ -76,6 +77,7 @@ public class ModBlocks {
 		blockFallingNoCollision = registerBlock(new BlockFallingNoCollision());
 		blockCollisionPotionEffects = registerBlock(new BlockCollisionPotionEffects());
 		blockItemDebugger = registerBlock(new BlockItemDebugger());
+		blockRightClickLoot = registerBlock(new BlockRightClickLoot());
 	}
 
 	private static <T extends Block> T registerBlock(T block) {
