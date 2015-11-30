@@ -102,6 +102,10 @@ message.clearer.cleared=Chunk cleared
 message.armouredSkeleton.spawn=Armoured Skeleton spawned at %s %s %s
 message.useCountTest.updateSent=Stats update sent
 message.chatComponentDeferred.error=Error resolving deferred chat component: %s
+message.testmod2.entityKillCountTest.killCount=You have killed %d of my kind.
+message.testmod2.entityKillCountTest.killCount.none=You have not killed any of my kind.
+message.testmod2.entityKillCountTest.killedByCount=You have been killed by my kind %d time(s).
+message.testmod2.entityKillCountTest.killedByCount.none=You have not been killed by my kind.
 
 # Tooltips
 tooltip.useCountTest.count=Use Count: %s
@@ -117,3 +121,4 @@ entity.testmod2.BarrelBomb.name=Barrel Bomb
 entity.testmod2.ArmouredSkeleton.name=Armored Skeleton
 entity.testmod2.Chicken.name=Mod Chicken
 entity.testmod2.ModPotion.name=Potion
+entity.testmod2.KillCountTest.name=Kill Count Test

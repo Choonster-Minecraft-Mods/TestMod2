@@ -27,6 +27,7 @@ public class ModEntities {
 		registerMobEntityWithSpawnEgg(EntityArmouredSkeleton.class, "ArmouredSkeleton", 66, 66, 66, 88, 88, 88);
 		registerMobEntityWithSpawnEgg(EntityModChicken.class, "Chicken", 161, 161, 161, 255, 0, 0);
 		registerProjectileEntity(EntityModPotion.class, "ModPotion");
+		registerMobEntityWithSpawnEgg(EntityKillCountTest.class, "KillCountTest", 236, 28, 28, 95, 86, 207);
 
 		EntityRegistry.addSpawn(EntityArmouredSkeleton.class, 1000, 1, 10, EnumCreatureType.monster, ModBiomes.biomeGenTest);
 	}
