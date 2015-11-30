@@ -28,9 +28,10 @@ public class BlockRightClickLoot extends Block {
 			ItemStack itemStack = ModLoot.RIGHT_CLICK_LOOT_BLOCK.getOneItem(worldIn.rand); // Get a random item from the loot list
 			dropBlockAsItem(worldIn, x, y, z, itemStack); // Drop it in the world
 
-			player.playSound("random.break", 0.8F, 0.8F + worldIn.rand.nextFloat() * 0.4F); // Play the tool break sound
 			worldIn.setBlockToAir(x, y, z); // Set this block to air
 		}
+
+		player.playSound("random.break", 0.8F, 0.8F + worldIn.rand.nextFloat() * 0.4F); // Play the tool break sound
 
 		return true;
 	}
