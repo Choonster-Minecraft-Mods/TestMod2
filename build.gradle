@@ -53,14 +53,14 @@ dependencies {
     compile "team.chisel:Chisel:${chisel_version}"
     compile "team.chisel:Chisel:${chisel_version}:sources"
 
-    runtime "codechicken:CodeChickenLib:${mc_version}-${ccl_version}:dev"
-    runtime "codechicken:CodeChickenLib:${mc_version}-${ccl_version}:src"
+    compile "codechicken:CodeChickenLib:${mc_version}-${ccl_version}:dev"
+    compile "codechicken:CodeChickenLib:${mc_version}-${ccl_version}:src"
 
-    runtime "codechicken:CodeChickenCore:${mc_version}-${ccc_version}:dev"
-    runtime "codechicken:CodeChickenCore:${mc_version}-${ccc_version}:src"
+    compile "codechicken:CodeChickenCore:${mc_version}-${ccc_version}:dev"
+    compile "codechicken:CodeChickenCore:${mc_version}-${ccc_version}:src"
 
-    runtime "codechicken:NotEnoughItems:${mc_version}-${nei_version}:dev"
-    runtime "codechicken:NotEnoughItems:${mc_version}-${nei_version}:src"
+    compile "codechicken:NotEnoughItems:${mc_version}-${nei_version}:dev"
+    compile "codechicken:NotEnoughItems:${mc_version}-${nei_version}:src"
 }
 processResources {
     // this will ensure that this task is redone when the versions change.
