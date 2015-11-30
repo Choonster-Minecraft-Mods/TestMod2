@@ -20,18 +20,20 @@ public class BlockRightClickLoot extends Block {
 		setUnlocalizedName("rightClickLoot");
 		setTextureName("bookshelf");
 		setCreativeTab(TestMod2.tab);
+		setStepSound(Block.soundTypeGlass);
 	}
 
 	@Override
 	public boolean onBlockActivated(World worldIn, int x, int y, int z, EntityPlayer player, int side, float subX, float subY, float subZ) {
+		// Play the block break sound and spawn the block break particle effects
+		worldIn.playAuxSFXAtEntity(player, 2001, x, y, z, Block.getIdFromBlock(this) + (worldIn.getBlockMetadata(x, y, z) << 12));
+
 		if (!worldIn.isRemote) {
 			ItemStack itemStack = ModLoot.RIGHT_CLICK_LOOT_BLOCK.getOneItem(worldIn.rand); // Get a random item from the loot list
 			dropBlockAsItem(worldIn, x, y, z, itemStack); // Drop it in the world
 
 			worldIn.setBlockToAir(x, y, z); // Set this block to air
 		}
-
-		player.playSound("random.break", 0.8F, 0.8F + worldIn.rand.nextFloat() * 0.4F); // Play the tool break sound
 
 		return true;
 	}
