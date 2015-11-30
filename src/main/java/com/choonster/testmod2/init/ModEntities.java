@@ -9,8 +9,6 @@ import cpw.mods.fml.relauncher.ReflectionHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EnumCreatureType;
-import net.minecraft.stats.StatBase;
-import net.minecraft.util.ChatComponentTranslation;
 
 import java.lang.reflect.Field;
 import java.util.BitSet;
@@ -219,6 +217,7 @@ public class ModEntities {
 	}
 
 	public static class ModEntityEggInfo extends EntityList.EntityEggInfo {
+
 		public final String entityName;
 
 		public ModEntityEggInfo(int id, String entityName, int primaryColour, int secondaryColour) {
