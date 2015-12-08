@@ -20,6 +20,7 @@ public class CreativeTabTestMod2 extends CreativeTabs {
 		super("testmod2");
 	}
 
+	@SideOnly(Side.CLIENT)
 	@Override
 	public Item getTabIconItem() {
 		return ModItems.candyButton;
@@ -31,9 +32,9 @@ public class CreativeTabTestMod2 extends CreativeTabs {
 	public void displayAllReleventItems(List items) {
 		super.displayAllReleventItems(items);
 
-		ItemStack enchant = new ItemStack(Items.record_11);
-		enchant.addEnchantment(Enchantment.unbreaking, 25);
-		items.add(enchant);
+		ItemStack record11 = new ItemStack(Items.record_11);
+		record11.addEnchantment(Enchantment.unbreaking, 25);
+		items.add(record11);
 
 		// Sort the item list using the ItemSorter instance
 		Collections.sort(items, itemSorter);
