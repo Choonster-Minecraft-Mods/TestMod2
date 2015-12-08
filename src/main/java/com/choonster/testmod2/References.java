@@ -3,7 +3,6 @@ package com.choonster.testmod2;
 public class References {
 	public static final String MODID = "testmod2";
 
-	public static final String[] COLORS = new String[]{"black", "red", "green", "brown", "blue", "purple", "cyan", "silver", "gray", "pink", "lime", "yellow", "light_blue", "magenta", "orange", "white"};
 	public static final String RESOURCE_PREFIX = MODID + ":";
 
 }

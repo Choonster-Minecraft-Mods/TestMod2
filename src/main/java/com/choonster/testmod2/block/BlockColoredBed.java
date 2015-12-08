@@ -9,6 +9,7 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemDye;
 import net.minecraft.util.Direction;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
@@ -16,7 +17,12 @@ import net.minecraft.world.World;
 
 import java.util.Random;
 
-// http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/modification-development/2280852-crash-custom-bed?page=2
+/**
+ * A coloured bed.
+ * <p>
+ * Test for this thread:
+ * http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/modification-development/2280852-crash-custom-bed?page=2
+ */
 public class BlockColoredBed extends BlockBed {
 	private final int colorIndex;
 
@@ -27,16 +33,18 @@ public class BlockColoredBed extends BlockBed {
 	public BlockColoredBed(int colorIndex) {
 		super();
 		this.colorIndex = colorIndex;
+		setUnlocalizedName("coloredBed." + ItemDye.dyeIcons[colorIndex]);
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister iconRegister) {
-		String prefix = References.MODID + ":" + this.getUnlocalizedName().substring(5) + "_" + References.COLORS[colorIndex];
+		String vanillaPrefix = "minecraft:bed";
+		String colorPrefix = References.RESOURCE_PREFIX + this.getUnlocalizedName().replaceFirst("tile\\.", "").replaceFirst("\\.", "_");
 
-		this.topIcons = new IIcon[]{iconRegister.registerIcon(prefix + "_feet_top"), iconRegister.registerIcon(prefix + "_head_top")};
-		this.endIcons = new IIcon[]{iconRegister.registerIcon(prefix + "_feet_end"), iconRegister.registerIcon(prefix + "_head_end")};
-		this.sideIcons = new IIcon[]{iconRegister.registerIcon(prefix + "_feet_side"), iconRegister.registerIcon(prefix + "_head_side")};
+		this.topIcons = new IIcon[]{iconRegister.registerIcon(colorPrefix + "_feet_top"), iconRegister.registerIcon(vanillaPrefix + "_head_top")};
+		this.endIcons = new IIcon[]{iconRegister.registerIcon(vanillaPrefix + "_feet_end"), iconRegister.registerIcon(vanillaPrefix + "_head_end")};
+		this.sideIcons = new IIcon[]{iconRegister.registerIcon(vanillaPrefix + "_feet_side"), iconRegister.registerIcon(vanillaPrefix + "_head_side")};
 	}
 
 	/**
@@ -48,10 +56,10 @@ public class BlockColoredBed extends BlockBed {
 		if (side == 0) {
 			return Blocks.planks.getBlockTextureFromSide(side);
 		} else {
-			int k = getDirection(meta);
-			int l = Direction.bedDirection[k][side];
-			int i1 = isBlockHeadOfBed(meta) ? 1 : 0;
-			return (i1 != 1 || l != 2) && (i1 != 0 || l != 3) ? (l != 5 && l != 4 ? this.topIcons[i1] : this.sideIcons[i1]) : this.endIcons[i1];
+			int direction = getDirection(meta);
+			int bedDirection = Direction.bedDirection[direction][side];
+			int iconIndex = isBlockHeadOfBed(meta) ? 1 : 0;
+			return (iconIndex != 1 || bedDirection != 2) && (iconIndex != 0 || bedDirection != 3) ? (bedDirection != 5 && bedDirection != 4 ? this.topIcons[iconIndex] : this.sideIcons[iconIndex]) : this.endIcons[iconIndex];
 		}
 	}
 

@@ -10,6 +10,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemDye;
 import net.minecraft.tileentity.TileEntity;
 
 public class ModBlocks {
@@ -31,11 +32,10 @@ public class ModBlocks {
 	public static BlockRightClickLoot blockRightClickLoot;
 
 	public static void registerBlocks() {
-		coloredBeds = new BlockColoredBed[16];
+		coloredBeds = new BlockColoredBed[ItemDye.dyeIcons.length];
 		for (int colorIndex = 0; colorIndex < coloredBeds.length; colorIndex++) {
-			String name = "coloredBed." + References.COLORS[colorIndex];
-			coloredBeds[colorIndex] = (BlockColoredBed) new BlockColoredBed(colorIndex).setUnlocalizedName(name);
-			GameRegistry.registerBlock(coloredBeds[colorIndex], null, name);
+			coloredBeds[colorIndex] = new BlockColoredBed(colorIndex);
+			registerBlock(coloredBeds[colorIndex], null);
 		}
 
 		collisionTest = new BlockCollisionTest();
