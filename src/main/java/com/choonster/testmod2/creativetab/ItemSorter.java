@@ -1,5 +1,6 @@
 package com.choonster.testmod2.creativetab;
 
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
@@ -42,11 +43,15 @@ public class ItemSorter implements Comparator<ItemStack> {
 	public int compare(ItemStack stack1, ItemStack stack2) {
 		OreDictionaryPriority priority1 = getOreDictionaryPriority(stack1), priority2 = getOreDictionaryPriority(stack2);
 
-		if (priority1 == priority2) { // Both stacks have the same priority, order them by their display names
-			String displayName1 = stack1.getDisplayName();
-			String displayName2 = stack2.getDisplayName();
+		if (priority1 == priority2) { // Both stacks have the same priority, order them by their ID/metadata
+			Item item1 = stack1.getItem();
+			Item item2 = stack2.getItem();
 
-			return displayName1.compareToIgnoreCase(displayName2);
+			if (item1 == item2) { // If the stacks have the same item, order them by their metadata
+				return stack1.getMetadata() - stack2.getMetadata();
+			} else { // Else order them by their ID
+				return Item.getIdFromItem(item1) - Item.getIdFromItem(item2);
+			}
 		} else { // Stacks have different priorities, order them by priority instead
 			return priority1.compareTo(priority2);
 		}
