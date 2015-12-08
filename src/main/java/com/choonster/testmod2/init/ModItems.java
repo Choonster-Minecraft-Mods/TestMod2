@@ -2,6 +2,7 @@ package com.choonster.testmod2.init;
 
 import com.choonster.testmod2.TestMod2;
 import com.choonster.testmod2.item.*;
+import com.choonster.testmod2.item.block.ItemCandyButton;
 import com.choonster.testmod2.item.block.ItemColoredBed;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.init.Items;
@@ -20,7 +21,7 @@ public class ModItems {
 	public static ItemCollisionTest collisionTest;
 	public static ItemFireWand fireWand;
 	public static ItemSnowballNoGrav snowballNoGrav;
-	public static Item candyButton;
+	public static ItemCandyButton candyButton;
 	public static ItemFoodAdder foodAdder;
 	public static ItemFoodSubtractor foodSubtractor;
 	public static ItemExhaustionReset foodExhaustionResetter;
@@ -59,6 +60,7 @@ public class ModItems {
 		collisionTest = registerItem(new ItemCollisionTest());
 		fireWand = registerItem(new ItemFireWand());
 		snowballNoGrav = registerItem(new ItemSnowballNoGrav());
+		candyButton = (ItemCandyButton) Item.getItemFromBlock(ModBlocks.candyButtons[0]);
 		foodAdder = registerItem(new ItemFoodAdder());
 		foodSubtractor = registerItem(new ItemFoodSubtractor());
 		foodExhaustionResetter = registerItem(new ItemExhaustionReset());

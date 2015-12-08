@@ -48,14 +48,12 @@ public class ModBlocks {
 		GameRegistry.registerBlock(superTNT, "supertnt");
 
 
-		String[] colours = BlockCandyButton.COLOURS;
-		candyButtons = new BlockCandyButton[colours.length];
-		for (int i = 0; i < candyButtons.length; i++) {
-			candyButtons[i] = new BlockCandyButton(i);
+		candyButtons = new BlockCandyButton[BlockCandyButton.COLOURS.length];
+		for (int colourIndex = 0; colourIndex < candyButtons.length; colourIndex++) {
+			candyButtons[colourIndex] = new BlockCandyButton(colourIndex);
 
-			// Even though each instance of BlockCandyButton will create its own instance of ItemCandyButton,
-			// only the first one is ever used.
-			GameRegistry.registerBlock(candyButtons[i], ItemCandyButton.class, "candyButton_" + colours[i], i);
+			// Only register an item for the first colour
+			registerBlock(candyButtons[colourIndex], colourIndex == 0 ? ItemCandyButton.class : null);
 		}
 
 		fakeBedrock = registerBlock(new BlockFakeBedrock());
