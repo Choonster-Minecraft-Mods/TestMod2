@@ -10,6 +10,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EnumCreatureType;
 
+import java.awt.*;
 import java.lang.reflect.Field;
 import java.util.BitSet;
 import java.util.HashMap;
@@ -213,7 +214,7 @@ public class ModEntities {
 	 * @return The packed int
 	 */
 	private static int getRGBInt(int r, int g, int b) {
-		return (r << 16) + (g << 8) + b;
+		return new Color(r, g, b).getRGB();
 	}
 
 	public static class ModEntityEggInfo extends EntityList.EntityEggInfo {
