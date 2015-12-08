@@ -101,11 +101,34 @@ public class ModItems {
 		blockDebugger = registerItem(new ItemBlockDebugger());
 	}
 
-	private static <T extends Item> T registerItem(T item) {
-		GameRegistry.registerItem(item, item.getUnlocalizedName().substring(5));
-		return item;
+	/**
+	 * Get the unlocalised name of an item without the "item." prefix.
+	 *
+	 * @param item The item
+	 * @return The unlocalised name without the prefix
+	 */
+	public static String getStrippedName(Item item) {
+		return item.getUnlocalizedName().replaceFirst("item\\.", "");
 	}
 
+	/**
+	 * Register an {@link Item} with the default name.
+	 *
+	 * @param item The {@link Item}
+	 * @param <T>  The {@link Item}'s class
+	 * @return The {@link Item}
+	 */
+	private static <T extends Item> T registerItem(T item) {
+		return registerItem(item, getStrippedName(item));
+	}
+
+	/**
+	 * Register an {@link Item} with the specified name.
+	 * @param item The {@link Item}
+	 * @param name The name
+	 * @param <T> The {@link Item}'s class
+	 * @return The {@link Item}
+	 */
 	private static <T extends Item> T registerItem(T item, String name) {
 		GameRegistry.registerItem(item, name);
 		return item;

@@ -80,18 +80,47 @@ public class ModBlocks {
 		blockRightClickLoot = registerBlock(new BlockRightClickLoot());
 	}
 
+	/**
+	 * Get the unlocalised name of a {@link Block} without the "tile." prefix.
+	 *
+	 * @param block The {@link Block}
+	 * @return The unlocalised name without the prefix
+	 */
+	public static String getStrippedName(Block block) {
+		return block.getUnlocalizedName().replaceFirst("tile\\.", "");
+	}
+
+	/**
+	 * Register a {@link Block} with the default name.
+	 *
+	 * @param block The {@link Block}
+	 * @param <T>   The {@link Block}'s class
+	 * @return The {@link Block}
+	 */
 	private static <T extends Block> T registerBlock(T block) {
-		GameRegistry.registerBlock(block, block.getUnlocalizedName().substring(5));
+		GameRegistry.registerBlock(block, getStrippedName(block));
 		return block;
 	}
 
+	/**
+	 * Register a {@link Block} with the default name and a custom {@link ItemBlock} class.
+	 * @param block The {@link Block}
+	 * @param itemClass The {@link ItemBlock} class
+	 * @param constructorArgs Arguments to pass to the {@code itemClass} constructor
+	 * @param <T> The {@link Block}'s class
+	 * @return The {@link Block}
+	 */
 	private static <T extends Block> T registerBlock(T block, Class<? extends ItemBlock> itemClass, Object... constructorArgs) {
-		GameRegistry.registerBlock(block, itemClass, block.getUnlocalizedName().substring(5), constructorArgs);
+		GameRegistry.registerBlock(block, itemClass, getStrippedName(block), constructorArgs);
 		return block;
 	}
 
+	/**
+	 * Register a {@link TileEntity} with the specified mod-specific name.
+	 * @param tileEntity The {@link TileEntity}
+	 * @param name The name
+	 */
 	private static void registerTileEntity(Class<? extends TileEntity> tileEntity, String name) {
-		GameRegistry.registerTileEntity(tileEntity, References.MODID + ":" + name);
+		GameRegistry.registerTileEntity(tileEntity, References.RESOURCE_PREFIX + name);
 	}
-
 }
