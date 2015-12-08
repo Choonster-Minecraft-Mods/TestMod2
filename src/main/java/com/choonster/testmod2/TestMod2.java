@@ -72,6 +72,8 @@ public class TestMod2 {
 
 		GameRegistry.registerWorldGenerator(new WorldGenSheepSpawner(), 100);
 
+		FMLInterModComms.sendMessage("Waila", "register", "com.choonster.testmod2.compat.waila.WailaCompat.register");
+
 		proxy.init();
 	}
 

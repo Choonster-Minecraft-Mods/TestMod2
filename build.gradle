@@ -45,7 +45,7 @@ repositories {
 
 dependencies {
     runtime name: "buildcraft", version: "${buildcraft_version}" /*, classifier: ""*/
-    runtime "mcp.mobius.waila:Waila:${waila_version}"
+    compile "mcp.mobius.waila:Waila:${waila_version}"
 
     compile "team.chisel.ctmlib:CTMLib:MC${mc_version}-${ctmlib_version}"
     compile "team.chisel.ctmlib:CTMLib:MC${mc_version}-${ctmlib_version}:sources"
