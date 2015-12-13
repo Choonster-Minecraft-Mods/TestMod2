@@ -30,6 +30,7 @@ public class ModBlocks {
 	public static BlockCollisionPotionEffects blockCollisionPotionEffects;
 	public static BlockItemDebugger blockItemDebugger;
 	public static BlockRightClickLoot blockRightClickLoot;
+	public static BlockMetadataLightLevel blockMetadataLightLevel;
 
 	public static void registerBlocks() {
 		coloredBeds = new BlockColoredBed[ItemDye.dyeIcons.length];
@@ -76,6 +77,7 @@ public class ModBlocks {
 		blockCollisionPotionEffects = registerBlock(new BlockCollisionPotionEffects());
 		blockItemDebugger = registerBlock(new BlockItemDebugger());
 		blockRightClickLoot = registerBlock(new BlockRightClickLoot());
+		blockMetadataLightLevel = registerBlock(new BlockMetadataLightLevel());
 	}
 
 	/**

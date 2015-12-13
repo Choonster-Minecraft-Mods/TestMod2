@@ -79,6 +79,7 @@ tile.fallingNoCollision.name=Falling Block - No Collision
 tile.collisionPotionEffects.name=Collision Potion Effects
 tile.itemDebugger.name=Item Debugger
 tile.rightClickLoot.name=Right Click Loot Block
+tile.metadataLightLevel.name=Metadata Light Level Block
 
 tile.fluid.collisionTest.name=Collision Test Fluid
 tile.fluid.static.name=Static Fluid
@@ -107,6 +108,8 @@ message.testmod2.entityKillCountTest.killCount=You have killed %d of my kind.
 message.testmod2.entityKillCountTest.killCount.none=You have not killed any of my kind.
 message.testmod2.entityKillCountTest.killedByCount=You have been killed by my kind %d time(s).
 message.testmod2.entityKillCountTest.killedByCount.none=You have not been killed by my kind.
+message.testmod2.blockMetadataLightLevel.newLightLevel=New light level: %d
+message.testmod2.blockMetadataLightLevel.currentLightLevel=Current light level: %d
 
 # Tooltips
 tooltip.useCountTest.count=Use Count: %s
