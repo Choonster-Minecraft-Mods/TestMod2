@@ -19,6 +19,7 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.*;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.server.MinecraftServer;
 import net.minecraftforge.common.MinecraftForge;
 
 import java.util.UUID;
@@ -85,5 +86,15 @@ public class TestMod2 {
 	@EventHandler
 	public void remapIDs(FMLModIdMappingEvent event) {
 		ModdedStatsFix.remapIDs(event.remappedIds);
+	}
+
+	@EventHandler
+	public void serverStopping(FMLServerStoppingEvent event){
+		Logger.info("Server stopping. Dedicated? %s", MinecraftServer.getServer().isDedicatedServer());
+	}
+
+	@EventHandler
+	public void serverStopped(FMLServerStoppedEvent event){
+		Logger.info("Server stopped. Dedicated? %s", MinecraftServer.getServer().isDedicatedServer());
 	}
 }
