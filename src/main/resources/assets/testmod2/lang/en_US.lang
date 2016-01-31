@@ -126,3 +126,7 @@ entity.testmod2.ArmouredSkeleton.name=Armored Skeleton
 entity.testmod2.Chicken.name=Mod Chicken
 entity.testmod2.ModPotion.name=Potion
 entity.testmod2.KillCountTest.name=Kill Count Test
+
+# Commands
+commands.testmod2:connect.usage=/connect <serverHost>[:<serverPort>]
+commands.testmod2:connect.connecting=Connecting to %s...
