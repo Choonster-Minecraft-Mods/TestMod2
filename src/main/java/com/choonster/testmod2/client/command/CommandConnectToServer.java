@@ -91,14 +91,15 @@ public class CommandConnectToServer extends CommandBase {
 	 */
 	@SubscribeEvent
 	public void onClientDisconnect(FMLNetworkEvent.ClientDisconnectionFromServerEvent event) {
-		if (pendingConnection.isPresent()) {
-			minecraft.addScheduledTask(() -> {
+		minecraft.addScheduledTask(() -> {
+			if (pendingConnection.isPresent()) {
 				final ServerData serverData = pendingConnection.get();
 				Logger.info("Connecting to %s", serverData.serverIP);
+
 				FMLClientHandler.instance().setupServerList();
 				FMLClientHandler.instance().connectToServer(new GuiMainMenu(), serverData);
 				pendingConnection = Optional.empty();
-			});
-		}
+			}
+		});
 	}
 }
