@@ -26,7 +26,7 @@ public class ItemBlockDebugger extends Item {
 		int meta = world.getBlockMetadata(x, y, z);
 		TileEntity tileEntity = world.getTileEntity(x, y, z);
 
-		Logger.info("Block at %d,%d,%d: %s (meta %d)", x, y, z, block, meta);
+		Logger.info("Block at %d,%d,%d: %s (meta %d) - Registry name: %s", x, y, z, block, meta, Block.blockRegistry.getNameForObject(block));
 		if (tileEntity != null) {
 			NBTTagCompound tagCompound = new NBTTagCompound();
 			tileEntity.writeToNBT(tagCompound);

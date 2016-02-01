@@ -5,6 +5,7 @@ import com.choonster.testmod2.TestMod2;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
@@ -23,7 +24,7 @@ public class BlockItemDebugger extends Block {
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
 		ItemStack stack = player.getHeldItem();
 		if (stack != null) {
-			Logger.info("Item: %s", stack);
+			Logger.info("Item: %s - Registry name: %s", stack, Item.itemRegistry.getNameForObject(stack.getItem()));
 			if (stack.hasTagCompound()) {
 				Logger.info("NBT data: %s", stack.getTagCompound());
 			}
