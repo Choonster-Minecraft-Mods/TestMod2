@@ -1,5 +1,6 @@
 package com.choonster.testmod2.init;
 
+import com.choonster.testmod2.References;
 import com.choonster.testmod2.TestMod2;
 import com.choonster.testmod2.item.*;
 import com.choonster.testmod2.item.block.ItemCandyButton;
@@ -52,6 +53,7 @@ public class ModItems {
 	public static ItemWarHammer diamondWarHammer;
 	public static ItemModPotion potion;
 	public static ItemBlockDebugger blockDebugger;
+	public static Item fuel;
 
 	public static final Item.ToolMaterial TOOL_MATERIAL_GLOWSTONE = EnumHelper.addToolMaterial("glowstone", 1, 5, 0.5f, 1.0f, 10).setRepairItem(new ItemStack(Items.glowstone_dust));
 
@@ -101,6 +103,7 @@ public class ModItems {
 
 		potion = registerItem(new ItemModPotion());
 		blockDebugger = registerItem(new ItemBlockDebugger());
+		fuel = registerItem(new Item().setUnlocalizedName(References.RESOURCE_PREFIX + "fuel").setTextureName("minecraft:coal").setCreativeTab(TestMod2.tab));
 	}
 
 	/**
@@ -110,7 +113,7 @@ public class ModItems {
 	 * @return The unlocalised name without the prefix
 	 */
 	public static String getStrippedName(Item item) {
-		return item.getUnlocalizedName().replaceFirst("item\\.", "");
+		return item.getUnlocalizedName().replaceFirst("item\\.", "").replaceFirst(References.RESOURCE_PREFIX, "");
 	}
 
 	/**

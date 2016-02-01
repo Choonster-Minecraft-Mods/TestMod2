@@ -2,6 +2,7 @@ package com.choonster.testmod2;
 
 import com.choonster.testmod2.compat.BCCompat;
 import com.choonster.testmod2.config.Config;
+import com.choonster.testmod2.crafting.FuelHandler;
 import com.choonster.testmod2.creativetab.CreativeTabTestMod2;
 import com.choonster.testmod2.event.BlockEventHandler;
 import com.choonster.testmod2.event.EntityEventHandler;
@@ -56,6 +57,8 @@ public class TestMod2 {
 		//ItemTooltipEventHandler.init();
 
 		SplitterTest.splitStrings();
+
+		GameRegistry.registerFuelHandler(new FuelHandler());
 
 		proxy.preInit();
 	}
