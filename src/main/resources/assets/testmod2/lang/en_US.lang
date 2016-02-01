@@ -37,6 +37,7 @@ item.cannedPeachesOpen.name=Open Can of Peaches
 item.warHammerDiamond.name=Diamond War Hammer
 item.blockDebugger.name=Block Debugger
 item.testmod2:fuel.name=Furnace Fuel
+item.testmod2:fuel2.name=Temporary Furnace Fuel (Only works until the chunk/world is reloaded)
 
 item.coloredBed.black.name=Black Colored Bed
 item.coloredBed.red.name=Red Colored Bed

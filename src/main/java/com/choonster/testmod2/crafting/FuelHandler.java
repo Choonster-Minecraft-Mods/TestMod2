@@ -14,12 +14,23 @@ import net.minecraft.item.ItemStack;
  * @author Choonster
  */
 public class FuelHandler implements IFuelHandler {
+
+	/**
+	 * Get the burn time of the specified fuel {@link ItemStack}.
+	 * <p>
+	 * Despite the return type being {@link int}, the returned value must not be greater than {@link Short#MAX_VALUE} because the furnace saves burn time as a {@link short} in the NBT.
+	 *
+	 * @param fuel The fuel ItemStack
+	 * @return The burn time, or 0 if it's not a fuel.
+	 */
 	@Override
 	public int getBurnTime(ItemStack fuel) {
 		Item fuelItem = fuel.getItem();
 
 		if (fuelItem == ModItems.fuel) {
 			return 11200;
+		} else if (fuelItem == ModItems.fuel2) {
+			return 112000; // This won't work properly because it can't fit in a short
 		}
 
 		return 0;
