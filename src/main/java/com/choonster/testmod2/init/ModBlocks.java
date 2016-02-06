@@ -8,6 +8,7 @@ import com.choonster.testmod2.tileentity.TileEntityDisplayNameTest;
 import com.choonster.testmod2.tileentity.TileEntityOwned;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemDye;
@@ -31,6 +32,8 @@ public class ModBlocks {
 	public static BlockItemDebugger blockItemDebugger;
 	public static BlockRightClickLoot blockRightClickLoot;
 	public static BlockMetadataLightLevel blockMetadataLightLevel;
+	public static BlockFlammable blockFlammable;
+	public static BlockSimple blockFlammable2;
 
 	public static void registerBlocks() {
 		coloredBeds = new BlockColoredBed[ItemDye.dyeIcons.length];
@@ -78,6 +81,9 @@ public class ModBlocks {
 		blockItemDebugger = registerBlock(new BlockItemDebugger());
 		blockRightClickLoot = registerBlock(new BlockRightClickLoot());
 		blockMetadataLightLevel = registerBlock(new BlockMetadataLightLevel());
+		blockFlammable = (BlockFlammable) registerBlock(new BlockFlammable(Material.wood, 5, 20).setUnlocalizedName(References.RESOURCE_PREFIX + "flammable").setTextureName("minecraft:log_oak_top"));
+		blockFlammable2 = (BlockSimple) registerBlock(new BlockSimple(Material.wood).setUnlocalizedName(References.RESOURCE_PREFIX + "flammable2").setTextureName("minecraft:log_big_oak_top"));
+		Blocks.fire.setFireInfo(blockFlammable2, 5, 20);
 	}
 
 	/**
@@ -87,7 +93,7 @@ public class ModBlocks {
 	 * @return The unlocalised name without the prefix
 	 */
 	public static String getStrippedName(Block block) {
-		return block.getUnlocalizedName().replaceFirst("tile\\.", "");
+		return block.getUnlocalizedName().replaceFirst("tile\\.", "").replaceFirst(References.RESOURCE_PREFIX, "");
 	}
 
 	/**
