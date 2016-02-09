@@ -36,15 +36,16 @@ repositories {
     maven { url = "http://maven.tterrag.com/" }
     ivy {
         name "BuildCraft"
-//        artifactPattern "http://www.mod-buildcraft.com/releases/BuildCraft/[revision]/[module]-[revision]-[classifier].[ext]"
-        artifactPattern "http://www.mod-buildcraft.com/releases/BuildCraft/[revision]/[module]-[revision].[ext]"
+        artifactPattern "http://www.mod-buildcraft.com/releases/BuildCraft/[revision]/[module]-[revision]-[classifier].[ext]"
     }
     maven { url = "http://mobiusstrip.eu/maven" }
     maven { url = "http://chickenbones.net/maven/" }
 }
 
 dependencies {
-    runtime name: "buildcraft", version: "${buildcraft_version}" /*, classifier: ""*/
+    runtime ":buildcraft:${buildcraft_version}:dev"
+    runtime ":buildcraft:${buildcraft_version}:sources"
+
     compile "mcp.mobius.waila:Waila:${waila_version}"
 
     compile "team.chisel.ctmlib:CTMLib:MC${mc_version}-${ctmlib_version}"
