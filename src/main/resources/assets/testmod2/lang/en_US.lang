@@ -84,6 +84,7 @@ tile.rightClickLoot.name=Right Click Loot Block
 tile.metadataLightLevel.name=Metadata Light Level Block
 tile.testmod2:flammable.name=Flammable Block
 tile.testmod2:flammable2.name=Flammable Block 2
+tile.harvestLevelTest.name=Harvest Level Test
 
 tile.fluid.collisionTest.name=Collision Test Fluid
 tile.fluid.static.name=Static Fluid

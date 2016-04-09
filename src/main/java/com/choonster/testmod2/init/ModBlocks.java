@@ -34,6 +34,7 @@ public class ModBlocks {
 	public static BlockMetadataLightLevel blockMetadataLightLevel;
 	public static BlockFlammable blockFlammable;
 	public static BlockSimple blockFlammable2;
+	public static BlockHarvestLevelTest harvestLevelTest;
 
 	public static void registerBlocks() {
 		coloredBeds = new BlockColoredBed[ItemDye.dyeIcons.length];
@@ -84,6 +85,8 @@ public class ModBlocks {
 		blockFlammable = (BlockFlammable) registerBlock(new BlockFlammable(Material.wood, 5, 20).setUnlocalizedName(References.RESOURCE_PREFIX + "flammable").setTextureName("minecraft:log_oak_top"));
 		blockFlammable2 = (BlockSimple) registerBlock(new BlockSimple(Material.wood).setUnlocalizedName(References.RESOURCE_PREFIX + "flammable2").setTextureName("minecraft:log_big_oak_top"));
 		Blocks.fire.setFireInfo(blockFlammable2, 5, 20);
+
+		harvestLevelTest = registerBlock(new BlockHarvestLevelTest(Material.iron, "harvestLevelTest", "pickaxe", 2));
 	}
 
 	/**
