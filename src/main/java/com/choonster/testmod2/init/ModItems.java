@@ -55,6 +55,7 @@ public class ModItems {
 	public static ItemBlockDebugger blockDebugger;
 	public static Item fuel;
 	public static Item fuel2;
+	public static ItemInvulnerable invulnerable;
 
 	public static final Item.ToolMaterial TOOL_MATERIAL_GLOWSTONE = EnumHelper.addToolMaterial("glowstone", 1, 5, 0.5f, 1.0f, 10).setRepairItem(new ItemStack(Items.glowstone_dust));
 
@@ -106,6 +107,7 @@ public class ModItems {
 		blockDebugger = registerItem(new ItemBlockDebugger());
 		fuel = registerItem(new Item().setUnlocalizedName(References.RESOURCE_PREFIX + "fuel").setTextureName("minecraft:coal").setCreativeTab(TestMod2.tab));
 		fuel2 = registerItem(new Item().setUnlocalizedName(References.RESOURCE_PREFIX + "fuel2").setTextureName("minecraft:charcoal").setCreativeTab(TestMod2.tab));
+		invulnerable = registerItem(new ItemInvulnerable());
 	}
 
 	/**

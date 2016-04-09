@@ -9,6 +9,7 @@ import cpw.mods.fml.relauncher.ReflectionHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EnumCreatureType;
+import net.minecraft.entity.item.EntityItem;
 
 import java.awt.*;
 import java.lang.reflect.Field;
@@ -27,6 +28,7 @@ public class ModEntities {
 		registerMobEntityWithSpawnEgg(EntityModChicken.class, "Chicken", 161, 161, 161, 255, 0, 0);
 		registerProjectileEntity(EntityModPotion.class, "ModPotion");
 		registerMobEntityWithSpawnEgg(EntityKillCountTest.class, "KillCountTest", 236, 28, 28, 95, 86, 207);
+		registerItemEntity(EntityItemInvulnerable.class, "ItemInvulnerable");
 
 		EntityRegistry.addSpawn(EntityArmouredSkeleton.class, 1000, 1, 10, EnumCreatureType.monster, ModBiomes.biomeGenTest);
 	}
@@ -101,6 +103,17 @@ public class ModEntities {
 	 */
 	private static void registerProjectileEntity(Class<? extends Entity> entityClass, String entityName) {
 		INSTANCE.registerEntity(entityClass, entityName, 64, 10, true);
+	}
+
+	/**
+	 * Register an item entity.
+	 * Uses the same tracking values as {@link EntityItem}.
+	 *
+	 * @param entityClass The entity's class
+	 * @param entityName  The entity's unique name
+	 */
+	private static void registerItemEntity(Class<? extends Entity> entityClass, String entityName) {
+		INSTANCE.registerEntity(entityClass, entityName, 64, 20, true);
 	}
 
 	/**
