@@ -133,9 +133,10 @@ public class ModItems {
 
 	/**
 	 * Register an {@link Item} with the specified name.
+	 *
 	 * @param item The {@link Item}
 	 * @param name The name
-	 * @param <T> The {@link Item}'s class
+	 * @param <T>  The {@link Item}'s class
 	 * @return The {@link Item}
 	 */
 	private static <T extends Item> T registerItem(T item, String name) {
